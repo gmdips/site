@@ -1,13 +1,18 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>404 - Halaman Tidak Ditemukan | FreedomGDPS</title>
-  <link rel="icon" type="image/png" href="https://fless.ps.fhgdps.com/dashboard/icon.png"/>
+  <link rel="icon" type="image/png" href="https://gdi.ps.fhgdps.com/dashboard/icon.png" />
 
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
     @font-face {
       font-family: 'Pusab';
@@ -31,8 +36,13 @@
     }
 
     @keyframes bgScroll {
-      from { background-position: 0 0; }
-      to { background-position: -1000px 0; }
+      from {
+        background-position: 0 0;
+      }
+
+      to {
+        background-position: -1000px 0;
+      }
     }
 
     .bobbing {
@@ -41,8 +51,15 @@
     }
 
     @keyframes bob {
-      0%,100% { transform: translateY(0); }
-      50% { transform: translateY(-8px); }
+
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-8px);
+      }
     }
 
     h1 {
@@ -68,7 +85,7 @@
       font-weight: bold;
       font-size: 1.1rem;
       border-radius: 12px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.25);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
       transition: all 0.2s ease;
       user-select: none;
     }
@@ -85,15 +102,17 @@
     }
   </style>
 </head>
+
 <body>
   <h1 class="bobbing">404</h1>
   <p class="bobbing">Oops! Halaman yang kamu cari tidak ditemukan.</p>
 
-  <a href="https://fless.ps.fhgdps.com/dashboard/login/register.php" class="btn-register" target="_blank" rel="noopener noreferrer">
+  <a href="https://gdi.ps.fhgdps.com/dashboard/login/register.php" class="btn-register" target="_blank"
+    rel="noopener noreferrer">
     Register Akun
   </a>
 
-<a href="https://fless.netlify.app" class="btn-register" target="_blank" rel="noopener noreferrer">
+  <a href="https://fless.netlify.app" class="btn-register" target="_blank" rel="noopener noreferrer">
     Main Pages
   </a>
 
@@ -103,4 +122,5 @@
     document.querySelector("footer").innerHTML = "&copy; " + new Date().getFullYear() + " GDIPS by Fless & Amelia";
   </script>
 </body>
+
 </html>

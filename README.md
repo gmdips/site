@@ -1,5 +1,5 @@
 <h1 align="center">
-  <img src="https://fless.ps.fhgdps.com/dashboard/icon.png" width="40"/>
+  <img src="https://gdi.ps.fhgdps.com/dashboard/icon.png" width="40"/>
   GDIPS Reborn 
 </h1>
 
@@ -55,7 +55,7 @@
 ### Essential Links
 🔗 [Latest Download](https://gdips.pages.dev/download)  
 🔧 [GDI Portal](https://fless.netlify.app)  
-🗃️ [Database Dashboard](https://fless.ps.fhgdps.com)  
+🗃️ [Database Dashboard](https://gdi.ps.fhgdps.com)  
 ⭐ [GDPSHub Profile](https://gdpshub.com/gdps/2924)
 
 ---

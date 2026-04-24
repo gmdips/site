@@ -7,12 +7,12 @@
   "theme_color": "#4fc3f7",
   "icons": [
     {
-      "src": "https://fless.ps.fhgdps.com/dashboard/icon.png",
+      "src": "https://gdi.ps.fhgdps.com/dashboard/icon.png",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "https://fless.ps.fhgdps.com/dashboard/icon.png",
+      "src": "https://gdi.ps.fhgdps.com/dashboard/icon.png",
       "sizes": "512x512",
       "type": "image/png"
     }

@@ -42,7 +42,7 @@ function fetchApiData($url, $cacheFile, $cacheTime = 300) { // Cache 5 menit def
 }
 
 // Sistem leaderboard/papan peringkat - ambil dari API
- $leaderboardUrl = 'https://fless.ps.fhgdps.com/dashboard/stats/top24h.php';
+ $leaderboardUrl = 'https://gdi.ps.fhgdps.com/dashboard/stats/top24h.php';
  $leaderboard = fetchApiData($leaderboardUrl, 'leaderboard_cache.json', 300); // Cache 5 menit
 
 // Jika gagal mengambil data, gunakan data default
@@ -74,11 +74,11 @@ if (empty($leaderboard)) {
 
 // Tambahkan panggilan API lainnya dengan caching
  $apiEndpoints = [
-    'stats' => 'https://fless.ps.fhgdps.com/dashboard/api/getGJStats.php',
-    'levels' => 'https://fless.ps.fhgdps.com/dashboard/api/getGJLevels.php',
-    'songs' => 'https://fless.ps.fhgdps.com/dashboard/api/getGJSongs.php',
-    'gauntlets' => 'https://fless.ps.fhgdps.com/dashboard/api/getGJGauntlets.php',
-    'mapPacks' => 'https://fless.ps.fhgdps.com/dashboard/api/getGJMapPacks.php'
+    'stats' => 'https://gdi.ps.fhgdps.com/dashboard/api/getGJStats.php',
+    'levels' => 'https://gdi.ps.fhgdps.com/dashboard/api/getGJLevels.php',
+    'songs' => 'https://gdi.ps.fhgdps.com/dashboard/api/getGJSongs.php',
+    'gauntlets' => 'https://gdi.ps.fhgdps.com/dashboard/api/getGJGauntlets.php',
+    'mapPacks' => 'https://gdi.ps.fhgdps.com/dashboard/api/getGJMapPacks.php'
 ];
 
  $apiData = [];
@@ -100,7 +100,7 @@ foreach ($apiEndpoints as $key => $url) {
   <meta name="theme-color" content="#c8102e" />
   <meta property="og:title" content="GDIPS - Geometry Dash Indonesia Private Server" />
   <meta property="og:description" content="Server Geometry Dash Indonesia dengan fitur ekstra, alat, dan komunitas terbuka. Status: Online" />
-  <meta property="og:image" content="https://fless.ps.fhgdps.com/dashboard/icon.png" />
+  <meta property="og:image" content="https://gdi.ps.fhgdps.com/dashboard/icon.png" />
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <!-- Chart.js for data visualization -->
@@ -2011,7 +2011,7 @@ transition-duration: 0.01ms !important;
     <header>
       <div class="logo-container">
         <div class="logo">
-          <img src="https://fless.ps.fhgdps.com/dashboard/icon.png" alt="GDIPS Logo">
+          <img src="https://gdi.ps.fhgdps.com/dashboard/icon.png" alt="GDIPS Logo">
         </div>
       </div>
       
@@ -2090,7 +2090,7 @@ transition-duration: 0.01ms !important;
               <div class="input-group">
                 <div class="input-wrapper">
                   <i class="fas fa-link input-icon"></i>
-                  <input id="datLink" type="text" value="https://fless.ps.fhgdps.com" readonly class="input-field mono">
+                  <input id="datLink" type="text" value="https://gdi.ps.fhgdps.com" readonly class="input-field mono">
                 </div>
               </div>
               
@@ -2098,7 +2098,7 @@ transition-duration: 0.01ms !important;
                 <button id="copyBtn" class="btn btn-primary">
                   <i class="fas fa-copy"></i> Salin
                 </button>
-                <a href="https://fless.ps.fhgdps.com/dashboard" target="_blank" rel="noopener" class="btn">
+                <a href="https://gdi.ps.fhgdps.com/dashboard" target="_blank" rel="noopener" class="btn">
                   <i class="fas fa-chart-line"></i> Dashboard
                 </a>
               </div>
@@ -2831,7 +2831,7 @@ transition-duration: 0.01ms !important;
         <a href="https://github.com/flessan/gdips" class="footer-link" aria-label="GitHub">
           <i class="fab fa-github"></i>
         </a>
-        <a href="https://fless.ps.fhgdps.com/dashboard" class="footer-link" aria-label="Dashboard">
+        <a href="https://gdi.ps.fhgdps.com/dashboard" class="footer-link" aria-label="Dashboard">
           <i class="fas fa-server"></i>
         </a>
       </div>
