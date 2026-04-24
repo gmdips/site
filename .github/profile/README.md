@@ -9,6 +9,6 @@ You can download the GDPS in [here](https://fless.ps.fhgdps.com).<br>Platforms t
 ***
 ## Repositories
 [website](https://github.com/flessan/GDIPS) - The GDIPS website source code.<br>
-[download](https://fless.netlify.app/download) - Used for GDIPS downloads.<br>
+[download](https://gdips.pages.dev/download) - Used for GDIPS downloads.<br>
 [lists](https://github.com/flessan/GDIPS/tree/main/demonlist) - The GDIPS lists source code. <br> <br>
 ( Credit [@yeahhcolix-chan](https://github.com/YeahhColix) )

@@ -53,7 +53,7 @@
 ## 🚀 Quick Access
 
 ### Essential Links
-🔗 [Latest Download](https://fless.netlify.app/download)  
+🔗 [Latest Download](https://gdips.pages.dev/download)  
 🔧 [GDI Portal](https://fless.netlify.app)  
 🗃️ [Database Dashboard](https://fless.ps.fhgdps.com)  
 ⭐ [GDPSHub Profile](https://gdpshub.com/gdps/2924)

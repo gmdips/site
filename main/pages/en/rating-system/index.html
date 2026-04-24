@@ -1,14 +1,19 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GDIPS - Standar Rate</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/assets/batik.css">
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9138741540234649" crossorigin="anonymous"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../../../assets/batik.css">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9138741540234649"
+        crossorigin="anonymous"></script>
 </head>
+
 <body>
     <header>
         <nav>
@@ -27,13 +32,13 @@
             </ul>
         </nav>
     </header>
-    
+
     <section class="hero">
         <!-- Floating decorative elements -->
         <div class="floating" style="font-size: 2rem;">⭐</div>
         <div class="floating" style="font-size: 1.7rem;">🇮🇩</div>
         <div class="floating" style="font-size: 1.3rem;">🏆</div>
-        
+
         <div class="icon-container">
             <img src="https://fless.ps.fhgdps.com/dashboard/icon.png" class="icon" alt="GDIPS Logo">
         </div>
@@ -47,158 +52,164 @@
             <span class="role">Kalkulator Rate</span>
             <h3>Prediksi Rate Level</h3>
             <p>Hitung prediksi rate level berdasarkan nilai layout, deco, dan gameplay.</p>
-            
+
             <form id="predictor" style="margin-top: 15px;">
                 <div style="margin-bottom: 10px;">
-                    <input type="number" id="layout" placeholder="Layout (%)" max="100" min="0" required 
-                           style="width: 100%; padding: 8px; border-radius: 4px; border: 1px solid var(--border-color); 
+                    <input type="number" id="layout" placeholder="Layout (%)" max="100" min="0" required
+                        style="width: 100%; padding: 8px; border-radius: 4px; border: 1px solid var(--border-color); 
                                   background-color: var(--card-bg); color: var(--light); font-family: 'JetBrains Mono', monospace;">
                 </div>
                 <div style="margin-bottom: 10px;">
-                    <input type="number" id="deco" placeholder="Deco (%)" max="100" min="0" required 
-                           style="width: 100%; padding: 8px; border-radius: 4px; border: 1px solid var(--border-color); 
+                    <input type="number" id="deco" placeholder="Deco (%)" max="100" min="0" required
+                        style="width: 100%; padding: 8px; border-radius: 4px; border: 1px solid var(--border-color); 
                                   background-color: var(--card-bg); color: var(--light); font-family: 'JetBrains Mono', monospace;">
                 </div>
                 <div style="margin-bottom: 15px;">
-                    <input type="number" id="gameplay" placeholder="Gameplay (%)" max="100" min="0" required 
-                           style="width: 100%; padding: 8px; border-radius: 4px; border: 1px solid var(--border-color); 
+                    <input type="number" id="gameplay" placeholder="Gameplay (%)" max="100" min="0" required
+                        style="width: 100%; padding: 8px; border-radius: 4px; border: 1px solid var(--border-color); 
                                   background-color: var(--card-bg); color: var(--light); font-family: 'JetBrains Mono', monospace;">
                 </div>
                 <button type="submit" class="view-btn" style="width: 100%; justify-content: center;">
                     <i class="fas fa-calculator"></i> Prediksi Rate
                 </button>
-                <div id="predictionResult" style="margin-top: 15px; text-align: center; font-weight: 500; color: var(--accent);"></div>
+                <div id="predictionResult"
+                    style="margin-top: 15px; text-align: center; font-weight: 500; color: var(--accent);"></div>
             </form>
         </div>
-        
-        <!-- Star Rate -->  
+
+        <!-- Star Rate -->
         <div class="credit-card">
             <span class="role">Star Rate</span>
             <h3>Normal</h3>
-            <p>Level harus bisa dimainkan dari awal sampai akhir. Fitur 2.2 tidak wajib, tapi kalau dipakai harus bermanfaat. Cocok untuk level simple tapi fun!</p>
-            
+            <p>Level harus bisa dimainkan dari awal sampai akhir. Fitur 2.2 tidak wajib, tapi kalau dipakai harus
+                bermanfaat. Cocok untuk level simple tapi fun!</p>
+
             <div style="margin-top: 15px;">
-                <div class="progress-group">  
-                    <label><span>Layout</span><span>30%</span></label>  
-                    <div class="progress-bar"><span style="width: 30%"></span></div>  
-                </div>  
-                <div class="progress-group">  
-                    <label><span>Deco</span><span>10%</span></label>  
-                    <div class="progress-bar"><span style="width: 10%"></span></div>  
-                </div>  
-                <div class="progress-group">  
-                    <label><span>Gameplay</span><span>35%</span></label>  
-                    <div class="progress-bar"><span style="width: 35%"></span></div>  
+                <div class="progress-group">
+                    <label><span>Layout</span><span>30%</span></label>
+                    <div class="progress-bar"><span style="width: 30%"></span></div>
+                </div>
+                <div class="progress-group">
+                    <label><span>Deco</span><span>10%</span></label>
+                    <div class="progress-bar"><span style="width: 10%"></span></div>
+                </div>
+                <div class="progress-group">
+                    <label><span>Gameplay</span><span>35%</span></label>
+                    <div class="progress-bar"><span style="width: 35%"></span></div>
                 </div>
             </div>
         </div>
 
-        <!-- Featured -->  
+        <!-- Featured -->
         <div class="credit-card">
             <span class="role">Featured</span>
             <h3>Unggulan</h3>
-            <p>Gameplay harus fun dan seimbang. Gunakan fitur 2.2 secara efektif. Dekorasi harus terkonsep dan tidak asal.</p>
-            
+            <p>Gameplay harus fun dan seimbang. Gunakan fitur 2.2 secara efektif. Dekorasi harus terkonsep dan tidak
+                asal.</p>
+
             <div style="margin-top: 15px;">
-                <div class="progress-group">  
-                    <label><span>Layout</span><span>40%</span></label>  
-                    <div class="progress-bar"><span style="width: 40%"></span></div>  
-                </div>  
-                <div class="progress-group">  
-                    <label><span>Deco</span><span>40%</span></label>  
-                    <div class="progress-bar"><span style="width: 40%"></span></div>  
-                </div>  
-                <div class="progress-group">  
-                    <label><span>Gameplay</span><span>40%</span></label>  
-                    <div class="progress-bar"><span style="width: 40%"></span></div>  
+                <div class="progress-group">
+                    <label><span>Layout</span><span>40%</span></label>
+                    <div class="progress-bar"><span style="width: 40%"></span></div>
+                </div>
+                <div class="progress-group">
+                    <label><span>Deco</span><span>40%</span></label>
+                    <div class="progress-bar"><span style="width: 40%"></span></div>
+                </div>
+                <div class="progress-group">
+                    <label><span>Gameplay</span><span>40%</span></label>
+                    <div class="progress-bar"><span style="width: 40%"></span></div>
                 </div>
             </div>
         </div>
 
-        <!-- Epic -->  
+        <!-- Epic -->
         <div class="credit-card">
             <span class="role">Epic</span>
             <h3>Epic</h3>
-            <p>Gameplay seru, jelas, dan minim chokepoint. Fitur 2.2 harus kelihatan jelas. Warna & dekorasi rapi dan enak dilihat.</p>
-            
+            <p>Gameplay seru, jelas, dan minim chokepoint. Fitur 2.2 harus kelihatan jelas. Warna & dekorasi rapi dan
+                enak dilihat.</p>
+
             <div style="margin-top: 15px;">
-                <div class="progress-group">  
-                    <label><span>Layout</span><span>45%</span></label>  
-                    <div class="progress-bar"><span style="width: 45%"></span></div>  
-                </div>  
-                <div class="progress-group">  
-                    <label><span>Deco</span><span>55%</span></label>  
-                    <div class="progress-bar"><span style="width: 55%"></span></div>  
-                </div>  
-                <div class="progress-group">  
-                    <label><span>Gameplay</span><span>65%</span></label>  
-                    <div class="progress-bar"><span style="width: 65%"></span></div>  
+                <div class="progress-group">
+                    <label><span>Layout</span><span>45%</span></label>
+                    <div class="progress-bar"><span style="width: 45%"></span></div>
+                </div>
+                <div class="progress-group">
+                    <label><span>Deco</span><span>55%</span></label>
+                    <div class="progress-bar"><span style="width: 55%"></span></div>
+                </div>
+                <div class="progress-group">
+                    <label><span>Gameplay</span><span>65%</span></label>
+                    <div class="progress-bar"><span style="width: 65%"></span></div>
                 </div>
             </div>
         </div>
 
-        <!-- Legendary -->  
+        <!-- Legendary -->
         <div class="credit-card">
             <span class="role">Legendary</span>
             <h3>Legendaris</h3>
             <p>Level ini harus top-tier. Efek keren, playable di semua device. Gameplay mantap, unik, dan menarik.</p>
-            
+
             <div style="margin-top: 15px;">
-                <div class="progress-group">  
-                    <label><span>Layout</span><span>60%</span></label>  
-                    <div class="progress-bar"><span style="width: 60%"></span></div>  
-                </div>  
-                <div class="progress-group">  
-                    <label><span>Deco</span><span>75%</span></label>  
-                    <div class="progress-bar"><span style="width: 75%"></span></div>  
-                </div>  
-                <div class="progress-group">  
-                    <label><span>Gameplay</span><span>85%</span></label>  
-                    <div class="progress-bar"><span style="width: 85%"></span></div>  
+                <div class="progress-group">
+                    <label><span>Layout</span><span>60%</span></label>
+                    <div class="progress-bar"><span style="width: 60%"></span></div>
+                </div>
+                <div class="progress-group">
+                    <label><span>Deco</span><span>75%</span></label>
+                    <div class="progress-bar"><span style="width: 75%"></span></div>
+                </div>
+                <div class="progress-group">
+                    <label><span>Gameplay</span><span>85%</span></label>
+                    <div class="progress-bar"><span style="width: 85%"></span></div>
                 </div>
             </div>
         </div>
 
-        <!-- Mythic -->  
+        <!-- Mythic -->
         <div class="credit-card">
             <span class="role">Mythic</span>
             <h3>Mitik</h3>
-            <p>Nyaris sempurna. Kreatif, fun, dekorasi beda dari yang lain. Voting khusus akan diadakan untuk level Mythic.</p>
-            
+            <p>Nyaris sempurna. Kreatif, fun, dekorasi beda dari yang lain. Voting khusus akan diadakan untuk level
+                Mythic.</p>
+
             <div style="margin-top: 15px;">
-                <div class="progress-group">  
-                    <label><span>Layout</span><span>89%</span></label>  
-                    <div class="progress-bar"><span style="width: 89%"></span></div>  
-                </div>  
-                <div class="progress-group">  
-                    <label><span>Deco</span><span>89%</span></label>  
-                    <div class="progress-bar"><span style="width: 89%"></span></div>  
-                </div>  
-                <div class="progress-group">  
-                    <label><span>Gameplay</span><span>89%</span></label>  
-                    <div class="progress-bar"><span style="width: 89%"></span></div>  
+                <div class="progress-group">
+                    <label><span>Layout</span><span>89%</span></label>
+                    <div class="progress-bar"><span style="width: 89%"></span></div>
+                </div>
+                <div class="progress-group">
+                    <label><span>Deco</span><span>89%</span></label>
+                    <div class="progress-bar"><span style="width: 89%"></span></div>
+                </div>
+                <div class="progress-group">
+                    <label><span>Gameplay</span><span>89%</span></label>
+                    <div class="progress-bar"><span style="width: 89%"></span></div>
                 </div>
             </div>
         </div>
     </div>
 
     <footer>
-        <p>Dibuat dengan <span class="heart">❤️</span> | Semua Hak Dilindungi | <a href="#"><span>GDIPS 2025</span></a></p>
+        <p>Dibuat dengan <span class="heart">❤️</span> | Semua Hak Dilindungi | <a href="#"><span>GDIPS 2025</span></a>
+        </p>
     </footer>
 
     <script>
         // Mobile menu toggle
         const menuToggle = document.getElementById('menuToggle');
         const navLinks = document.getElementById('navLinks');
-        
+
         menuToggle.addEventListener('click', () => {
             navLinks.classList.toggle('active');
         });
-        
+
         // Add sparkle effects randomly
         function addSparkles() {
             const hero = document.querySelector('.hero');
-            
+
             for (let i = 0; i < 15; i++) {
                 const sparkle = document.createElement('div');
                 sparkle.classList.add('sparkle');
@@ -208,17 +219,17 @@
                 hero.appendChild(sparkle);
             }
         }
-        
+
         // Run after page loads
         window.addEventListener('load', addSparkles);
-        
+
         // Intersection Observer for card animations
         const cards = document.querySelectorAll('.credit-card');
         const observerOptions = {
             threshold: 0.1,
             rootMargin: '0px 0px -50px 0px'
         };
-        
+
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -228,14 +239,14 @@
                 }
             });
         }, observerOptions);
-        
+
         cards.forEach(card => {
             card.style.opacity = '0';
             card.style.transform = 'translateY(20px)';
             card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
             observer.observe(card);
         });
-        
+
         // Progress bar animation
         window.addEventListener("load", () => {
             document.querySelectorAll(".progress-bar span").forEach(bar => {
@@ -244,9 +255,9 @@
                 setTimeout(() => bar.style.width = width, 100);
             });
         });
-        
+
         // Rate predictor
-        document.getElementById("predictor").addEventListener("submit", function(e) {
+        document.getElementById("predictor").addEventListener("submit", function (e) {
             e.preventDefault();
             const l = +document.getElementById("layout").value;
             const d = +document.getElementById("deco").value;
@@ -258,15 +269,16 @@
             else if (avg >= 60) result = "Epic";
             else if (avg >= 40) result = "Featured";
             else result = "Star";
-            
+
             const resultElement = document.getElementById("predictionResult");
             resultElement.textContent = `Prediksi Rate: ${result}`;
             resultElement.style.animation = "pulse 1s ease";
-            
+
             setTimeout(() => {
                 resultElement.style.animation = "";
             }, 1000);
         });
     </script>
 </body>
+
 </html>

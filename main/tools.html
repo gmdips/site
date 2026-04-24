@@ -1,14 +1,19 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GDIPS - Alat</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/assets/batik.css">
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9138741540234649" crossorigin="anonymous"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="assets/batik.css">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9138741540234649"
+        crossorigin="anonymous"></script>
 </head>
+
 <body>
     <header>
         <nav>
@@ -27,18 +32,19 @@
             </ul>
         </nav>
     </header>
-    
+
     <section class="hero">
         <!-- Floating decorative elements -->
         <div class="floating" style="font-size: 2rem;">🔧</div>
         <div class="floating" style="font-size: 1.7rem;">🇮🇩</div>
         <div class="floating" style="font-size: 1.3rem;">🧰</div>
-        
+
         <div class="icon-container">
             <img src="https://fless.ps.fhgdps.com/dashboard/icon.png" class="icon" alt="GDIPS Logo">
         </div>
         <h2>Alat Bantu</h2>
-        <p>Tempat Di Mana Anda Mungkin Membutuhkan Alat Ini Seperti Unggah Lagu, Unggah Ulang Level, dll (perlu login)</p>
+        <p>Tempat Di Mana Anda Mungkin Membutuhkan Alat Ini Seperti Unggah Lagu, Unggah Ulang Level, dll (perlu login)
+        </p>
     </section>
 
     <div class="credits-container">
@@ -53,7 +59,7 @@
                 </button>
             </a>
         </div>
-        
+
         <!-- Credit Card 2 -->
         <div class="credit-card">
             <span class="role">Upload Song</span>
@@ -90,22 +96,23 @@
     </div>
 
     <footer>
-        <p>Dibuat dengan <span class="heart">❤️</span> | Semua Hak Dilindungi | <a href="#"><span>GDIPS 2025</span></a></p>
+        <p>Dibuat dengan <span class="heart">❤️</span> | Semua Hak Dilindungi | <a href="#"><span>GDIPS 2025</span></a>
+        </p>
     </footer>
 
     <script>
         // Mobile menu toggle
         const menuToggle = document.getElementById('menuToggle');
         const navLinks = document.getElementById('navLinks');
-        
+
         menuToggle.addEventListener('click', () => {
             navLinks.classList.toggle('active');
         });
-        
+
         // Add sparkle effects randomly
         function addSparkles() {
             const hero = document.querySelector('.hero');
-            
+
             for (let i = 0; i < 15; i++) {
                 const sparkle = document.createElement('div');
                 sparkle.classList.add('sparkle');
@@ -115,17 +122,17 @@
                 hero.appendChild(sparkle);
             }
         }
-        
+
         // Run after page loads
         window.addEventListener('load', addSparkles);
-        
+
         // Intersection Observer for card animations
         const cards = document.querySelectorAll('.credit-card');
         const observerOptions = {
             threshold: 0.1,
             rootMargin: '0px 0px -50px 0px'
         };
-        
+
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -135,7 +142,7 @@
                 }
             });
         }, observerOptions);
-        
+
         cards.forEach(card => {
             card.style.opacity = '0';
             card.style.transform = 'translateY(20px)';
@@ -144,4 +151,5 @@
         });
     </script>
 </body>
+
 </html>

@@ -1,202 +1,476 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GDIPS Reborn - Halaman</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="assets/batik.css">
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9138741540234649" crossorigin="anonymous"></script>
-</head>
-<body>
-    <header>
-        <nav>
-            <div class="logo">
-                <i class="fas fa-hashtag"></i>
-                <span>GDIPS</span>
-            </div>
-            <button class="menu-toggle" id="menuToggle" aria-label="Menu navigasi">
-                <i class="fas fa-bars"></i>
-            </button>
-            <ul class="nav-links" id="navLinks">
-                <li><a href="https://frgd.ps.fhgdps.com"><i class="fas fa-home"></i> Utama</a></li>
-                <li><a href='/tools'><i class="fas fa-tools"></i> Alat</a></li>
-                <li><a href='/rate'><i class="fas fa-star"></i> Rating</a></li>
-                <li><a href='/download'><i class="fas fa-download"></i> Unduh</a></li>
-            </ul>
-        </nav>
-    </header>
-    
-    <section class="hero">
-        <!-- Floating decorative elements -->
-        <div class="floating" style="font-size: 2rem;">✨</div>
-        <div class="floating" style="font-size: 1.7rem;">🇮🇩</div>
-        <div class="floating" style="font-size: 1.3rem;">⭐</div>
-        
-        <div class="icon-container">
-            <img src="https://fless.ps.fhgdps.com/dashboard/icon.png" class="icon" alt="GDIPS Logo">
-        </div>
-        <h2>Tim Kami</h2>
-        <p>Terima kasih yang sebesar-besarnya kepada orang-orang luar biasa ini yang telah berkontribusi dengan keterampilan dan layanan mereka untuk membuat GDIPS menjadi luar biasa!</p>
-    </section>
+    <title>Boot Menu</title>
+    <style>
+        /* ========== CSS Variables ========== */
+        :root {
+            --bg: #0a0a0a;
+            --fg: #c8c8c8;
+            --fg-dim: #5a5a5a;
+            --accent: #e0e0e0;
+            --highlight-bg: rgba(255, 255, 255, 0.08);
+            --highlight-border: rgba(255, 255, 255, 0.15);
+            --cursor-color: #c8c8c8;
+            --boot-color: #8ae234;
+            --spacing-xs: 4px;
+            --spacing-sm: 8px;
+            --spacing-md: 16px;
+            --spacing-lg: 24px;
+            --font-main: 'Fira Code', 'Cascadia Code', Consolas, 'Courier New', monospace;
+            --font-size-base: clamp(14px, 1.6vw, 18px);
+            --font-size-sm: clamp(11px, 1.2vw, 14px);
+            --font-size-lg: clamp(16px, 2vw, 22px);
+        }
 
-    <div class="credits-container">
-        <!-- Credit Card 1 -->
-        <div class="credit-card">
-            <img src="https://www.rickgdps.xyz/files/mathieuar.png" class="credit-img" alt="MathieuAR">
-            <span class="role">Penyedia Server</span>
-            <h3>MathieuAR</h3>
-            <p>Orang yang luar biasa yang menjaga server kami tetap berjalan secara gratis. Tanpa mereka, GDPS kami tidak akan online!</p>
-            <a href="https://panel.fhgdps.com/" target="_blank" rel="noopener">
-                <button class="view-btn">
-                    <i class="fas fa-external-link-alt"></i> Lihat
-                </button>
-            </a>
-        </div>
-        
-        <!-- Credit Card 2 -->
-        <div class="credit-card">
-            <img src="https://www.rickgdps.xyz/files/megasaint.png" class="credit-img" alt="MegaSa1nt">
-            <span class="role">GDPS Core</span>
-            <h3>MegaSa1nt</h3>
-            <p>Orang jenius di balik GDPS Core dan dashboard kami yang membuat semuanya berjalan dengan lancar.</p>
-            <a href="https://github.com/MegaSa1nt/GMDprivateServer" target="_blank" rel="noopener">
-                <button class="view-btn">
-                    <i class="fab fa-github"></i> Lihat
-                </button>
-            </a>
-        </div>
+        /* ========== Reset & Anti-Scroll ========== */
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-        <div class="credit-card">
-            <img src="https://yt3.googleusercontent.com/IYNJahPHPSisIkKP2jCxDyEaFnDEW1UceKrtvfD6Tu4QRkkP1tBKZgpe3okoBiZy7AcqxJNzjw=s160-c-k-c0x00ffffff-no-rj" class="credit-img" alt="Zeroxy">
-            <span class="role">Co-Pemilik</span>
-            <h3>ZeroxyGD</h3>
-            <p>Orang baik yang ingin mengajari/membantu pemilik :3</p>
-            <a href="https://www.youtube.com/@ZeroxyGMD" target="_blank" rel="noopener">
-                <button class="view-btn">
-                    <i class="fas fa-external-link-alt"></i> Lihat
-                </button>
-            </a>
-        </div>
+        html,
+        body {
+            overflow: hidden;
+            width: 100vw;
+            height: 100vh;
+            background: var(--bg);
+            color: var(--fg);
+            font-family: var(--font-main);
+            font-size: var(--font-size-base);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            /* Mencegah pull-to-refresh & bounce scroll di mobile */
+            overscroll-behavior: none;
+            touch-action: none;
+            user-select: none;
+        }
 
-        <div class="credit-card">
-            <img src="https://yt3.ggpht.com/da11dYvCV5KMVBDd2lCbTwSJyLknalGTkoddklA_i-hdIXV6WTaNxuTHCxTeBtaHKiarRkcERA=s176-c-k-c0x00ffffff-no-rj-mo" class="credit-img" alt="DANZGAME">
-            <span class="role">Admin</span>
-            <h3>DANZGAME</h3>
-            <p>Orang baik yang bersedia membuat texture pack untuk gdps ini &gt;&lt;</p>
-            <a href="https://youtube.com/@danzgame2.2?si=c3Atw4HMFyJDMoZ1" target="_blank" rel="noopener">
-                <button class="view-btn">
-                    <i class="fas fa-external-link-alt"></i> Lihat
-                </button>
-            </a>
-        </div>
-        
-        <!-- Credit Card 3 -->
-        <div class="credit-card">
-            <img src="https://yt3.googleusercontent.com/sXs5CCq2-8oFHT0cA-C_THTKvJDA05JqmQSS4vDjnBTrHGQxG1dTth8wJs7hObXs3OQN1V-_=s160-c-k-c0x00ffffff-no-rj" class="credit-img" alt="Migmatos">
-            <span class="role">Pemilik ObeyGDBot</span>
-            <h3>Migmatos</h3>
-            <p>Pahlawan musik kami yang menyediakan semua lagu kustom yang luar biasa dan reupload yang tidak berasal dari NG!</p>
-            <a href="https://discord.com/invite/KU9XkXVftC" target="_blank" rel="noopener">
-                <button class="view-btn">
-                    <i class="fab fa-discord"></i> Lihat
-                </button>
-            </a>
-        </div>
-        
-        <!-- Credit Card 4 -->
-        <div class="credit-card">
-            <img src="https://upload.wikimedia.org/wikipedia/id/3/35/Geometry_Dash_Logo.PNG" class="credit-img" alt="RobTop">
-            <span class="role">Pembuat Game</span>
-            <h3>RobTop</h3>
-            <p>Legenda absolut yang menciptakan Geometry Dash pada awalnya. Terima kasih untuk game yang luar biasa ini!</p>
-            <a href="https://discord.com/invite/geometrydash" target="_blank" rel="noopener">
-                <button class="view-btn">
-                    <i class="fab fa-discord"></i> Lihat
-                </button>
-            </a>
-        </div>
+        /* ========== Container Utama ========== */
+        .boot-screen {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
 
-        <div class="credit-card">
-            <img src="https://yt3.ggpht.com/lOHz7YK99VE8BiS11Q6EEv2FC5IT5cZJ99WF9CnWBBomfCv65suX_amsSZxZl16-DMhBpzoVdQ=s176-c-k-c0x00ffffff-no-rj-mo" class="credit-img" alt="GiffariRMX">
-            <span class="role">Admin</span>
-            <h3>GiffariRMX</h3>
-            <p>Orang hebat yang ingin mengajari/membantu pemilik :3</p>
-            <a href="https://www.youtube.com/@GifFariRMX" target="_blank" rel="noopener">
-                <button class="view-btn">
-                    <i class="fas fa-external-link-alt"></i> Lihat
-                </button>
-            </a>
-        </div>
-        
-        <!-- Credit Card 5 -->
-        <div class="credit-card">
-            <img src="https://www.rickgdps.xyz/files/blazen.png" class="credit-img" alt="Blazen">
-            <span class="role">GDPS Hub</span>
-            <h3>Blazen</h3>
-            <p>Membantu kami dikenal dengan mempromosikan GDPS Core kami dan membawa lebih banyak pemain ke komunitas kami!</p>
-            <a href="https://gdpshub.com/" target="_blank" rel="noopener">
-                <button class="view-btn">
-                    <i class="fas fa-external-link-alt"></i> Lihat
-                </button>
-            </a>
-        </div>
-    </div>
+        /* ========== Efek CRT Scanline (halus) ========== */
+        .boot-screen::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: repeating-linear-gradient(0deg,
+                    transparent,
+                    transparent 2px,
+                    rgba(0, 0, 0, 0.08) 2px,
+                    rgba(0, 0, 0, 0.08) 4px);
+            pointer-events: none;
+            z-index: 10;
+        }
 
-    <footer>
-        <p>Dibuat dengan <span class="heart">❤️</span> | Semua Hak Dilindungi | <a href="#"><span>GDIPS 2025</span></a></p>
-    </footer>
+        /* ========== Panel Menu ========== */
+        .menu-container {
+            width: min(580px, 90vw);
+            position: relative;
+            z-index: 1;
+            transition: opacity 0.3s ease;
+        }
 
-    <script>
-        // Mobile menu toggle
-        const menuToggle = document.getElementById('menuToggle');
-        const navLinks = document.getElementById('navLinks');
-        
-        menuToggle.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-        });
-        
-        // Add sparkle effects randomly
-        function addSparkles() {
-            const hero = document.querySelector('.hero');
-            
-            for (let i = 0; i < 15; i++) {
-                const sparkle = document.createElement('div');
-                sparkle.classList.add('sparkle');
-                sparkle.style.left = `${Math.random() * 100}%`;
-                sparkle.style.top = `${Math.random() * 100}%`;
-                sparkle.style.animationDelay = `${Math.random() * 2}s`;
-                hero.appendChild(sparkle);
+        .menu-container.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        /* ========== Header Bootloader ========== */
+        .boot-header {
+            color: var(--fg-dim);
+            font-size: var(--font-size-sm);
+            margin-bottom: var(--spacing-lg);
+            padding-bottom: var(--spacing-md);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            letter-spacing: 0.5px;
+        }
+
+        .boot-header .version {
+            color: var(--fg);
+            font-weight: 600;
+        }
+
+        /* ========== Item Menu ========== */
+        .menu-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-xs);
+        }
+
+        .menu-item {
+            display: flex;
+            align-items: center;
+            padding: var(--spacing-sm) var(--spacing-md);
+            border: 1px solid transparent;
+            border-radius: 2px;
+            cursor: pointer;
+            transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+            position: relative;
+            color: var(--fg-dim);
+            letter-spacing: 0.3px;
+            text-decoration: none;
+        }
+
+        .menu-item:focus {
+            outline: none;
+        }
+
+        .menu-item:hover {
+            background: var(--highlight-bg);
+            color: var(--fg);
+        }
+
+        .menu-item.active {
+            background: var(--highlight-bg);
+            border-color: var(--highlight-border);
+            color: var(--accent);
+        }
+
+        /* Indikator > pada item aktif */
+        .menu-item .indicator {
+            width: 1.4em;
+            text-align: center;
+            color: var(--accent);
+            opacity: 0;
+            transition: opacity 0.15s ease;
+            flex-shrink: 0;
+        }
+
+        .menu-item.active .indicator {
+            opacity: 1;
+        }
+
+        /* Label index [1], [2], [3] */
+        .menu-item .index-label {
+            color: var(--fg-dim);
+            margin-right: var(--spacing-sm);
+            font-size: var(--font-size-sm);
+            flex-shrink: 0;
+            min-width: 2em;
+        }
+
+        .menu-item.active .index-label {
+            color: var(--accent);
+        }
+
+        /* ========== Footer Hint ========== */
+        .boot-footer {
+            margin-top: var(--spacing-lg);
+            padding-top: var(--spacing-md);
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: var(--fg-dim);
+            font-size: var(--font-size-sm);
+        }
+
+        .boot-footer kbd {
+            display: inline-block;
+            padding: 1px 6px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 3px;
+            font-family: inherit;
+            font-size: 0.9em;
+            color: var(--fg);
+            background: rgba(255, 255, 255, 0.04);
+            margin: 0 2px;
+        }
+
+        /* ========== Kursor Berkedip ========== */
+        .cursor-blink {
+            display: inline-block;
+            width: 8px;
+            height: 1.2em;
+            background: var(--cursor-color);
+            vertical-align: text-bottom;
+            margin-left: 4px;
+            animation: blink 1s step-end infinite;
+        }
+
+        @keyframes blink {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0;
             }
         }
-        
-        // Run after page loads
-        window.addEventListener('load', addSparkles);
-        
-        // Intersection Observer for card animations
-        const cards = document.querySelectorAll('.credit-card');
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-        
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                    observer.unobserve(entry.target);
-                }
+
+        /* ========== Area Boot Animation ========== */
+        .boot-output {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 5;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.2s ease;
+        }
+
+        .boot-output.visible {
+            opacity: 1;
+        }
+
+        .boot-output-text {
+            color: var(--boot-color);
+            font-size: var(--font-size-lg);
+            white-space: nowrap;
+            min-height: 1.6em;
+        }
+
+        /* Loading dots animasi */
+        .loading-dots::after {
+            content: '';
+            animation: dots 1.5s steps(4, end) infinite;
+        }
+
+        @keyframes dots {
+            0% {
+                content: '';
+            }
+
+            25% {
+                content: '.';
+            }
+
+            50% {
+                content: '..';
+            }
+
+            75% {
+                content: '...';
+            }
+
+            100% {
+                content: '';
+            }
+        }
+
+        /* ========== Vignette Halus ========== */
+        .vignette {
+            position: fixed;
+            inset: 0;
+            background: radial-gradient(ellipse at center, transparent 50%, rgba(0, 0, 0, 0.5) 100%);
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        /* ========== Reduced Motion ========== */
+        @media (prefers-reduced-motion: reduce) {
+            .cursor-blink {
+                animation: none;
+                opacity: 1;
+            }
+
+            .loading-dots::after {
+                animation: none;
+                content: '...';
+            }
+
+            .menu-item {
+                transition: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Vignette overlay untuk kedalaman visual -->
+    <div class="vignette" aria-hidden="true"></div>
+
+    <main class="boot-screen" role="main">
+
+        <!-- Panel menu utama -->
+        <div class="menu-container" id="menuContainer">
+            <!-- Header identitas bootloader -->
+            <header class="boot-header">
+                <span class="version">GDI </span>
+                <p style="font-size: 8px; position: relative; top: -6px;">Open-Source</p>v255 &ndash; entry pages
+            </header>
+
+            <!-- Daftar menu boot -->
+            <div class="menu-list" id="menuList" role="listbox" aria-label="Boot menu">
+                <a href="./en/main/" class="menu-item active" role="option" aria-selected="true" data-index="0"
+                    tabindex="0">
+                    <span class="indicator">></span>
+                    <span class="index-label">[1]</span>
+                    <span class="item-text">English</span>
+                </a>
+                <a href="./id/utama/" class="menu-item" role="option" aria-selected="false" data-index="1"
+                    tabindex="-1">
+                    <span class="indicator">></span>
+                    <span class="index-label">[2]</span>
+                    <span class="item-text">Bahasa Indonesia</span>
+                </a>
+                <a href="https://github.com/gmdips/gmdips" class="menu-item" role="option" aria-selected="false"
+                    data-index="2" tabindex="-1">
+                    <span class="indicator">></span>
+                    <span class="index-label">[3]</span>
+                    <span class="item-text">Contribute</span>
+                </a>
+            </div>
+
+            <!-- Footer petunjuk tombol -->
+            <footer class="boot-footer">
+                <span><kbd>&uarr;</kbd><kbd>&darr;</kbd> select</span>
+                <span><kbd>Enter</kbd> boot</span>
+            </footer>
+        </div>
+
+        <!-- Area tampilan saat proses boot -->
+        <div class="boot-output" id="bootOutput" aria-live="polite">
+            <span class="boot-output-text" id="bootText"></span>
+        </div>
+
+    </main>
+
+    <script>
+        /* ========== State Aplikasi ========== */
+        const items = document.querySelectorAll('.menu-item');
+        const menuContainer = document.getElementById('menuContainer');
+        const bootOutput = document.getElementById('bootOutput');
+        const bootText = document.getElementById('bootText');
+        let activeIndex = 0;
+        let isBooting = false; // Mencegah input saat animasi boot berjalan
+
+        /* ========== Fungsi Navigasi ========== */
+
+        // Pindahkan fokus ke item pada index tertentu
+        function setActive(index) {
+            if (isBooting) return;
+            // Batas atas/bawah (wrap-around)
+            if (index < 0) index = items.length - 1;
+            if (index >= items.length) index = 0;
+            activeIndex = index;
+
+            items.forEach((item, i) => {
+                const isActive = i === activeIndex;
+                item.classList.toggle('active', isActive);
+                item.setAttribute('aria-selected', isActive);
+                item.setAttribute('tabindex', isActive ? '0' : '-1');
             });
-        }, observerOptions);
-        
-        cards.forEach(card => {
-            card.style.opacity = '0';
-            card.style.transform = 'translateY(20px)';
-            card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-            observer.observe(card);
+
+            // Fokuskan elemen DOM agar screen reader mengikuti
+            items[activeIndex].focus();
+        }
+
+        // Jalankan animasi boot untuk item yang dipilih
+        function bootSelected() {
+            if (isBooting) return;
+            isBooting = true;
+
+            const item = items[activeIndex];
+            const label = item.querySelector('.item-text').textContent;
+            const targetUrl = item.getAttribute('href');
+            const message = `Booting ${label}`;
+
+            // Sembunyikan menu, tampilkan area boot
+            menuContainer.classList.add('hidden');
+            bootOutput.classList.add('visible');
+
+            // Efek ketikan satu karakter per saat
+            let charIndex = 0;
+            bootText.textContent = '';
+
+            function typeChar() {
+                if (charIndex < message.length) {
+                    bootText.textContent += message[charIndex];
+                    charIndex++;
+                    setTimeout(typeChar, 35 + Math.random() * 25);
+                } else {
+                    // Setelah selesai mengetik, tambahkan loading dots
+                    bootText.classList.add('loading-dots');
+                    // Tunggu 1.5 detik, lalu pindah halaman
+                    setTimeout(() => {
+                        bootText.classList.remove('loading-dots');
+                        if (targetUrl && targetUrl !== '#') {
+                            window.location.href = targetUrl;
+                        } else {
+                            resetToMenu();
+                        }
+                    }, 1500);
+                }
+            }
+
+            typeChar();
+        }
+
+        // Kembalikan ke tampilan menu
+        function resetToMenu() {
+            bootOutput.classList.remove('visible');
+            bootText.textContent = '';
+            menuContainer.classList.remove('hidden');
+            isBooting = false;
+            setActive(activeIndex);
+        }
+
+        /* ========== Event: Keyboard ========== */
+        document.addEventListener('keydown', (e) => {
+            if (isBooting) return;
+
+            switch (e.key) {
+                case 'ArrowUp':
+                    e.preventDefault();
+                    setActive(activeIndex - 1);
+                    break;
+                case 'ArrowDown':
+                    e.preventDefault();
+                    setActive(activeIndex + 1);
+                    break;
+                case 'Enter':
+                    e.preventDefault();
+                    bootSelected();
+                    break;
+                // Shortcut angka 1-3 untuk langsung pilih
+                case '1': case '2': case '3': {
+                    e.preventDefault();
+                    const idx = parseInt(e.key) - 1;
+                    if (idx >= 0 && idx < items.length) {
+                        setActive(idx);
+                        bootSelected();
+                    }
+                    break;
+                }
+            }
         });
+
+        /* ========== Event: Klik Mouse ========== */
+        items.forEach((item) => {
+            item.addEventListener('click', (e) => {
+                e.preventDefault();
+                const idx = parseInt(item.dataset.index);
+                setActive(idx);
+                // Sedikit delay supaya visual highlight terlihat dulu sebelum boot
+                setTimeout(bootSelected, 80);
+            });
+        });
+
+        /* ========== Inisialisasi ========== */
+        // Pastikan item pertama aktif saat halaman dimuat
+        setActive(0);
     </script>
 </body>
+
 </html>

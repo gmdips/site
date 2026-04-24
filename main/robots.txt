@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://fless.netlify.app/sitemap.xml
+Sitemap: https://gdips.pages.dev/sitemap.xml
