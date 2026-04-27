@@ -1,0 +1,27 @@
+---
+name: 📝 Content / Translation
+about: Perbaiki konten atau terjemahkan teks di website
+title: '[CONTENT] '
+labels: content, website
+assignees: ''
+---
+
+## 📝 Jenis
+- [ ] Perbaikan konten (teks salah/kurang)
+- [ ] Terjemahan (English → Indonesia)
+- [ ] Blog post baru
+- [ ] Dokumentasi baru
+
+## 📍 Lokasi
+Halaman/file: 
+
+## 📝 Perubahan
+<!-- Tulis perubahan konten yang diusulkan -->
+
+**Sebelum:**
+> (teks lama)
+
+**Sesudah:**
+> (teks baru)
+
+## 📎 Catatan
