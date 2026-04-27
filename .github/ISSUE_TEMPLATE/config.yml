@@ -1,0 +1,12 @@
+blank_issues_enabled: true
+blank_issues_label: "other"
+contact_links:
+  - name: 💬 Chat Komunitas
+    url: https://discord.gg/YyeZ2Sxjgf
+    about: Punya pertanyaan atau mau diskusi? Chat di Discord.
+  - name: 🐛 Bug di Game Server (bukan website)
+    url: https://github.com/gmdips/server/issues/new
+    about: Bug di game server? Buka issue di repo GDIPS.
+  - name: 📖 Baca Dokumentasi
+    url: https://gdips.pages.dev/docs
+    about: Cek dokumentasi dulu sebelum buat issue.
