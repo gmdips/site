@@ -71,26 +71,26 @@ Ini adalah **source code website resmi GDIPS** — bukan game server-nya, melain
 
 ```
 ┌─────────────────────────────────────────────┐
-│              FRONTEND                        │
-│  ┌─────────┐ ┌────────┐ ┌────────────────┐ │
-│  │ HTML5   │ │ CSS3   │ │ JavaScript    │ │
-│  └─────────┘ └────────┘ └────────────────┘ │
-│  ┌─────────┐ ┌────────┐ ┌────────────────┐ │
-│  │ Tailwind│ │ Alpine │ │ Vanilla JS    │ │
-│  │ CSS CDN │ │ JS CDN │ │ (no build)    │ │
-│  └─────────┘ └────────┘ └────────────────┘ │
+│                 FRONTEND                    │
+│  ┌─────────┐ ┌────────┐ ┌────────────────┐  │
+│  │  HTML5  │ │  CSS3  │ │   JavaScript   │  │
+│  └─────────┘ └────────┘ └────────────────┘  │
+│  ┌─────────┐ ┌────────┐ ┌────────────────┐  │
+│  │ Tailwind│ │ Alpine │ │   Vanilla JS   │  │
+│  │ CSS CDN │ │ JS CDN │ │   (no build)   │  │
+│  └─────────┘ └────────┘ └────────────────┘  │
 ├─────────────────────────────────────────────┤
-│              HOSTING                         │
+│                  HOSTING                    │
 │  ┌──────────────────────────────────────┐   │
-│  │  Cloudflare Pages (auto-deploy)      │   │
-│  │  gdips.pages.dev                    │   │
+│  │     Cloudflare Pages (auto-deploy)   │   │
+│  │           gdips.pages.dev            │   │
 │  └──────────────────────────────────────┘   │
 ├─────────────────────────────────────────────┤
-│              TOOLING                         │
-│  ┌─────────┐ ┌────────┐ ┌────────────────┐ │
-│  │ Git     │ │ GitHub │ │ Cloudflare    │ │
-│  │         │ │ Actions│ │ Pages CI/CD   │ │
-│  └─────────┘ └────────┘ └────────────────┘ │
+│                  TOOLING                    │
+│  ┌─────────┐ ┌────────┐ ┌────────────────┐  │
+│  │ Git     │ │ GitHub │ │   Cloudflare   │  │
+│  │         │ │ Actions│ │  Pages CI/CD   │  │
+│  └─────────┘ └────────┘ └────────────────┘  │
 └─────────────────────────────────────────────┘
 ```
 
@@ -236,7 +236,7 @@ site/
 │   🐛  Fix Bug        →  Typo, broken link, dll      │
 │   🎨  Desain         →  Layout, warna, animasi      │
 │   📱  Responsif      →  Mobile-friendly             │
-│   ♿  Aksesibilitas   →  Screen reader, keyboard     │
+│   ♿  Aksesibilitas   →  Screen reader, keyboard    │
 │   🌐  Terjemahan     →  Bahasa Indonesia/English    │
 │   📝  Konten         →  Blog post, dokumentasi      │
 │   📄  Halaman Baru   →  About, contributors, dll    │
