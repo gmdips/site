@@ -181,6 +181,41 @@ ROLE_MAP_DARK.update({
     'inverse_primary': ('primary', 40), 'surface_tint': ('primary', 80),
 })
 
+def _rel_lum(hex_color):
+    r, g, b = hex_to_rgb(hex_color)
+    def chan(c):
+        c = c / 255.0
+        return c / 12.92 if c <= 0.04045 else ((c + 0.055) / 1.055) ** 2.4
+    r, g, b = chan(r), chan(g), chan(b)
+    return 0.2126 * r + 0.7152 * g + 0.0722 * b
+
+def contrast(hex_a, hex_b):
+    """WCAG contrast ratio between two hex colours."""
+    la, lb = _rel_lum(hex_a), _rel_lum(hex_b)
+    hi, lo = max(la, lb), min(la, lb)
+    return (hi + 0.05) / (lo + 0.05)
+
+def readable_containers(scheme, maps):
+    """Dark container roles default to tone 30.  Bright hues (crimson, amber)
+    can fall just short of 4.5:1 against their tone-90 label, so step the
+    container down the tonal ramp until the pair is accessible."""
+    scheme = dict(scheme)
+    pairs = (('primary_container', 'on_primary_container'),
+             ('secondary_container', 'on_secondary_container'),
+             ('tertiary_container', 'on_tertiary_container'),
+             ('error_container', 'on_error_container'))
+    for role, on_role in pairs:
+        key, tone = scheme[role]
+        on_key, on_tone = scheme[on_role]
+        label = _tone(maps, on_key, on_tone)
+        for candidate in (tone, 25, 22, 20, 17, 12):
+            if candidate not in maps[key]:
+                continue
+            if contrast(_tone(maps, key, candidate), label) >= 4.5:
+                scheme[role] = (key, candidate)
+                break
+    return scheme
+
 def _tone(maps, key, tone):
     if tone == 100:
         return '#FFFFFF'
@@ -214,9 +249,9 @@ blocks = []
 maps_default = build(SEEDS[''])
 blocks.append('/* ── Default dynamic palette: GDIPS red ───────────────────────────── */')
 blocks.append(css_block(':root', ROLE_MAP_LIGHT, maps_default))
-blocks.append(css_block(':root[data-theme="dark"]', ROLE_MAP_DARK, maps_default))
+blocks.append(css_block(':root[data-theme="dark"]', readable_containers(ROLE_MAP_DARK, maps_default), maps_default))
 blocks.append('@media (prefers-color-scheme: dark) {\n  ' +
-              css_block(':root:not([data-theme="light"])', ROLE_MAP_DARK, maps_default).replace('\n', '\n  ') + '\n}')
+              css_block(':root:not([data-theme="light"])', readable_containers(ROLE_MAP_DARK, maps_default), maps_default).replace('\n', '\n  ') + '\n}')
 
 for name, seed in SEEDS.items():
     if not name:
@@ -224,9 +259,9 @@ for name, seed in SEEDS.items():
     m = build(seed)
     blocks.append(f'/* ── Seed: {name} ({seed}) ───────────────────────────────────────── */')
     blocks.append(css_block(f':root[data-seed="{name}"]', ROLE_MAP_LIGHT, m))
-    blocks.append(css_block(f':root[data-seed="{name}"][data-theme="dark"]', ROLE_MAP_DARK, m))
+    blocks.append(css_block(f':root[data-seed="{name}"][data-theme="dark"]', readable_containers(ROLE_MAP_DARK, m), m))
     blocks.append('@media (prefers-color-scheme: dark) {\n  ' +
-                  css_block(f':root[data-seed="{name}"]:not([data-theme="light"])', ROLE_MAP_DARK, m).replace('\n', '\n  ') + '\n}')
+                  css_block(f':root[data-seed="{name}"]:not([data-theme="light"])', readable_containers(ROLE_MAP_DARK, m), m).replace('\n', '\n  ') + '\n}')
 
 header = '''/* ============================================================================
    GDIPS · Material You 3 — Dynamic color palettes

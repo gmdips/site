@@ -173,6 +173,21 @@
   }
 
   /** Build every M3 colour role for a seed colour. */
+  /* WCAG relative luminance / contrast, used to keep container pairs readable. */
+  function relLum(hex) {
+    var rgb = hexToRgb(hex), chan = [];
+    for (var i = 0; i < 3; i++) {
+      var v = rgb[i] / 255;
+      chan.push(v <= 0.04045 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4));
+    }
+    return 0.2126 * chan[0] + 0.7152 * chan[1] + 0.0722 * chan[2];
+  }
+
+  function contrast(a, b) {
+    var la = relLum(a), lb = relLum(b), hi = Math.max(la, lb), lo = Math.min(la, lb);
+    return (hi + 0.05) / (lo + 0.05);
+  }
+
   function buildScheme(seed, dark) {
     var primary = tonalPalette(seed, 1);
     var secondary = tonalPalette(seed, 0.34);
@@ -196,6 +211,27 @@
       else if (tone === 0) out['--m3-' + role] = '#000000';
       else out['--m3-' + role] = maps[ref[0]][tone];
     });
+
+    /* Dark container roles default to tone 30; bright hues (crimson, amber) can
+       fall short of 4.5:1 against their tone-90 label, so step the container
+       down the tonal ramp until the pair stays readable. */
+    if (dark) {
+      [['primary-container', 'on-primary-container'],
+       ['secondary-container', 'on-secondary-container'],
+       ['tertiary-container', 'on-tertiary-container'],
+       ['error-container', 'on-error-container']].forEach(function (pair) {
+        var ref = map[pair[0]];
+        if (!ref) return;
+        var label = out['--m3-' + pair[1]];
+        [ref[1], 25, 22, 20, 17, 12].some(function (tone) {
+          var value = tone === 100 ? '#FFFFFF' : (tone === 0 ? '#000000' : maps[ref[0]][tone]);
+          if (!value) return false;
+          if (contrast(value, label) >= 4.5) { out['--m3-' + pair[0]] = value; return true; }
+          return false;
+        });
+      });
+    }
+
     return out;
   }
 

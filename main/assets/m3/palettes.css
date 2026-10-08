@@ -464,7 +464,7 @@
 :root[data-seed="crimson"][data-theme="dark"] {
   --m3-primary: #FF8A73;
   --m3-on-primary: #830000;
-  --m3-primary-container: #A20000;
+  --m3-primary-container: #930000;
   --m3-on-primary-container: #FFA78D;
   --m3-primary-fixed: #FFA78D;
   --m3-primary-fixed-dim: #FF8A73;
@@ -509,7 +509,7 @@
   :root[data-seed="crimson"]:not([data-theme="light"]) {
     --m3-primary: #FF8A73;
     --m3-on-primary: #830000;
-    --m3-primary-container: #A20000;
+    --m3-primary-container: #930000;
     --m3-on-primary-container: #FFA78D;
     --m3-primary-fixed: #FFA78D;
     --m3-primary-fixed-dim: #FF8A73;
