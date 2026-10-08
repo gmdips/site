@@ -1,84 +1,134 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-seed="indigo">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>About - GDIPS Demonlist</title>
   <meta name="description" content="Learn about GDIPS Demonlist, our team, and how to contribute">
   <meta name="keywords" content="GDIPS, About, Team, FAQ, Difficulty System">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+  <meta name="theme-color" content="#FFF7F6">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>ℹ️</text></svg>">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,400;8..144,500;8..144,600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/m3/palettes.css">
+  <link rel="stylesheet" href="../assets/m3/tokens.css">
+  <link rel="stylesheet" href="../assets/m3/components.css">
+  <link rel="stylesheet" href="../assets/m3/site.css">
+  <link rel="stylesheet" href="styles.css">
+  <script src="../assets/m3/color.js"></script>
 </head>
-<body>
-  <header>
+<body class="list-page" data-list="info">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="list-app-bar" id="appBar">
     <div class="header-bar">
-      <div class="logo-wrap" onclick="window.location='index.html'">
-        <img src="https://picsum.photos/seed/GDIPS/44/44.jpg" alt="GDIDM Logo">
-        GDIDM
-      </div>
+      <a class="logo-wrap" href="index.html" aria-label="GDIPS Demonlist home">
+        <img src="demon.png" alt="" width="44" height="44">
+        <span>GDIPS Demonlist</span>
+      </a>
       <div class="header-actions">
-        <button class="theme-toggle" id="themeToggle" aria-label="Toggle Theme">
-          <i class="fas fa-moon"></i>
+        <div class="m3-menu-anchor">
+          <button type="button" class="btn-icon" data-m3-menu-trigger="#infoSeedMenu" aria-haspopup="true" aria-expanded="false" aria-label="Dynamic colour">
+            <i class="fas fa-palette" aria-hidden="true"></i>
+          </button>
+          <div class="m3-menu m3-menu--end m3-menu--bottom list-menu" id="infoSeedMenu">
+            <p class="list-menu__head">Dynamic colour</p>
+            <div data-m3-color-picker></div>
+          </div>
+        </div>
+        <button type="button" class="btn-icon m3-theme-toggle" aria-label="Switch between light and dark theme">
+          <i class="fas fa-moon m3-theme-toggle__light" aria-hidden="true"></i>
+          <i class="fas fa-sun m3-theme-toggle__dark" aria-hidden="true"></i>
         </button>
-        <button class="menu-btn" id="openSidebar" aria-label="Open Menu">
-          <i class="fas fa-bars"></i>
+        <button type="button" class="btn-icon" id="openSidebar" aria-label="Open menu" aria-controls="sidebarNav" aria-expanded="false">
+          <i class="fas fa-bars" aria-hidden="true"></i>
         </button>
       </div>
     </div>
   </header>
-  
-  <nav class="tab-nav">
+
+  <nav class="tab-nav" aria-label="List pages">
     <a href="index.html" class="tab-nav-item">
-      <i class="fas fa-list"></i> Demon List
+      <i class="fas fa-list" aria-hidden="true"></i> Demon List
     </a>
     <a href="pemonlist.html" class="tab-nav-item">
-      <i class="fas fa-star"></i> Pemon List
+      <i class="fas fa-star" aria-hidden="true"></i> Pemon List
     </a>
     <a href="impossiblelist.html" class="tab-nav-item">
-      <i class="fas fa-skull-crossbones"></i> Impossible List
+      <i class="fas fa-skull-crossbones" aria-hidden="true"></i> Impossible List
     </a>
-    <a href="info.html" class="tab-nav-item active">
-      <i class="fas fa-info-circle"></i> About
+    <a href="best.html" class="tab-nav-item">
+      <i class="fas fa-trophy" aria-hidden="true"></i> Leaderboard
+    </a>
+    <a href="info.html" class="tab-nav-item active" aria-current="page">
+      <i class="fas fa-info-circle" aria-hidden="true"></i> About
     </a>
   </nav>
-  
-  <aside class="sidebar" id="sidebarNav" aria-label="Sidebar navigation">
-    <button class="close-btn" id="closeSidebar" aria-label="Close Menu">
-      <i class="fas fa-times"></i>
-    </button>
-    
-    <nav>
-      <ul>
-        <li><a href="index.html"><i class="fas fa-list"></i> Demon List</a></li>
-        <li><a href="pemonlist.html"><i class="fas fa-star"></i> Pemon List</a></li>
-        <li><a href="impossiblelist.html"><i class="fas fa-skull-crossbones"></i> Impossible List</a></li>
-        <li><a href="https://forms.gle/DNvnJwDPtNNpsfUd8" target="_blank" rel="noopener noreferrer"><i class="fas fa-plus-circle"></i> Submit Level</a></li>
-        <li><a href="info.html" class="active"><i class="fas fa-info-circle"></i> About</a></li>
-      </ul>
-    </nav>
+
+  <div id="sidebarScrim" class="drawer-scrim" aria-hidden="true"></div>
+
+  <aside class="sidebar" id="sidebarNav" aria-label="Sidebar navigation" aria-hidden="true">
+    <div class="sidebar-header">
+      <h3 class="sidebar-title">Menu</h3>
+      <button type="button" class="btn-icon" id="closeSidebar" aria-label="Close menu">
+        <i class="fas fa-times" aria-hidden="true"></i>
+      </button>
+    </div>
+    <div class="sidebar-content">
+      <div class="sidebar-section">
+        <div class="sidebar-section-title">Lists</div>
+        <a href="index.html" class="sidebar-link">
+          <i class="fas fa-list" aria-hidden="true"></i>
+          <span>Demon List</span>
+        </a>
+        <a href="pemonlist.html" class="sidebar-link">
+          <i class="fas fa-star" aria-hidden="true"></i>
+          <span>Pemon List</span>
+        </a>
+        <a href="impossiblelist.html" class="sidebar-link">
+          <i class="fas fa-skull-crossbones" aria-hidden="true"></i>
+          <span>Impossible List</span>
+        </a>
+        <a href="best.html" class="sidebar-link">
+          <i class="fas fa-trophy" aria-hidden="true"></i>
+          <span>Leaderboard</span>
+        </a>
+      </div>
+      <div class="sidebar-section">
+        <div class="sidebar-section-title">Community</div>
+        <a href="https://forms.gle/DNvnJwDPtNNpsfUd8" class="sidebar-link" target="_blank" rel="noopener noreferrer">
+          <i class="fas fa-plus-circle" aria-hidden="true"></i>
+          <span>Submit Level</span>
+        </a>
+        <a href="info.html" class="sidebar-link active" aria-current="page">
+          <i class="fas fa-info-circle" aria-hidden="true"></i>
+          <span>About</span>
+        </a>
+      </div>
+    </div>
     <div class="sidebar-footer">
-      <p>&copy; <span id="year"></span> GDIPS Demonlist</p>
-      <p>Made with <i class="fas fa-heart" style="color: var(--primary);"></i> by the community</p>
+      <p>&copy; <span id="year">2025</span> GDIPS Demonlist</p>
+      <p>Made with <i class="fas fa-heart" style="color: var(--m3-primary);" aria-hidden="true"></i> by the community</p>
     </div>
   </aside>
-  
-  <main>
-    <div class="about-container">
-      <div class="about-header">
-        <h2><i class="fas fa-info-circle"></i> About GDIPS Demonlist</h2>
-        <p>Community platform to categorize and rank the hardest levels in GDIPS</p>
-      </div>
 
-      <div class="about-section">
-        <h3><i class="fas fa-question-circle"></i> What is Demonlist?</h3>
+  <main id="main" class="m3-main">
+    <div class="about-container">
+      <header class="about-header">
+        <h1><i class="fas fa-info-circle" aria-hidden="true"></i> About GDIPS Demonlist</h1>
+        <p>Community platform to categorize and rank the hardest levels in GDIPS</p>
+      </header>
+
+      <section class="about-section">
+        <h3><i class="fas fa-question-circle" aria-hidden="true"></i> What is Demonlist?</h3>
         <p>Demonlist is a list of the hardest demon levels in Geometry Dash sorted by difficulty. Unlike the official in-game level list, the demonlist is created and maintained by the player community.</p>
         <p>GDIPS Demonlist focuses specifically on demon levels created for GDIPS private servers, with an independent ranking and verification system.</p>
-      </div>
+      </section>
 
-      <div class="about-section">
-        <h3><i class="fas fa-bullseye"></i> Purpose of This Website</h3>
+      <section class="about-section">
+        <h3><i class="fas fa-bullseye" aria-hidden="true"></i> Purpose of This Website</h3>
         <p>GDIPS Demonlist was created with several main goals in mind:</p>
         <ul>
           <li>Provide trusted information about the hardest demon levels in GDIPS</li>
@@ -87,38 +137,38 @@
           <li>Provide a platform to share proof of level completion (verification)</li>
           <li>Help new players find challenges that suit their skills</li>
         </ul>
-      </div>
+      </section>
 
-      <div class="about-section">
-        <h3><i class="fas fa-layer-group"></i> Difficulty System</h3>
+      <section class="about-section">
+        <h3><i class="fas fa-layer-group" aria-hidden="true"></i> Difficulty System</h3>
         <p>We use a demon classification system with 5 main difficulty levels:</p>
-        
-        <div class="difficulty-examples">
-          <div class="difficulty-card easy">
-            <h4><i class="fas fa-star"></i> Easy Demon</h4>
-            <p>Beginner level demons, suitable for those who are just starting to play demons. Example: The Nightmare, The Lightning Road</p>
-          </div>
-          <div class="difficulty-card medium">
-            <h4><i class="fas fa-star-half-alt"></i> Medium Demon</h4>
-            <p>Medium difficulty demons, require a solid foundation. Example: B, Platinum Adventure</p>
-          </div>
-          <div class="difficulty-card hard">
-            <h4><i class="fas fa-star"></i> Hard Demon</h4>
-            <p>Challenging demons with complex gameplay. Example: Nine Circles, Jawbreaker</p>
-          </div>
-          <div class="difficulty-card insane">
-            <h4><i class="fas fa-fire"></i> Insane Demon</h4>
-            <p>Demons are very difficult, only for experienced players. Example: Windy Landscape, Supersonic</p>
-          </div>
-          <div class="difficulty-card extreme">
-            <h4><i class="fas fa-skull"></i> Extreme Demon</h4>
-            <p>The highest level, only the hardest levels fall into this category. Example: Bloodbath, Zodiac</p>
-          </div>
-        </div>
-      </div>
 
-      <div class="about-section">
-        <h3><i class="fas fa-star"></i> Pemon List</h3>
+        <div class="difficulty-examples">
+          <article class="difficulty-card easy">
+            <h4><i class="fas fa-star" aria-hidden="true"></i> Easy Demon</h4>
+            <p>Beginner level demons, suitable for those who are just starting to play demons. Example: The Nightmare, The Lightning Road</p>
+          </article>
+          <article class="difficulty-card medium">
+            <h4><i class="fas fa-star-half-alt" aria-hidden="true"></i> Medium Demon</h4>
+            <p>Medium difficulty demons, require a solid foundation. Example: B, Platinum Adventure</p>
+          </article>
+          <article class="difficulty-card hard">
+            <h4><i class="fas fa-star" aria-hidden="true"></i> Hard Demon</h4>
+            <p>Challenging demons with complex gameplay. Example: Nine Circles, Jawbreaker</p>
+          </article>
+          <article class="difficulty-card insane">
+            <h4><i class="fas fa-fire" aria-hidden="true"></i> Insane Demon</h4>
+            <p>Demons are very difficult, only for experienced players. Example: Windy Landscape, Supersonic</p>
+          </article>
+          <article class="difficulty-card extreme">
+            <h4><i class="fas fa-skull" aria-hidden="true"></i> Extreme Demon</h4>
+            <p>The highest level, only the hardest levels fall into this category. Example: Bloodbath, Zodiac</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="about-section">
+        <h3><i class="fas fa-star" aria-hidden="true"></i> Pemon List</h3>
         <p>The Pemon List is a separate ranking system for platformer levels in GDIPS. These levels focus on precise platforming mechanics rather than traditional demon gameplay.</p>
         <p>Platformer levels are evaluated based on:</p>
         <ul>
@@ -127,10 +177,10 @@
           <li>Length and complexity</li>
           <li>Visual aesthetics and decoration</li>
         </ul>
-      </div>
+      </section>
 
-      <div class="about-section">
-        <h3><i class="fas fa-skull-crossbones"></i> Impossible List</h3>
+      <section class="about-section">
+        <h3><i class="fas fa-skull-crossbones" aria-hidden="true"></i> Impossible List</h3>
         <p>The Impossible List contains the most challenging levels in GDIPS that push the boundaries of what's possible in the game.</p>
         <p>These levels are characterized by:</p>
         <ul>
@@ -139,148 +189,138 @@
           <li>High skill ceiling with minimal room for error</li>
           <li>Often featuring unique gameplay elements not seen in other levels</li>
         </ul>
-      </div>
+      </section>
 
-      <div class="about-section">
-        <h3><i class="fas fa-users"></i> Our Team</h3>
+      <section class="about-section">
+        <h3><i class="fas fa-users" aria-hidden="true"></i> Our Team</h3>
         <p>GDIPS Demonlist is managed by a team of volunteers from the community:</p>
-        
+
         <div class="team-grid">
-          <div class="team-member">
-            <img src="https://yt3.googleusercontent.com/O1K2kpxaUYH6OTA8vgYPfsBUQOqjxZjh6fqEUS9q2UnQaKm4R0pVVYwbQ2r4wCOWtm0u0mJIKg=s160-c-k-c0x00ffffff-no-rj" alt="Team Member">
+          <article class="team-member">
+            <img src="https://yt3.googleusercontent.com/O1K2kpxaUYH6OTA8vgYPfsBUQOqjxZjh6fqEUS9q2UnQaKm4R0pVVYwbQ2r4wCOWtm0u0mJIKg=s160-c-k-c0x00ffffff-no-rj" alt="Fless" loading="lazy">
             <h4>Fless</h4>
             <div class="role">Project Leader</div>
             <div class="social-links">
-              <a href="https://www.tiktok.com/@ameliapt_" target="_blank"><i class="fab fa-tiktok"></i></a>
-              <a href="https://www.youtube.com/@ameliaptz" target="_blank"><i class="fab fa-youtube"></i></a>
-              <a href="https://discord.gg/6HEyQBcM6E" target="_blank"><i class="fab fa-discord"></i></a>
+              <a href="https://www.tiktok.com/@ameliapt_" class="social-link" title="TikTok" target="_blank" rel="noopener noreferrer"><i class="fab fa-tiktok" aria-hidden="true"></i><span class="sr-only">TikTok</span></a>
+              <a href="https://www.youtube.com/@ameliaptz" class="social-link" title="YouTube" target="_blank" rel="noopener noreferrer"><i class="fab fa-youtube" aria-hidden="true"></i><span class="sr-only">YouTube</span></a>
+              <a href="https://discord.gg/6HEyQBcM6E" class="social-link" title="Discord" target="_blank" rel="noopener noreferrer"><i class="fab fa-discord" aria-hidden="true"></i><span class="sr-only">Discord</span></a>
             </div>
-          </div>
-          <div class="team-member">
-            <img src="https://yt3.googleusercontent.com/-dRNu4LQktAvWO-yHvo76SAST2RdgmVDPkbfxB-0c6C7PDo9nfRt3t6ng4vYoeujUn6zgVoN3w=s160-c-k-c0x00ffffff-no-rj" alt="Team Member">
+          </article>
+          <article class="team-member">
+            <img src="https://yt3.googleusercontent.com/-dRNu4LQktAvWO-yHvo76SAST2RdgmVDPkbfxB-0c6C7PDo9nfRt3t6ng4vYoeujUn6zgVoN3w=s160-c-k-c0x00ffffff-no-rj" alt="DenyZr" loading="lazy">
             <h4>DenyZr</h4>
             <div class="role">Verifier</div>
             <div class="social-links">
-              <a href="https://www.youtube.com/@DenyZr" target="_blank"><i class="fab fa-youtube"></i></a>
-              <a href="#" target="_blank"><i class="fab fa-discord"></i></a>
+              <a href="https://www.youtube.com/@DenyZr" class="social-link" title="YouTube" target="_blank" rel="noopener noreferrer"><i class="fab fa-youtube" aria-hidden="true"></i><span class="sr-only">YouTube</span></a>
+              <a href="#" class="social-link" title="Discord" target="_blank" rel="noopener noreferrer"><i class="fab fa-discord" aria-hidden="true"></i><span class="sr-only">Discord</span></a>
             </div>
-          </div>
-          <div class="team-member">
-            <img src="https://yt3.googleusercontent.com/UbkTDlRItMKYPd8bN_QIU-4Ccoe3Z25L9FN46PL1Xabwa0GkKgTt4FfStR2-TwJJ6FOdS4eiyA=s160-c-k-c0x00ffffff-no-rj" alt="Team Member">
+          </article>
+          <article class="team-member">
+            <img src="https://yt3.googleusercontent.com/UbkTDlRItMKYPd8bN_QIU-4Ccoe3Z25L9FN46PL1Xabwa0GkKgTt4FfStR2-TwJJ6FOdS4eiyA=s160-c-k-c0x00ffffff-no-rj" alt="AloneBG" loading="lazy">
             <h4>AloneBG</h4>
             <div class="role">List Manager</div>
             <div class="social-links">
-              <a href="https://youtube.com/@dashinghilivq2?si=ADaIsl6ZLuAZP-TY" target="_blank"><i class="fab fa-youtube"></i></a>
-              <a href="#" target="_blank"><i class="fab fa-discord"></i></a>
+              <a href="https://youtube.com/@dashinghilivq2?si=ADaIsl6ZLuAZP-TY" class="social-link" title="YouTube" target="_blank" rel="noopener noreferrer"><i class="fab fa-youtube" aria-hidden="true"></i><span class="sr-only">YouTube</span></a>
+              <a href="#" class="social-link" title="Discord" target="_blank" rel="noopener noreferrer"><i class="fab fa-discord" aria-hidden="true"></i><span class="sr-only">Discord</span></a>
             </div>
-          </div>
+          </article>
         </div>
-      </div>
+      </section>
 
-      <div class="about-section">
-        <h3><i class="fas fa-question-circle"></i> FAQ</h3>
-        <p><strong>Q: How to submit level to demonlist?</strong><br>
-        A: Use the submit page on this website by completing all the required information.</p>
-        
-        <p><strong>Q: What are the level requirements to enter the demonlist?</strong><br>
-        A: Level must be demon, have video verification, and pass the assessment of our verification team.</p>
-        
-        <p><strong>Q: How does the ranking system work?</strong><br>
-        A: Rankings are based on a combination of technical difficulty, level length, and community consensus.</p>
-        
-        <p><strong>Q: Can I contribute to the list?</strong><br>
-        A: Yes! We welcome community contributions. You can submit levels, verify completions, or provide feedback on existing rankings.</p>
-        
-        <p><strong>Q: How often is the list updated?</strong><br>
-        A: The list is updated regularly as new levels are created and verified. Check the recent updates section for the latest changes.</p>
-      </div>
+      <section class="about-section">
+        <h3><i class="fas fa-question-circle" aria-hidden="true"></i> FAQ</h3>
+
+        <details class="m3-expansion">
+          <summary class="m3-expansion__summary">How to submit level to demonlist?</summary>
+          <div class="m3-expansion__content">Use the submit page on this website by completing all the required information.</div>
+        </details>
+
+        <details class="m3-expansion">
+          <summary class="m3-expansion__summary">What are the level requirements to enter the demonlist?</summary>
+          <div class="m3-expansion__content">Level must be demon, have video verification, and pass the assessment of our verification team.</div>
+        </details>
+
+        <details class="m3-expansion">
+          <summary class="m3-expansion__summary">How does the ranking system work?</summary>
+          <div class="m3-expansion__content">Rankings are based on a combination of technical difficulty, level length, and community consensus.</div>
+        </details>
+
+        <details class="m3-expansion">
+          <summary class="m3-expansion__summary">Can I contribute to the list?</summary>
+          <div class="m3-expansion__content">Yes! We welcome community contributions. You can submit levels, verify completions, or provide feedback on existing rankings.</div>
+        </details>
+
+        <details class="m3-expansion">
+          <summary class="m3-expansion__summary">How often is the list updated?</summary>
+          <div class="m3-expansion__content">The list is updated regularly as new levels are created and verified. Check the recent updates section for the latest changes.</div>
+        </details>
+      </section>
     </div>
   </main>
 
-  <footer>
+  <footer class="list-footer">
     <div class="footer-content">
-      <div>
-        &copy; <span id="footerYear"></span> GDIPS Demon List | All Rights Reserved
+      <div class="footer-brand">
+        <i class="fas fa-info-circle" aria-hidden="true"></i>
+        <span>GDIPS Demonlist</span>
       </div>
-      <div class="social-links">
-        <a href="#" class="social-link" title="Discord">
-          <i class="fab fa-discord"></i>
-        </a>
-        <a href="#" class="social-link" title="YouTube">
-          <i class="fab fa-youtube"></i>
-        </a>
-        <a href="#" class="social-link" title="Twitter">
-          <i class="fab fa-twitter"></i>
-        </a>
-        <a href="#" class="social-link" title="GitHub">
-          <i class="fab fa-github"></i>
-        </a>
-      </div>
+      <nav class="footer-links" aria-label="Footer">
+        <a href="index.html" class="footer-link">Demon List</a>
+        <a href="pemonlist.html" class="footer-link">Pemon List</a>
+        <a href="impossiblelist.html" class="footer-link">Impossible List</a>
+        <a href="best.html" class="footer-link">Leaderboard</a>
+        <a href="https://forms.gle/DNvnJwDPtNNpsfUd8" class="footer-link" target="_blank" rel="noopener noreferrer">Submit Level</a>
+      </nav>
+      <p class="footer-note">&copy; <span id="footerYear">2025</span> GDIPS Demon List | All Rights Reserved</p>
     </div>
   </footer>
 
+  <script src="../assets/m3/ui.js" defer></script>
   <script>
-    // Initialize theme
-    document.addEventListener('DOMContentLoaded', () => {
-      // Set current year
-      const currentYear = new Date().getFullYear();
-      const yearElements = document.querySelectorAll('#year, #footerYear');
-      yearElements.forEach(el => {
-        if (el) el.textContent = currentYear;
+    (function () {
+      var year = new Date().getFullYear();
+      var yearNodes = document.querySelectorAll('#year, #footerYear');
+      yearNodes.forEach(function (el) { el.textContent = year; });
+
+      var sidebar = document.getElementById('sidebarNav');
+      var scrim = document.getElementById('sidebarScrim');
+      var openBtn = document.getElementById('openSidebar');
+      var closeBtn = document.getElementById('closeSidebar');
+
+      function sync() {
+        var open = sidebar.classList.contains('active') || sidebar.classList.contains('is-open');
+        if (openBtn) openBtn.setAttribute('aria-expanded', String(open));
+        sidebar.setAttribute('aria-hidden', String(!open));
+        if (scrim) scrim.classList.toggle('is-visible', open);
+      }
+
+      if (openBtn) openBtn.addEventListener('click', function () { sidebar.classList.add('active'); });
+      if (closeBtn) closeBtn.addEventListener('click', function () { sidebar.classList.remove('active'); });
+      if (scrim) scrim.addEventListener('click', function () { sidebar.classList.remove('active'); });
+      document.addEventListener('click', function (event) {
+        if (sidebar.classList.contains('active') && !sidebar.contains(event.target) &&
+            event.target !== openBtn && !openBtn.contains(event.target) && event.target !== scrim) {
+          sidebar.classList.remove('active');
+        }
       });
-      
-      // Check for saved theme preference
-      const savedTheme = localStorage.getItem('theme') || 'dark';
-      document.documentElement.setAttribute('data-theme', savedTheme);
-      updateThemeIcon(savedTheme);
-      
-      // Initialize event listeners
-      initializeEventListeners();
-    });
-    
-    function initializeEventListeners() {
-      // Sidebar navigation
-      const sidebar = document.getElementById('sidebarNav');
-      const openSidebarBtn = document.getElementById('openSidebar');
-      const closeSidebarBtn = document.getElementById('closeSidebar');
-      
-      if (openSidebarBtn && closeSidebarBtn) {
-        openSidebarBtn.onclick = () => sidebar.classList.add('active');
-        closeSidebarBtn.onclick = () => sidebar.classList.remove('active');
-        
-        // Close sidebar on click outside
-        document.addEventListener('click', (e) => {
-          if (
-            sidebar.classList.contains('active') &&
-            !sidebar.contains(e.target) &&
-            e.target !== openSidebarBtn && !openSidebarBtn.contains(e.target)
-          ) sidebar.classList.remove('active');
-        });
+      new MutationObserver(sync).observe(sidebar, { attributes: true, attributeFilter: ['class'] });
+      sync();
+
+      var bar = document.getElementById('appBar');
+      if (bar) {
+        var onScroll = function () { bar.classList.toggle('is-scrolled', window.scrollY > 8); };
+        window.addEventListener('scroll', onScroll, { passive: true });
+        onScroll();
       }
-      
-      // Theme toggle
-      const themeToggle = document.getElementById('themeToggle');
-      if (themeToggle) {
-        themeToggle.addEventListener('click', toggleTheme);
-      }
-    }
-    
-    // Theme functions
-    function toggleTheme() {
-      const currentTheme = document.documentElement.getAttribute('data-theme');
-      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-      
-      document.documentElement.setAttribute('data-theme', newTheme);
-      localStorage.setItem('theme', newTheme);
-      updateThemeIcon(newTheme);
-    }
-    
-    function updateThemeIcon(theme) {
-      const icon = document.querySelector('#themeToggle i');
-      if (icon) {
-        icon.className = theme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
-      }
-    }
+
+      document.querySelectorAll('.m3-menu').forEach(function (menu) {
+        var trigger = document.querySelector('[data-m3-menu-trigger="#' + menu.id + '"]');
+        if (!trigger) return;
+        new MutationObserver(function () {
+          trigger.setAttribute('aria-expanded', String(menu.classList.contains('is-open')));
+        }).observe(menu, { attributes: true, attributeFilter: ['class'] });
+      });
+    })();
   </script>
 </body>
 </html>

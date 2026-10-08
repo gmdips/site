@@ -1,168 +1,335 @@
 <!DOCTYPE html>
-<html lang="id">
-
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GDIPS - Unduh</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="../../../assets/batik.css">
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9138741540234649"
-        crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Download · GDIPS</title>
+  <meta name="description" content="Download the GDIPS client for PC and Android, plus Geode mod loader and the Freedomi UI mod.">
+  <meta name="theme-color" content="#FFF7F6">
+  <link rel="icon" href="https://gdi.ps.fhgdps.com/dashboard/icon.png" type="image/png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,300..800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Material You 3 design system -->
+  <link rel="stylesheet" href="../../../assets/m3/palettes.css">
+  <link rel="stylesheet" href="../../../assets/m3/tokens.css">
+  <link rel="stylesheet" href="../../../assets/m3/components.css">
+  <link rel="stylesheet" href="../../../assets/m3/site.css">
+  <link rel="stylesheet" href="../../../assets/m3/pages.css">
+  <script src="../../../assets/m3/color.js"></script>
+  <script src="../../../assets/m3/ui.js" defer></script>
+
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9138741540234649" crossorigin="anonymous"></script>
 </head>
 
-<body>
-    <header>
-        <nav>
-            <div class="logo">
-                <i class="fas fa-hashtag"></i>
-                <span>GDIPS</span>
-            </div>
-            <button class="menu-toggle" id="menuToggle" aria-label="Menu navigasi">
-                <i class="fas fa-bars"></i>
-            </button>
-            <ul class="nav-links" id="navLinks">
-                <li><a href="/"><i class="fas fa-home"></i> Beranda</a></li>
-                <li><a href='/tools'><i class="fas fa-tools"></i> Alat</a></li>
-                <li><a href='/rate'><i class="fas fa-star"></i> Rating</a></li>
-                <li><a href='/download'><i class="fas fa-download"></i> Unduh</a></li>
-            </ul>
-        </nav>
-    </header>
+<body class="m3-page">
+  <a class="m3-skip-link" href="#main">Skip to content</a>
 
-    <section class="hero">
-        <!-- Floating decorative elements -->
-        <div class="floating" style="font-size: 2rem;">✨</div>
-        <div class="floating" style="font-size: 1.7rem;">🇮🇩</div>
-        <div class="floating" style="font-size: 1.3rem;">📥</div>
+  <header class="m3-app-bar">
+    <div class="m3-container m3-container--wide m3-app-bar__row">
+      <button type="button" class="m3-icon-button" data-m3-drawer-toggle="#navDrawer" aria-label="Open menu" aria-controls="navDrawer">
+        <i class="fas fa-bars" aria-hidden="true"></i>
+      </button>
+      <a class="m3-app-bar__title" href="../main/index.html">
+        <span class="m3-app-bar__brand-mark"><img src="https://gdi.ps.fhgdps.com/dashboard/icon.png" alt=""></span>
+        <span>GDIPS</span>
+      </a>
+      <div class="m3-app-bar__actions">
+        <a class="m3-icon-button m3-tooltip m3-hide-sm" data-tooltip="Bahasa Indonesia" href="../../id/download/index.html" aria-label="Switch to Bahasa Indonesia">
+          <i class="fas fa-language" aria-hidden="true"></i>
+        </a>
+        <button type="button" class="m3-icon-button m3-theme-toggle m3-tooltip" data-tooltip="Toggle theme" aria-label="Switch theme">
+          <i class="fas fa-moon m3-theme-toggle__light" aria-hidden="true"></i>
+          <i class="fas fa-sun m3-theme-toggle__dark" aria-hidden="true"></i>
+        </button>
+        <a class="m3-button m3-hide-sm" href="#downloads">
+          <i class="fas fa-download" aria-hidden="true"></i><span>Get GDIPS</span>
+        </a>
+      </div>
+    </div>
+  </header>
 
-        <div class="icon-container">
-            <img src="https://gdi.ps.fhgdps.com/dashboard/icon.png" class="icon" alt="GDIPS Logo">
-        </div>
-        <h2>Unduh</h2>
-        <p>Tempat Di Mana Anda Dapat Menyimpan File Yang Pasti Harus Anda Unduh</p>
-    </section>
+  <div class="m3-scrim" data-m3-scrim-for="#navDrawer"></div>
 
-    <div class="credits-container">
-        <!-- PC Version -->
-        <div class="credit-card">
-            <span class="role">Desktop Edition</span>
-            <h3>GDIPS 2.2 PC</h3>
-            <p>Versi desktop lengkap untuk Windows. Tidak perlu emulator - instal dan mainkan langsung di komputer Anda.
-            </p>
-            <a href="https://drive.google.com/uc?export=download&id=166YOk_03Mw8cZLgRuF7EpyH3Uaf9imK4">
-                <button class="view-btn">
-                    <i class="fas fa-download"></i> Unduh PC
-                </button>
-            </a>
-        </div>
-
-        <!-- Mobile Version -->
-        <div class="credit-card">
-            <span class="role">Aplikasi Utama</span>
-            <h3>GDIPS 2.2 APK</h3>
-            <p>Aplikasi utama untuk GDIPS. Termasuk semua fitur inti dan level. Gunakan Geode untuk kemampuan modding
-                tambahan.</p>
-            <a href="https://github.com/flessan/gdips/releases/download/v1.0.4/Gdips.id.apk">
-                <button class="view-btn">
-                    <i class="fas fa-download"></i> Unduh Sekarang
-                </button>
-            </a>
-        </div>
-
-        <!-- Launcher -->
-        <div class="credit-card">
-            <span class="role">Mod Launcher</span>
-            <h3>Geode APK</h3>
-            <p>Mod Loader penting untuk GDIPS. Memungkinkan mod, tekstur kustom, dan fitur lanjutan.</p>
-            <a href="https://github.com/flessan/gdips/releases/download/v1.0.5/Gdips_geode.apk">
-                <button class="view-btn">
-                    <i class="fab fa-github"></i> Dapatkan Launcher
-                </button>
-            </a>
-        </div>
-
-        <!-- UI Mod -->
-        <div class="credit-card">
-            <span class="role">Peningkatan</span>
-            <h3>Freedomi</h3>
-            <p>Mod antarmuka kustom untuk Geode. Mengubah tampilan dan nuansa pengalaman GDPS Anda.</p>
-            <a href="https://github.com/flessan/GDIPS/releases/tag/v1.0.0">
-                <button class="view-btn">
-                    <i class="fas fa-palette"></i> Lihat Sekarang
-                </button>
-            </a>
-        </div>
-
-        <!-- Bonus Card -->
-        <div class="credit-card">
-            <span class="role">Konten Bonus</span>
-            <h3>Segera Hadir!</h3>
-            <p>Kami terus menambahkan konten baru. Periksa secara teratur untuk pembaruan, mod, dan rilis khusus!</p>
-            <button class="view-btn" style="background-color: var(--accent);">
-                <i class="fas fa-bell"></i> Tetap Terhubung
-            </button>
-        </div>
+  <nav class="m3-drawer" id="navDrawer" aria-label="Main navigation">
+    <div class="m3-drawer__head">
+      <span class="m3-drawer__brand">
+        <img src="https://gdi.ps.fhgdps.com/dashboard/icon.png" alt="">
+        GDIPS
+      </span>
+      <button type="button" class="m3-icon-button" data-m3-drawer-close aria-label="Close menu">
+        <i class="fas fa-xmark" aria-hidden="true"></i>
+      </button>
     </div>
 
-    <footer>
-        <p>Dibuat dengan <span class="heart">❤️</span> | Semua Hak Dilindungi | <a href="#"><span>GDIPS 2025</span></a>
-        </p>
-    </footer>
+    <p class="m3-drawer__label">Site</p>
+    <a class="m3-drawer__item" href="../main/index.html"><i class="fas fa-people-group" aria-hidden="true"></i><span>Our Team</span></a>
+    <a class="m3-drawer__item" href="./index.html" aria-current="page"><i class="fas fa-download" aria-hidden="true"></i><span>Download</span></a>
+    <a class="m3-drawer__item" href="../rating-system/index.html"><i class="fas fa-star" aria-hidden="true"></i><span>Rating Standard</span></a>
+    <a class="m3-drawer__item" href="../../../tools.html"><i class="fas fa-tools" aria-hidden="true"></i><span>Tools</span></a>
+    <a class="m3-drawer__item" href="../about/index.html"><i class="fas fa-circle-info" aria-hidden="true"></i><span>About</span></a>
 
-    <script>
-        // Mobile menu toggle
-        const menuToggle = document.getElementById('menuToggle');
-        const navLinks = document.getElementById('navLinks');
+    <p class="m3-drawer__label">Community</p>
+    <a class="m3-drawer__item" href="https://gdi.ps.fhgdps.com/dashboard" target="_blank" rel="noopener"><i class="fas fa-gamepad" aria-hidden="true"></i><span>Server dashboard</span></a>
+    <a class="m3-drawer__item" href="../../../demonlist/index.html"><i class="fas fa-fire" aria-hidden="true"></i><span>Demon List</span></a>
+    <a class="m3-drawer__item" href="../../../feedback/index.html"><i class="fas fa-comment-dots" aria-hidden="true"></i><span>Feedback</span></a>
+    <a class="m3-drawer__item" href="../../../wa.html"><i class="fab fa-whatsapp" aria-hidden="true"></i><span>WhatsApp group</span></a>
 
-        menuToggle.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-        });
+    <p class="m3-drawer__label">Language</p>
+    <div class="m3-segmented" data-m3-segmented style="margin-inline:12px">
+      <button type="button" class="m3-segmented__item is-selected" data-value="en"><i class="fas fa-check" aria-hidden="true"></i> English</button>
+      <a class="m3-segmented__item" href="../../id/download/index.html" data-value="id">Indonesia</a>
+    </div>
 
-        // Add sparkle effects randomly
-        function addSparkles() {
-            const hero = document.querySelector('.hero');
+    <p class="m3-drawer__label">Appearance</p>
+    <div style="padding-inline:12px">
+      <label class="m3-switch" for="drawerTheme">
+        <input type="checkbox" id="drawerTheme">
+        <span>Dark theme</span>
+      </label>
+      <div class="m3-label-float" style="margin-block:12px 8px">Dynamic colour</div>
+      <div data-m3-color-picker></div>
+    </div>
 
-            for (let i = 0; i < 15; i++) {
-                const sparkle = document.createElement('div');
-                sparkle.classList.add('sparkle');
-                sparkle.style.left = `${Math.random() * 100}%`;
-                sparkle.style.top = `${Math.random() * 100}%`;
-                sparkle.style.animationDelay = `${Math.random() * 2}s`;
-                hero.appendChild(sparkle);
-            }
-        }
+    <div class="m3-drawer__footer">
+      © <span class="gd-year">2025</span> GDIPS · Built with <i class="fas fa-heart" style="color:var(--m3-primary)" aria-hidden="true"></i> by the community
+    </div>
+  </nav>
 
-        // Run after page loads
-        window.addEventListener('load', addSparkles);
+  <main class="m3-main m3-main--offset" id="main">
+    <section class="m3-hero">
+      <div class="m3-container m3-hero__grid">
+        <div>
+          <span class="m3-hero__eyebrow"><i class="fas fa-download" aria-hidden="true"></i> Download</span>
+          <h1 class="m3-hero__title">Get the <em>GDIPS</em> client</h1>
+          <p class="m3-hero__lead">
+            Everything you need to play on the GDIPS server: the desktop and Android
+            clients, the Geode mod loader and the Freedomi interface mod. Pick your
+            platform below — no emulator required on PC.
+          </p>
+          <div class="m3-hero__actions m3-row">
+            <a class="m3-button m3-button--lg" href="#downloads"><i class="fas fa-arrow-down" aria-hidden="true"></i><span>Browse downloads</span></a>
+            <a class="m3-button m3-button--outlined m3-button--lg" href="https://gdi.ps.fhgdps.com/dashboard/register" target="_blank" rel="noopener">
+              <i class="fas fa-user-plus" aria-hidden="true"></i><span>Create account</span>
+            </a>
+          </div>
+          <div class="m3-meta" style="margin-block-start:24px">
+            <span><i class="fas fa-shield-halved" aria-hidden="true"></i> Scanned builds</span>
+            <span><i class="fas fa-bolt" aria-hidden="true"></i> 2.2 ready</span>
+            <span><i class="fas fa-comments" aria-hidden="true"></i> Community support</span>
+          </div>
+        </div>
+        <div class="m3-hero__visual">
+          <div class="m3-hero__orb">
+            <img src="https://gdi.ps.fhgdps.com/dashboard/icon.png" alt="GDIPS icon">
+          </div>
+          <span class="m3-hero__badge m3-hero__badge--tl"><i class="fas fa-desktop" aria-hidden="true"></i> PC build</span>
+          <span class="m3-hero__badge m3-hero__badge--br"><i class="fab fa-android" aria-hidden="true"></i> Android APK</span>
+        </div>
+      </div>
+    </section>
 
-        // Intersection Observer for card animations
-        const cards = document.querySelectorAll('.credit-card');
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
+    <section class="m3-container m3-section" id="downloads">
+      <div class="m3-section-head m3-reveal">
+        <div>
+          <h2 class="m3-section-head__title">Downloads</h2>
+          <p class="m3-section-head__sub">Files are hosted on Google Drive and GitHub releases.</p>
+        </div>
+        <span class="m3-badge m3-badge--outline"><i class="fas fa-cube" aria-hidden="true"></i> 4 packages</span>
+      </div>
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, observerOptions);
+      <div class="m3-grid m3-grid--2">
+        <article class="m3-card m3-card--elevated m3-reveal">
+          <div class="gd-download">
+            <div class="gd-download__head">
+              <span class="gd-card-icon"><i class="fas fa-desktop" aria-hidden="true"></i></span>
+              <div>
+                <h3 class="gd-download__title">GDIPS 2.2 PC</h3>
+                <p class="gd-download__size">Desktop Edition · Windows</p>
+              </div>
+            </div>
+            <p class="m3-card__text">
+              Full desktop build for Windows. No emulator needed — install and play
+              directly on your computer.
+            </p>
+            <div class="gd-download__actions">
+              <a class="m3-button" href="https://drive.google.com/uc?export=download&id=166YOk_03Mw8cZLgRuF7EpyH3Uaf9imK4" target="_blank" rel="noopener">
+                <i class="fas fa-download" aria-hidden="true"></i><span>Download for PC</span>
+              </a>
+            </div>
+          </div>
+        </article>
 
-        cards.forEach(card => {
-            card.style.opacity = '0';
-            card.style.transform = 'translateY(20px)';
-            card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-            observer.observe(card);
-        });
-    </script>
+        <article class="m3-card m3-card--elevated m3-reveal" data-m3-reveal-delay="60">
+          <div class="gd-download">
+            <div class="gd-download__head">
+              <span class="gd-card-icon"><i class="fab fa-android" aria-hidden="true"></i></span>
+              <div>
+                <h3 class="gd-download__title">GDIPS 2.2 APK</h3>
+                <p class="gd-download__size">Main application · Android</p>
+              </div>
+            </div>
+            <p class="m3-card__text">
+              The main GDIPS app. Includes all core features and levels. Use Geode for
+              additional modding capabilities.
+            </p>
+            <div class="gd-download__actions">
+              <a class="m3-button" href="https://github.com/flessan/gdips/releases/download/v1.0.4/Gdips.id.apk">
+                <i class="fas fa-download" aria-hidden="true"></i><span>Download now</span>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <article class="m3-card m3-card--elevated m3-reveal">
+          <div class="gd-download">
+            <div class="gd-download__head">
+              <span class="gd-card-icon" style="background:var(--m3-tertiary-container);color:var(--m3-on-tertiary-container)"><i class="fas fa-puzzle-piece" aria-hidden="true"></i></span>
+              <div>
+                <h3 class="gd-download__title">Geode APK</h3>
+                <p class="gd-download__size">Mod loader · Android</p>
+              </div>
+            </div>
+            <p class="m3-card__text">
+              Essential mod loader for GDIPS. Enables mods, custom textures and advanced
+              features.
+            </p>
+            <div class="gd-download__actions">
+              <a class="m3-button m3-button--tonal" href="https://github.com/flessan/gdips/releases/download/v1.0.5/Gdips_geode.apk">
+                <i class="fab fa-github" aria-hidden="true"></i><span>Get the launcher</span>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <article class="m3-card m3-card--elevated m3-reveal" data-m3-reveal-delay="60">
+          <div class="gd-download">
+            <div class="gd-download__head">
+              <span class="gd-card-icon" style="background:var(--m3-secondary-container);color:var(--m3-on-secondary-container)"><i class="fas fa-palette" aria-hidden="true"></i></span>
+              <div>
+                <h3 class="gd-download__title">Freedomi</h3>
+                <p class="gd-download__size">Interface mod · Geode</p>
+              </div>
+            </div>
+            <p class="m3-card__text">
+              A custom interface mod for Geode. It changes the look and feel of your GDPS
+              experience.
+            </p>
+            <div class="gd-download__actions">
+              <a class="m3-button m3-button--tonal" href="https://github.com/flessan/GDIPS/releases/tag/v1.0.0">
+                <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i><span>View release</span>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <article class="m3-card m3-card--outlined m3-reveal" style="grid-column:1/-1">
+          <div class="gd-download">
+            <div class="gd-download__head">
+              <span class="gd-card-icon" style="background:var(--m3-surface-container-highest);color:var(--m3-on-surface-variant)"><i class="fas fa-bell" aria-hidden="true"></i></span>
+              <div>
+                <h3 class="gd-download__title">More content coming soon</h3>
+                <p class="gd-download__size">Bonus content</p>
+              </div>
+            </div>
+            <p class="m3-card__text">
+              We keep adding new content. Check back regularly for updates, mods and
+              special releases — or follow the community channels to get notified.
+            </p>
+            <div class="gd-download__actions">
+              <a class="m3-button m3-button--outlined" href="https://discord.com/invite/geometrydash" target="_blank" rel="noopener">
+                <i class="fab fa-discord" aria-hidden="true"></i><span>Stay in the loop</span>
+              </a>
+              <a class="m3-button m3-button--text" href="../../../feedback/index.html">
+                <i class="fas fa-comment-dots" aria-hidden="true"></i><span>Send feedback</span>
+              </a>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <div class="m3-banner m3-banner--info m3-reveal" style="margin-block-start:32px">
+        <i class="fas fa-circle-info" aria-hidden="true"></i>
+        <div>
+          <strong>Need help installing?</strong>
+          <span class="m3-card__text" style="display:block">The Geode APK must be installed before mods such as Freedomi. Android builds are unsigned test builds — allow installation from unknown sources.</span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="m3-footer">
+    <div class="m3-container">
+      <div class="m3-footer__grid">
+        <div>
+          <p class="m3-footer__brand">
+            <img src="https://gdi.ps.fhgdps.com/dashboard/icon.png" alt="">
+            GDIPS
+          </p>
+          <p style="margin-block-start:12px;max-width:38ch">
+            Geometry Dash Indonesia Private Server — free, community-run and open source.
+          </p>
+        </div>
+        <div>
+          <p class="m3-footer__heading">Site</p>
+          <div class="m3-footer__links">
+            <a href="../main/index.html">Our Team</a>
+            <a href="./index.html">Download</a>
+            <a href="../rating-system/index.html">Rating Standard</a>
+            <a href="../about/index.html">About</a>
+          </div>
+        </div>
+        <div>
+          <p class="m3-footer__heading">Community</p>
+          <div class="m3-footer__links">
+            <a href="../../../demonlist/index.html">Demon List</a>
+            <a href="../../../feedback/index.html">Feedback</a>
+            <a href="../../../wa.html">WhatsApp</a>
+            <a href="https://gdi.ps.fhgdps.com/dashboard" target="_blank" rel="noopener">Dashboard</a>
+          </div>
+        </div>
+      </div>
+      <div class="m3-footer__bottom">
+        <span>Made with <span style="color:var(--m3-primary)">❤</span> · All rights reserved · GDIPS <span class="gd-year">2025</span></span>
+        <span>Not affiliated with Geometry Dash or RobTop Games</span>
+      </div>
+    </div>
+  </footer>
+
+  <nav class="m3-nav-bar m3-show-below-md" aria-label="Primary">
+    <a class="m3-nav-bar__item" href="../main/index.html">
+      <span class="m3-nav-bar__icon"><i class="fas fa-people-group" aria-hidden="true"></i></span>
+      <span>Team</span>
+    </a>
+    <a class="m3-nav-bar__item" href="../../../tools.html">
+      <span class="m3-nav-bar__icon"><i class="fas fa-tools" aria-hidden="true"></i></span>
+      <span>Tools</span>
+    </a>
+    <a class="m3-nav-bar__item" href="../rating-system/index.html">
+      <span class="m3-nav-bar__icon"><i class="fas fa-star" aria-hidden="true"></i></span>
+      <span>Rating</span>
+    </a>
+    <a class="m3-nav-bar__item" href="./index.html" aria-current="page">
+      <span class="m3-nav-bar__icon"><i class="fas fa-download" aria-hidden="true"></i></span>
+      <span>Download</span>
+    </a>
+  </nav>
+
+  <script>
+    document.querySelectorAll('.gd-year').forEach(function (el) {
+      el.textContent = new Date().getFullYear();
+    });
+
+    (function () {
+      var toggle = document.getElementById('drawerTheme');
+      function sync() { toggle.checked = window.M3Color.theme() === 'dark'; }
+      toggle.addEventListener('change', function () { window.M3Color.setTheme(toggle.checked ? 'dark' : 'light'); });
+      document.documentElement.addEventListener('m3color:theme', sync);
+      sync();
+    })();
+  </script>
 </body>
-
 </html>

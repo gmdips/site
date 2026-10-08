@@ -1,331 +1,126 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="GDIPS - Geometry Dash Private Server paling bebas dari Indonesia." />
-  <title>GDIPS | Terms of Service</title>
-  <link rel="icon" href="https://gdi.ps.fhgdps.com/dashboard/icon.png" />
-  <link rel="manifest" href="./manifest.json" />
-  <!-- Font Awesome -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Terms of Service · GDIPS</title>
+  <meta name="description" content="GDIPS terms of service — the rules for using our services.">
+  <meta name="theme-color" content="#FFF7F6">
+  <link rel="icon" href="https://gdi.ps.fhgdps.com/dashboard/icon.png" type="image/png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,300..800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <style>
-    /* — VARIABLES & RESET — */
-    :root {
-      --primary: #5f6368;
-      --secondary: #80868b;
-      --dark: #202124;
-      --dark-alt: #303134;
-      --light: #e8eaed;
-      --accent: #8ab4f8;
-      --accent-hover: #aecbfa;
-      --radius: 8px;
-      --transition: all 0.2s ease;
-      --shadow: 0 1px 2px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.1);
-      --shadow-hover: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 8px rgba(0, 0, 0, 0.12);
-      font-size: clamp(14px, 1.2vw, 16px);
-    }
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: 'Roboto', 'Segoe UI', system-ui, sans-serif;
-      background: var(--dark);
-      color: var(--light);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 1rem;
-      min-height: 100vh;
-      line-height: 1.5;
-      background-image:
-        radial-gradient(circle at 10% 20%, rgba(66, 66, 66, 0.05) 0%, transparent 40%),
-        radial-gradient(circle at 90% 80%, rgba(66, 66, 66, 0.05) 0%, transparent 40%);
-    }
-
-    .container {
-      width: 100%;
-      max-width: 900px;
-      display: flex;
-      flex-direction: column;
-      gap: 2rem;
-    }
-
-    header {
-      text-align: center;
-      margin: 1.5rem 0;
-      padding: 0 1rem;
-    }
-
-    .logo-container {
-      display: flex;
-      justify-content: center;
-      margin-bottom: 1rem;
-    }
-
-    .icon {
-      width: 100px;
-      height: 100px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 2px solid var(--secondary);
-      box-shadow: var(--shadow);
-    }
-
-    .title {
-      font-size: clamp(1.8rem, 5vw, 2.5rem);
-      color: var(--light);
-      font-weight: 500;
-      margin-bottom: 0.5rem;
-      letter-spacing: -0.5px;
-    }
-
-    .subtitle {
-      color: var(--secondary);
-      font-size: clamp(0.9rem, 2.5vw, 1.1rem);
-      font-weight: 400;
-      max-width: 600px;
-      margin: 0 auto;
-      line-height: 1.6;
-    }
-
-    nav {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-      gap: 0.75rem;
-      margin-bottom: 1rem;
-    }
-
-    nav a {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 1rem 0.5rem;
-      border-radius: var(--radius);
-      background: var(--dark-alt);
-      color: var(--light);
-      text-decoration: none;
-      font-weight: 500;
-      transition: var(--transition);
-      border: 1px solid #3c4043;
-      text-align: center;
-      font-size: 0.9rem;
-      min-height: 80px;
-      box-shadow: var(--shadow);
-    }
-
-    nav a:hover,
-    nav a.active {
-      background: #3c4043;
-      border-color: var(--accent);
-      transform: translateY(-2px);
-      box-shadow: var(--shadow-hover);
-    }
-
-    nav a i {
-      font-size: 1.2rem;
-      margin-bottom: 0.5rem;
-      color: var(--accent);
-    }
-
-    .card {
-      background: var(--dark-alt);
-      border-radius: var(--radius);
-      padding: 1.5rem;
-      border: 1px solid #3c4043;
-      box-shadow: var(--shadow);
-    }
-
-    .card-header {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      margin-bottom: 1.25rem;
-    }
-
-    .card-header i {
-      font-size: 1.25rem;
-      color: var(--accent);
-    }
-
-    .card-title {
-      font-size: 1.25rem;
-      color: var(--light);
-      font-weight: 500;
-    }
-
-    .card-content {
-      color: var(--secondary);
-      line-height: 1.6;
-    }
-
-    footer {
-      margin-top: 2rem;
-      padding: 1.5rem 0;
-      font-size: 0.9rem;
-      color: var(--secondary);
-      text-align: center;
-      border-top: 1px solid #3c4043;
-      width: 100%;
-    }
-
-    .footer-links {
-      display: flex;
-      justify-content: center;
-      gap: 1.5rem;
-      margin-top: 0.75rem;
-      flex-wrap: wrap;
-    }
-
-    .footer-links a {
-      color: var(--secondary);
-      text-decoration: none;
-      transition: var(--transition);
-    }
-
-    .footer-links a:hover {
-      color: var(--accent);
-    }
-
-    @media (max-width: 768px) {
-      nav {
-        grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
-      }
-    }
-
-    @media (max-width: 480px) {
-      nav {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .card {
-        padding: 1.25rem;
-      }
-    }
-  </style>
+  <!-- Material You 3 design system -->
+  <link rel="stylesheet" href="../assets/m3/palettes.css">
+  <link rel="stylesheet" href="../assets/m3/tokens.css">
+  <link rel="stylesheet" href="../assets/m3/components.css">
+  <link rel="stylesheet" href="../assets/m3/site.css">
+  <link rel="stylesheet" href="../assets/m3/pages.css">
+  <script src="../assets/m3/color.js"></script>
+  <script src="../assets/m3/ui.js" defer></script>
 </head>
 
-<body>
-  <div class="container">
-    <header>
-      <div class="logo-container">
-        <img src="https://gdi.ps.fhgdps.com/dashboard/icon.png" class="icon" alt="FreedomGDPS Icon">
-      </div>
-      <h1 class="title">Terms of Service</h1>
-      <p class="subtitle">Please read the following terms and conditions of use before accessing our services.</p>
-    </header>
+<body class="m3-page">
+  <a class="m3-skip-link" href="#main">Skip to content</a>
 
-    <nav>
-      <a href="/index.html"><i class="fas fa-home"></i> Main Page</a>
-      <a href="/feedback/terms.html" class="active"><i class="fas fa-file-contract"></i> Terms of Service</a>
-      <a href="/feedback/faq.html"><i class="fas fa-question-circle"></i> FAQ</a>
-      <a href="/feedback/contact.html"><i class="fas fa-envelope"></i> Contact</a>
-    </nav>
-
-    <!-- Section: Introduction -->
-    <div class="card">
-      <div class="card-header">
-        <i class="fas fa-info-circle"></i>
-        <h2 class="card-title">1. Introduction</h2>
-      </div>
-      <div class="card-content">
-        Welcome to GDIPS. By accessing or using our services, you agree to be bound by these Terms and Conditions.
+  <header class="m3-app-bar">
+    <div class="m3-container m3-container--wide m3-app-bar__row">
+      <a class="m3-app-bar__title" href="../pages/en/main/index.html">
+        <span class="m3-app-bar__brand-mark"><img src="https://gdi.ps.fhgdps.com/dashboard/icon.png" alt=""></span>
+        <span>GDIPS</span>
+      </a>
+      <div class="m3-app-bar__actions">
+        <button type="button" class="m3-icon-button m3-theme-toggle m3-tooltip" data-tooltip="Toggle theme" aria-label="Switch theme">
+          <i class="fas fa-moon m3-theme-toggle__light" aria-hidden="true"></i>
+          <i class="fas fa-sun m3-theme-toggle__dark" aria-hidden="true"></i>
+        </button>
+        <a class="m3-button m3-button--tonal m3-hide-sm" href="../pages/en/main/index.html">
+          <i class="fas fa-house" aria-hidden="true"></i><span>GDIPS home</span>
+        </a>
       </div>
     </div>
+  </header>
 
-    <!-- Section: User Conduct -->
-    <div class="card">
-      <div class="card-header">
-        <i class="fas fa-user-shield"></i>
-        <h2 class="card-title">2. User Conduct</h2>
+  <main class="m3-main" id="main">
+    <section class="m3-container gd-page-head">
+      <span class="m3-hero__eyebrow" style="width:fit-content"><i class="fas fa-file-contract" aria-hidden="true"></i> Legal</span>
+      <h1 class="gd-page-head__title">Terms of Service</h1>
+      <p class="gd-page-head__lead">Please read the following terms and conditions of use before accessing our services.</p>
+    </section>
+
+    <section class="m3-container" style="padding-block-end:8px">
+      <nav class="m3-tabs" aria-label="Feedback pages">
+        <a class="m3-tab" href="./index.html"><i class="fas fa-table-list" aria-hidden="true"></i> Feedback</a>
+        <a class="m3-tab is-active" href="./terms.html" aria-current="page"><i class="fas fa-file-contract" aria-hidden="true"></i> Terms of Service</a>
+        <a class="m3-tab" href="./faq.html"><i class="fas fa-circle-question" aria-hidden="true"></i> FAQ</a>
+        <a class="m3-tab" href="./contact.html"><i class="fas fa-envelope" aria-hidden="true"></i> Contact</a>
+      </nav>
+    </section>
+
+    <section class="m3-container m3-section gd-legal" style="padding-block-start:24px">
+      <div class="m3-prose">
+        <section class="m3-panel m3-reveal">
+          <h2 class="m3-title-large"><i class="fas fa-circle-info m3-text-primary" aria-hidden="true"></i> 1. Introduction</h2>
+          <p>Welcome to GDIPS. By accessing or using our services, you agree to be bound by these Terms and Conditions.</p>
+        </section>
+
+        <section class="m3-panel m3-reveal">
+          <h2 class="m3-title-large"><i class="fas fa-user-shield m3-text-primary" aria-hidden="true"></i> 2. User Conduct</h2>
+          <ul>
+            <li>You are not allowed to cheat, hack, or exploit.</li>
+            <li>Content containing hate speech, pornography, or extreme violence is prohibited.</li>
+            <li>Maintain an attitude of mutual respect in the community.</li>
+          </ul>
+        </section>
+
+        <section class="m3-panel m3-reveal">
+          <h2 class="m3-title-large"><i class="fas fa-lightbulb m3-text-primary" aria-hidden="true"></i> 3. Intellectual Property</h2>
+          <p>All copyrights, trademarks and other content on this site are owned by GDIPS or its licensors. Pardon Robert Topala.</p>
+        </section>
+
+        <section class="m3-panel m3-reveal">
+          <h2 class="m3-title-large"><i class="fas fa-ban m3-text-primary" aria-hidden="true"></i> 4. Termination</h2>
+          <p>We reserve the right to terminate or suspend your account and access if you violate these terms without notice.</p>
+        </section>
+
+        <section class="m3-panel m3-reveal">
+          <h2 class="m3-title-large"><i class="fas fa-triangle-exclamation m3-text-primary" aria-hidden="true"></i> 5. Disclaimer</h2>
+          <p>The service is provided “as is” without warranty of any kind. We are not liable for any damages resulting from use.</p>
+        </section>
+
+        <section class="m3-panel m3-reveal">
+          <h2 class="m3-title-large"><i class="fas fa-gavel m3-text-primary" aria-hidden="true"></i> 6. Governing Law</h2>
+          <p>These terms are governed by the laws of the Republic of Indonesia. Disputes will be resolved through Indonesian legal channels.</p>
+        </section>
+
+        <section class="m3-panel m3-reveal">
+          <h2 class="m3-title-large"><i class="fas fa-rotate m3-text-primary" aria-hidden="true"></i> 7. Changes</h2>
+          <p>We may change these Terms at any time. Changes will be posted on this page and will be effective when posted.</p>
+        </section>
       </div>
-      <div class="card-content">
-        <ul>
-          <li>You are not allowed to cheat, hack, or exploit..</li>
-          <li>Content containing hate speech, pornography, or extreme violence is prohibited (maybe).</li>
-          <li>Maintain an attitude of mutual respect in the community.</li>
-        </ul>
+    </section>
+  </main>
+
+  <footer class="m3-footer">
+    <div class="m3-container">
+      <div class="m3-footer__bottom" style="margin-block-start:0;border-block-start:none">
+        <span>Website by Fless · GDIPS © <span class="gd-year">2025</span></span>
+        <span class="m3-row">
+          <a href="./faq.html">FAQ</a>
+          <a href="./contact.html">Contact</a>
+          <a href="https://stats.uptimerobot.com/wpCeS1LMcH" target="_blank" rel="noopener">Server status</a>
+        </span>
       </div>
     </div>
-
-    <!-- Section: Intellectual Property -->
-    <div class="card">
-      <div class="card-header">
-        <i class="fas fa-lightbulb"></i>
-        <h2 class="card-title">3. Intellectual Property</h2>
-      </div>
-      <div class="card-content">
-        All copyrights, trademarks and other content on this site are owned by GDIPS or its licensors. Pardon Robert
-        Topala
-      </div>
-    </div>
-
-    <!-- Section: Termination -->
-    <div class="card">
-      <div class="card-header">
-        <i class="fas fa-ban"></i>
-        <h2 class="card-title">4. Termination</h2>
-      </div>
-      <div class="card-content">
-        We reserve the right to terminate or suspend your account and access if you violate these terms without notice.
-      </div>
-    </div>
-
-    <!-- Section: Disclaimer -->
-    <div class="card">
-      <div class="card-header">
-        <i class="fas fa-exclamation-triangle"></i>
-        <h2 class="card-title">5. Disclaimer</h2>
-      </div>
-      <div class="card-content">
-        The Service is provided “as is” without warranty of any kind. We are not liable for any damages resulting from
-        use.
-      </div>
-    </div>
-
-    <!-- Section: Governing Law -->
-    <div class="card">
-      <div class="card-header">
-        <i class="fas fa-gavel"></i>
-        <h2 class="card-title">6. Governing Law</h2>
-      </div>
-      <div class="card-content">
-        These terms are governed by the laws of the Republic of Indonesia. Disputes will be resolved through Indonesian
-        legal channels.
-      </div>
-    </div>
-
-    <!-- Section: Changes -->
-    <div class="card">
-      <div class="card-header">
-        <i class="fas fa-sync-alt"></i>
-        <h2 class="card-title">7. Changes</h2>
-      </div>
-      <div class="card-content">
-        We may change these Terms at any time. Changes will be posted on this page and will be effective when posted.
-      </div>
-    </div>
-
-    <footer>
-      <p>Website by Fless • GDIPS &copy; <span id="year"></span></p>
-      <div class="footer-links">
-        <a href="/feedback/terms.html"><i class="fas fa-file-contract"></i> Terms of Service</a>
-        <a href="/feedback/faq.html"><i class="fas fa-question-circle"></i> FAQ</a>
-        <a href="/feedback/contact.html"><i class="fas fa-envelope"></i> Contact</a>
-        <a href="https://stats.uptimerobot.com/wpCeS1LMcH"><i class="fas fa-server"></i> Server Status</a>
-      </div>
-    </footer>
-  </div>
+  </footer>
 
   <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
+    document.querySelectorAll('.gd-year').forEach(function (el) {
+      el.textContent = new Date().getFullYear();
+    });
   </script>
 </body>
-
 </html>

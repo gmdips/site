@@ -1,313 +1,167 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="GDIPS - Geometry Dash Private Server paling bebas dari Indonesia." />
-  <title>GDIPS | Contacts</title>
-  <link rel="icon" href="https://gdi.ps.fhgdps.com/dashboard/icon.png" />
-  <link rel="manifest" href="./manifest.json" />
-  <!-- Font Awesome -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contacts · GDIPS</title>
+  <meta name="description" content="Contact GDIPS — direct messages and community chat links.">
+  <meta name="theme-color" content="#FFF7F6">
+  <link rel="icon" href="https://gdi.ps.fhgdps.com/dashboard/icon.png" type="image/png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,300..800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <style>
-    /* — VARIABLES & RESET — */
-    :root {
-      --primary: #5f6368;
-      --secondary: #80868b;
-      --dark: #202124;
-      --dark-alt: #303134;
-      --light: #e8eaed;
-      --accent: #8ab4f8;
-      --accent-hover: #aecbfa;
-      --radius: 8px;
-      --transition: all 0.2s ease;
-      --shadow: 0 1px 2px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.1);
-      --shadow-hover: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 8px rgba(0, 0, 0, 0.12);
-      font-size: clamp(14px, 1.2vw, 16px);
-    }
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: 'Roboto', 'Segoe UI', system-ui, sans-serif;
-      background: var(--dark);
-      color: var(--light);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 1rem;
-      min-height: 100vh;
-      line-height: 1.5;
-      background-image:
-        radial-gradient(circle at 10% 20%, rgba(66, 66, 66, 0.05) 0%, transparent 40%),
-        radial-gradient(circle at 90% 80%, rgba(66, 66, 66, 0.05) 0%, transparent 40%);
-    }
-
-    .container {
-      width: 100%;
-      max-width: 900px;
-      display: flex;
-      flex-direction: column;
-      gap: 2rem;
-    }
-
-    header {
-      text-align: center;
-      margin: 1.5rem 0;
-      padding: 0 1rem;
-    }
-
-    .logo-container {
-      display: flex;
-      justify-content: center;
-      margin-bottom: 1rem;
-    }
-
-    .icon {
-      width: 100px;
-      height: 100px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 2px solid var(--secondary);
-      box-shadow: var(--shadow);
-    }
-
-    .title {
-      font-size: clamp(1.8rem, 5vw, 2.5rem);
-      color: var(--light);
-      font-weight: 500;
-      margin-bottom: 0.5rem;
-      letter-spacing: -0.5px;
-    }
-
-    .subtitle {
-      color: var(--secondary);
-      font-size: clamp(0.9rem, 2.5vw, 1.1rem);
-      font-weight: 400;
-      max-width: 600px;
-      margin: 0 auto;
-      line-height: 1.6;
-    }
-
-    nav {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-      gap: 0.75rem;
-      margin-bottom: 1rem;
-    }
-
-    nav a {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 1rem 0.5rem;
-      border-radius: var(--radius);
-      background: var(--dark-alt);
-      color: var(--light);
-      text-decoration: none;
-      font-weight: 500;
-      transition: var(--transition);
-      border: 1px solid #3c4043;
-      text-align: center;
-      font-size: 0.9rem;
-      min-height: 80px;
-      box-shadow: var(--shadow);
-    }
-
-    nav a:hover,
-    nav a.active {
-      background: #3c4043;
-      border-color: var(--accent);
-      transform: translateY(-2px);
-      box-shadow: var(--shadow-hover);
-    }
-
-    nav a i {
-      font-size: 1.2rem;
-      margin-bottom: 0.5rem;
-      color: var(--accent);
-    }
-
-    .card {
-      background: var(--dark-alt);
-      border-radius: var(--radius);
-      padding: 1.5rem;
-      border: 1px solid #3c4043;
-      box-shadow: var(--shadow);
-    }
-
-    .card-header {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      margin-bottom: 1.25rem;
-    }
-
-    .card-header i {
-      font-size: 1.25rem;
-      color: var(--accent);
-    }
-
-    .card-title {
-      font-size: 1.25rem;
-      color: var(--light);
-      font-weight: 500;
-    }
-
-    .card-content {
-      color: var(--secondary);
-      line-height: 1.6;
-    }
-
-    footer {
-      margin-top: 2rem;
-      padding: 1.5rem 0;
-      font-size: 0.9rem;
-      color: var(--secondary);
-      text-align: center;
-      border-top: 1px solid #3c4043;
-      width: 100%;
-    }
-
-    .footer-links {
-      display: flex;
-      justify-content: center;
-      gap: 1.5rem;
-      margin-top: 0.75rem;
-      flex-wrap: wrap;
-    }
-
-    .footer-links a {
-      color: var(--secondary);
-      text-decoration: none;
-      transition: var(--transition);
-    }
-
-    .footer-links a:hover {
-      color: var(--accent);
-    }
-
-    @media (max-width: 768px) {
-      nav {
-        grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
-      }
-    }
-
-    @media (max-width: 480px) {
-      nav {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .card {
-        padding: 1.25rem;
-      }
-    }
-  </style>
+  <!-- Material You 3 design system -->
+  <link rel="stylesheet" href="../assets/m3/palettes.css">
+  <link rel="stylesheet" href="../assets/m3/tokens.css">
+  <link rel="stylesheet" href="../assets/m3/components.css">
+  <link rel="stylesheet" href="../assets/m3/site.css">
+  <link rel="stylesheet" href="../assets/m3/pages.css">
+  <script src="../assets/m3/color.js"></script>
+  <script src="../assets/m3/ui.js" defer></script>
 </head>
 
-<body>
-  <div class="container">
-    <header>
-      <div class="logo-container">
-        <img src="https://gdi.ps.fhgdps.com/dashboard/icon.png" class="icon" alt="FreedomGDPS Icon">
-      </div>
-      <h1 class="title">Contacts</h1>
-      <p class="subtitle">This Page Shows All The Contacts You Can Call If Needed.</p>
-    </header>
+<body class="m3-page">
+  <a class="m3-skip-link" href="#main">Skip to content</a>
 
-    <nav>
-      <a href="/index.html"><i class="fas fa-home"></i> Main Page</a>
-      <a href="/feedback/terms.html"><i class="fas fa-file-contract"></i> Terms of Service</a>
-      <a href="/feedback/faq.html"><i class="fas fa-question-circle"></i> FAQ</a>
-      <a href="/feedback/contact.html" class="active"><i class="fas fa-envelope"></i> Contact</a>
-    </nav>
-    <!-- Gantilah bagian ini saja -->
-    <!-- Section: User Conduct -->
-    <div class="card">
-      <div class="card-header">
-        <i class="fas fa-user-shield"></i>
-        <h2 class="card-title">Direct Message</h2>
-      </div>
-      <div class="card-content">
-        <p>You can contact us directly through the following platforms:</p>
-        <ul style="list-style-type: disc; padding-left: 1.5rem; margin-top: 1rem;">
-          <li>
-            WhatsApp:
-            <a href="https://wa.me/qr/GCWWEYIQQ6UQI1" target="_blank"
-              style="color: var(--accent); text-decoration: underline;">
-              Click Here
-            </a>
-          </li>
-          <li>
-            Discord DM:
-            <a href="https://discordapp.com/users/776722084030054421" target="_blank"
-              style="color: var(--accent); text-decoration: underline;">
-              Click Here
-            </a>
-          </li>
-          <li>
-            Telegram DM:
-            <a href="https://t.me/ameliaptz" target="_blank" style="color: var(--accent); text-decoration: underline;">
-              Click Here
-            </a>
-          </li>
-        </ul>
+  <header class="m3-app-bar">
+    <div class="m3-container m3-container--wide m3-app-bar__row">
+      <a class="m3-app-bar__title" href="../pages/en/main/index.html">
+        <span class="m3-app-bar__brand-mark"><img src="https://gdi.ps.fhgdps.com/dashboard/icon.png" alt=""></span>
+        <span>GDIPS</span>
+      </a>
+      <div class="m3-app-bar__actions">
+        <button type="button" class="m3-icon-button m3-theme-toggle m3-tooltip" data-tooltip="Toggle theme" aria-label="Switch theme">
+          <i class="fas fa-moon m3-theme-toggle__light" aria-hidden="true"></i>
+          <i class="fas fa-sun m3-theme-toggle__dark" aria-hidden="true"></i>
+        </button>
+        <a class="m3-button m3-button--tonal m3-hide-sm" href="../pages/en/main/index.html">
+          <i class="fas fa-house" aria-hidden="true"></i><span>GDIPS home</span>
+        </a>
       </div>
     </div>
+  </header>
 
-    <!-- Section: Community Chat -->
-    <div class="card">
-      <div class="card-header">
-        <i class="fas fa-users"></i>
-        <h2 class="card-title">Community Chat</h2>
+  <main class="m3-main" id="main">
+    <section class="m3-container gd-page-head">
+      <span class="m3-hero__eyebrow" style="width:fit-content"><i class="fas fa-envelope" aria-hidden="true"></i> Contact</span>
+      <h1 class="gd-page-head__title">Get in touch</h1>
+      <p class="gd-page-head__lead">This page shows all the contacts you can reach if needed — direct messages first, community chats below.</p>
+    </section>
+
+    <section class="m3-container" style="padding-block-end:8px">
+      <nav class="m3-tabs" aria-label="Feedback pages">
+        <a class="m3-tab" href="./index.html"><i class="fas fa-table-list" aria-hidden="true"></i> Feedback</a>
+        <a class="m3-tab" href="./terms.html"><i class="fas fa-file-contract" aria-hidden="true"></i> Terms of Service</a>
+        <a class="m3-tab" href="./faq.html"><i class="fas fa-circle-question" aria-hidden="true"></i> FAQ</a>
+        <a class="m3-tab is-active" href="./contact.html" aria-current="page"><i class="fas fa-envelope" aria-hidden="true"></i> Contact</a>
+      </nav>
+    </section>
+
+    <section class="m3-container m3-section" style="padding-block-start:24px">
+      <h2 class="m3-section-head__title m3-reveal">Direct message</h2>
+      <p class="m3-section-head__sub m3-reveal" style="margin-block-end:20px">Reach the team privately on any of these platforms.</p>
+
+      <div class="gd-contact-list">
+        <a class="gd-contact-card m3-reveal" href="https://wa.me/qr/GCWWEYIQQ6UQI1" target="_blank" rel="noopener">
+          <span class="gd-card-icon" style="background:var(--m3-tertiary-container);color:var(--m3-on-tertiary-container)"><i class="fab fa-whatsapp" aria-hidden="true"></i></span>
+          <span>
+            <span class="m3-title-medium" style="display:block">WhatsApp</span>
+            <span class="m3-card__text">Message us directly on WhatsApp</span>
+          </span>
+          <i class="fas fa-arrow-up-right-from-square m3-text-muted" aria-hidden="true" style="margin-inline-start:auto"></i>
+        </a>
+
+        <a class="gd-contact-card m3-reveal" data-m3-reveal-delay="60" href="https://discordapp.com/users/776722084030054421" target="_blank" rel="noopener">
+          <span class="gd-card-icon"><i class="fab fa-discord" aria-hidden="true"></i></span>
+          <span>
+            <span class="m3-title-medium" style="display:block">Discord DM</span>
+            <span class="m3-card__text">Open a direct message on Discord</span>
+          </span>
+          <i class="fas fa-arrow-up-right-from-square m3-text-muted" aria-hidden="true" style="margin-inline-start:auto"></i>
+        </a>
+
+        <a class="gd-contact-card m3-reveal" href="https://t.me/ameliaptz" target="_blank" rel="noopener">
+          <span class="gd-card-icon" style="background:var(--m3-secondary-container);color:var(--m3-on-secondary-container)"><i class="fab fa-telegram" aria-hidden="true"></i></span>
+          <span>
+            <span class="m3-title-medium" style="display:block">Telegram DM</span>
+            <span class="m3-card__text">Send a message on Telegram</span>
+          </span>
+          <i class="fas fa-arrow-up-right-from-square m3-text-muted" aria-hidden="true" style="margin-inline-start:auto"></i>
+        </a>
+
+        <a class="gd-contact-card m3-reveal" data-m3-reveal-delay="60" href="./index.html">
+          <span class="gd-card-icon" style="background:var(--m3-surface-container-highest);color:var(--m3-on-surface-variant)"><i class="fas fa-comment-dots" aria-hidden="true"></i></span>
+          <span>
+            <span class="m3-title-medium" style="display:block">Feedback form</span>
+            <span class="m3-card__text">Send feedback the community can read</span>
+          </span>
+          <i class="fas fa-arrow-right m3-text-muted" aria-hidden="true" style="margin-inline-start:auto"></i>
+        </a>
       </div>
-      <div class="card-content">
-        <p>Join our FreedomGDPS communities here:</p>
-        <ul style="list-style-type: disc; padding-left: 1.5rem; margin-top: 1rem;">
-          <li>
-            WhatsApp Group:
-            <a href="https://chat.whatsapp.com/Fmh5DoSjbWkBje0ab3RAEF?mode=r_t" target="_blank"
-              style="color: var(--accent); text-decoration: underline;">
-              Join Here
-            </a>
-          </li>
-          <li>
-            Discord Server:
-            <a href="https://discord.gg/6HEyQBcM6E" target="_blank"
-              style="color: var(--accent); text-decoration: underline;">
-              Join Here
-            </a>
-          </li>
-          <li>
-            Telegram Channel:
-            <a href="https://t.me/freedomgdps" target="_blank"
-              style="color: var(--accent); text-decoration: underline;">
-              Follow Here
-            </a>
-          </li>
-        </ul>
+
+      <h2 class="m3-section-head__title m3-reveal" style="margin-block-start:40px">Community chat</h2>
+      <p class="m3-section-head__sub m3-reveal" style="margin-block-end:20px">Join the FreedomGDPS communities.</p>
+
+      <div class="gd-contact-list">
+        <a class="gd-contact-card m3-reveal" href="https://chat.whatsapp.com/Fmh5DoSjbWkBje0ab3RAEF?mode=r_t" target="_blank" rel="noopener">
+          <span class="gd-card-icon" style="background:var(--m3-tertiary-container);color:var(--m3-on-tertiary-container)"><i class="fab fa-whatsapp" aria-hidden="true"></i></span>
+          <span>
+            <span class="m3-title-medium" style="display:block">WhatsApp group</span>
+            <span class="m3-card__text">Daily chat and announcements</span>
+          </span>
+          <i class="fas fa-arrow-up-right-from-square m3-text-muted" aria-hidden="true" style="margin-inline-start:auto"></i>
+        </a>
+
+        <a class="gd-contact-card m3-reveal" data-m3-reveal-delay="60" href="https://discord.gg/6HEyQBcM6E" target="_blank" rel="noopener">
+          <span class="gd-card-icon"><i class="fab fa-discord" aria-hidden="true"></i></span>
+          <span>
+            <span class="m3-title-medium" style="display:block">Discord server</span>
+            <span class="m3-card__text">Levels, events and mods</span>
+          </span>
+          <i class="fas fa-arrow-up-right-from-square m3-text-muted" aria-hidden="true" style="margin-inline-start:auto"></i>
+        </a>
+
+        <a class="gd-contact-card m3-reveal" href="https://t.me/freedomgdps" target="_blank" rel="noopener">
+          <span class="gd-card-icon" style="background:var(--m3-secondary-container);color:var(--m3-on-secondary-container)"><i class="fab fa-telegram" aria-hidden="true"></i></span>
+          <span>
+            <span class="m3-title-medium" style="display:block">Telegram channel</span>
+            <span class="m3-card__text">Follow updates</span>
+          </span>
+          <i class="fas fa-arrow-up-right-from-square m3-text-muted" aria-hidden="true" style="margin-inline-start:auto"></i>
+        </a>
+
+        <a class="gd-contact-card m3-reveal" data-m3-reveal-delay="60" href="https://stats.uptimerobot.com/wpCeS1LMcH" target="_blank" rel="noopener">
+          <span class="gd-card-icon" style="background:var(--m3-surface-container-highest);color:var(--m3-on-surface-variant)"><i class="fas fa-server" aria-hidden="true"></i></span>
+          <span>
+            <span class="m3-title-medium" style="display:block">Server status</span>
+            <span class="m3-card__text">Live uptime monitoring</span>
+          </span>
+          <i class="fas fa-arrow-up-right-from-square m3-text-muted" aria-hidden="true" style="margin-inline-start:auto"></i>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="m3-footer">
+    <div class="m3-container">
+      <div class="m3-footer__bottom" style="margin-block-start:0;border-block-start:none">
+        <span>Website by Fless · GDIPS © <span class="gd-year">2025</span></span>
+        <span class="m3-row">
+          <a href="./index.html">Feedback</a>
+          <a href="./terms.html">Terms</a>
+          <a href="./faq.html">FAQ</a>
+        </span>
       </div>
     </div>
-    <footer>
-      <p>Website by Fless • GDIPS &copy; <span id="year"></span></p>
-      <div class="footer-links">
-        <a href="/feedback/terms.html"><i class="fas fa-file-contract"></i> Terms of Service</a>
-        <a href="/feedback/faq.html"><i class="fas fa-question-circle"></i> FAQ</a>
-        <a href="/feedback/contact.html"><i class="fas fa-envelope"></i> Contact</a>
-        <a href="https://stats.uptimerobot.com/wpCeS1LMcH"><i class="fas fa-server"></i> Server Status</a>
-      </div>
-    </footer>
-  </div>
+  </footer>
 
   <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
+    document.querySelectorAll('.gd-year').forEach(function (el) {
+      el.textContent = new Date().getFullYear();
+    });
   </script>
 </body>
-
 </html>

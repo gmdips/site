@@ -1,138 +1,251 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-  <title>About GDIPS</title>
-  <link rel="icon" href="https://gdi.ps.fhgdps.com/dashboard/icon.png" type="image/png" />
-  <link href="https://fonts.googleapis.com/css2?family=Fredoka&display=swap" rel="stylesheet">
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About · GDIPS</title>
+  <meta name="description" content="About GDIPS — a free, community driven Geometry Dash private server by Fless.">
+  <meta name="theme-color" content="#FFF7F6">
+  <link rel="icon" href="https://gdi.ps.fhgdps.com/dashboard/icon.png" type="image/png">
 
-    body {
-      font-family: 'Fredoka', sans-serif;
-      background: #0a0f2c url('https://www.transparenttextures.com/patterns/stardust.png');
-      animation: bgMove 30s linear infinite;
-      color: #fff;
-      padding: 1rem;
-    }
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,300..800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    @keyframes bgMove {
-      0% {
-        background-position: 0 0;
-      }
-
-      100% {
-        background-position: 1000px 0;
-      }
-    }
-
-    a.back {
-      display: inline-block;
-      margin-bottom: 1rem;
-      color: #4fc3f7;
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    h1 {
-      text-align: center;
-      font-size: 2rem;
-      color: #fff;
-      margin-bottom: 1rem;
-    }
-
-    h1 img {
-      width: 32px;
-      vertical-align: middle;
-      margin-right: 10px;
-    }
-
-    .nav-scroll {
-      display: flex;
-      gap: 0.5rem;
-      overflow-x: auto;
-      padding-bottom: 1rem;
-      margin-bottom: 1rem;
-      scrollbar-width: none;
-      -ms-overflow-style: none;
-    }
-
-    .nav-scroll::-webkit-scrollbar {
-      display: none;
-    }
-
-    .nav-scroll a {
-      white-space: nowrap;
-      flex: 0 0 auto;
-      background: #1c2541;
-      padding: 0.6rem 1.2rem;
-      border-radius: 20px;
-      color: #fff;
-      font-weight: bold;
-      text-decoration: none;
-      border: 1px solid #4fc3f7;
-      transition: background 0.3s;
-    }
-
-    .nav-scroll a:hover {
-      background: #4fc3f7;
-      color: #000;
-    }
-
-    .content {
-      max-width: 800px;
-      margin: auto;
-      background: #1c1f2e;
-      padding: 1.5rem;
-      border-radius: 12px;
-      box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
-      line-height: 1.7;
-    }
-
-    footer {
-      text-align: center;
-      margin-top: 2rem;
-      font-size: 0.85rem;
-      color: #999;
-    }
-  </style>
+  <!-- Material You 3 design system -->
+  <link rel="stylesheet" href="../../../assets/m3/palettes.css">
+  <link rel="stylesheet" href="../../../assets/m3/tokens.css">
+  <link rel="stylesheet" href="../../../assets/m3/components.css">
+  <link rel="stylesheet" href="../../../assets/m3/site.css">
+  <link rel="stylesheet" href="../../../assets/m3/pages.css">
+  <script src="../../../assets/m3/color.js"></script>
+  <script src="../../../assets/m3/ui.js" defer></script>
 </head>
 
-<body>
-  <a href="/" class="back">&larr; Back to Home</a>
-  <h1><img src="https://gdi.ps.fhgdps.com/dashboard/icon.png" alt="Logo">About FreedomGDPS</h1>
+<body class="m3-page">
+  <a class="m3-skip-link" href="#main">Skip to content</a>
 
-  <div class="nav-scroll">
-    <a href="https://gdips.pages.dev/demonlist">🔥 Demonlist</a>
-    <a href="https://frgd.ps.fhgdps.com/gauntlet">🛡️ Gauntlet Submission</a>
-    <a href="https://gdips.pages.dev/rate">📊 Rate Standar</a>
-    <a href="https://gdips.pages.dev/download">📥 Download Page</a>
-    <a href="https://gdips.pages.dev/social">🌐 Social</a>
-    <a href="https://gdips.pages.dev/tools">🧰 Tools Page</a>
-    <a href="https://gdips.pages.dev/privacy">🔐 Privacy Policy</a>
-  </div>
+  <header class="m3-app-bar">
+    <div class="m3-container m3-container--wide m3-app-bar__row">
+      <button type="button" class="m3-icon-button" data-m3-drawer-toggle="#navDrawer" aria-label="Open menu" aria-controls="navDrawer">
+        <i class="fas fa-bars" aria-hidden="true"></i>
+      </button>
+      <a class="m3-app-bar__title" href="../main/index.html">
+        <span class="m3-app-bar__brand-mark"><img src="https://gdi.ps.fhgdps.com/dashboard/icon.png" alt=""></span>
+        <span>GDIPS</span>
+      </a>
+      <div class="m3-app-bar__actions">
+        <a class="m3-icon-button m3-tooltip m3-hide-sm" data-tooltip="Bahasa Indonesia" href="../../id/about/index.html" aria-label="Switch to Bahasa Indonesia">
+          <i class="fas fa-language" aria-hidden="true"></i>
+        </a>
+        <button type="button" class="m3-icon-button m3-theme-toggle m3-tooltip" data-tooltip="Toggle theme" aria-label="Switch theme">
+          <i class="fas fa-moon m3-theme-toggle__light" aria-hidden="true"></i>
+          <i class="fas fa-sun m3-theme-toggle__dark" aria-hidden="true"></i>
+        </button>
+        <a class="m3-button m3-hide-sm" href="../download/index.html">
+          <i class="fas fa-download" aria-hidden="true"></i><span>Download</span>
+        </a>
+      </div>
+    </div>
+  </header>
 
-  <div class="content">
-    <p><strong>GDIPS</strong> adalah Geometry Dash Private Server (GDPS) yang dikembangkan oleh Fless dengan semangat
-      kebebasan, kreativitas, dan komunitas. Di FreedomGDPS, kamu bisa:</p>
-    <ul>
-      <li>Membuat dan membagikan level unikmu sendiri tanpa batasan ketat.</li>
-      <li>Mengakses fitur-fitur keren seperti UploadSong, Gauntlet, DemonList, dan masih banyak lagi!</li>
-      <li>Bergabung dengan komunitas yang aktif melalui Discord dan media sosial kami.</li>
-      <li>Berpartisipasi dalam event, rate, dan kompetisi komunitas.</li>
-    </ul>
-    <p>GDIPS dibangun berdasarkan keinginan untuk menyediakan ruang bebas bagi para kreator Geometry Dash, tanpa harus
-      terikat pada aturan platform resmi. Semua bisa jadi sesuatu di sini!</p>
-    <p>Gabung dan jadilah bagian dari <strong>revolusi level builder!</strong> 🎮✨</p>
-  </div>
+  <div class="m3-scrim" data-m3-scrim-for="#navDrawer"></div>
 
-  <footer>&copy; 2025 GDIPS • Dibuat dengan ❤️ oleh Fless</footer>
+  <nav class="m3-drawer" id="navDrawer" aria-label="Main navigation">
+    <div class="m3-drawer__head">
+      <span class="m3-drawer__brand">
+        <img src="https://gdi.ps.fhgdps.com/dashboard/icon.png" alt="">
+        GDIPS
+      </span>
+      <button type="button" class="m3-icon-button" data-m3-drawer-close aria-label="Close menu">
+        <i class="fas fa-xmark" aria-hidden="true"></i>
+      </button>
+    </div>
+
+    <p class="m3-drawer__label">Site</p>
+    <a class="m3-drawer__item" href="../main/index.html"><i class="fas fa-people-group" aria-hidden="true"></i><span>Our Team</span></a>
+    <a class="m3-drawer__item" href="../download/index.html"><i class="fas fa-download" aria-hidden="true"></i><span>Download</span></a>
+    <a class="m3-drawer__item" href="../rating-system/index.html"><i class="fas fa-star" aria-hidden="true"></i><span>Rating Standard</span></a>
+    <a class="m3-drawer__item" href="../../../tools.html"><i class="fas fa-tools" aria-hidden="true"></i><span>Tools</span></a>
+    <a class="m3-drawer__item" href="./index.html" aria-current="page"><i class="fas fa-circle-info" aria-hidden="true"></i><span>About</span></a>
+
+    <p class="m3-drawer__label">Community</p>
+    <a class="m3-drawer__item" href="https://gdi.ps.fhgdps.com/dashboard" target="_blank" rel="noopener"><i class="fas fa-gamepad" aria-hidden="true"></i><span>Server dashboard</span></a>
+    <a class="m3-drawer__item" href="../../../demonlist/index.html"><i class="fas fa-fire" aria-hidden="true"></i><span>Demon List</span></a>
+    <a class="m3-drawer__item" href="../../../feedback/index.html"><i class="fas fa-comment-dots" aria-hidden="true"></i><span>Feedback</span></a>
+    <a class="m3-drawer__item" href="../../../wa.html"><i class="fab fa-whatsapp" aria-hidden="true"></i><span>WhatsApp group</span></a>
+
+    <p class="m3-drawer__label">Language</p>
+    <div class="m3-segmented" data-m3-segmented style="margin-inline:12px">
+      <button type="button" class="m3-segmented__item is-selected" data-value="en"><i class="fas fa-check" aria-hidden="true"></i> English</button>
+      <a class="m3-segmented__item" href="../../id/about/index.html" data-value="id">Indonesia</a>
+    </div>
+
+    <p class="m3-drawer__label">Appearance</p>
+    <div style="padding-inline:12px">
+      <label class="m3-switch" for="drawerTheme">
+        <input type="checkbox" id="drawerTheme">
+        <span>Dark theme</span>
+      </label>
+      <div class="m3-label-float" style="margin-block:12px 8px">Dynamic colour</div>
+      <div data-m3-color-picker></div>
+    </div>
+
+    <div class="m3-drawer__footer">
+      © <span class="gd-year">2025</span> GDIPS · Built with <i class="fas fa-heart" style="color:var(--m3-primary)" aria-hidden="true"></i> by the community
+    </div>
+  </nav>
+
+  <main class="m3-main m3-main--offset" id="main">
+    <section class="m3-container gd-page-head">
+      <span class="m3-hero__eyebrow" style="width:fit-content"><i class="fas fa-circle-info" aria-hidden="true"></i> About</span>
+      <h1 class="gd-page-head__title">About <em style="font-style:normal;color:var(--m3-primary)">GDIPS</em></h1>
+      <p class="gd-page-head__lead">
+        GDIPS — also known as FreedomGDPS — is a Geometry Dash private server built by
+        Fless with a spirit of freedom, creativity and community.
+      </p>
+
+      <div class="m3-chip-set" style="margin-block-start:8px">
+        <a class="m3-chip m3-chip--assist" href="../../../demonlist/index.html"><i class="fas fa-fire" aria-hidden="true"></i> Demon List</a>
+        <a class="m3-chip m3-chip--assist" href="https://frgd.ps.fhgdps.com/gauntlet" target="_blank" rel="noopener"><i class="fas fa-shield-halved" aria-hidden="true"></i> Gauntlet submission</a>
+        <a class="m3-chip m3-chip--assist" href="../rating-system/index.html"><i class="fas fa-star" aria-hidden="true"></i> Rating standard</a>
+        <a class="m3-chip m3-chip--assist" href="../download/index.html"><i class="fas fa-download" aria-hidden="true"></i> Download</a>
+        <a class="m3-chip m3-chip--assist" href="../../../wa.html"><i class="fas fa-globe" aria-hidden="true"></i> Community</a>
+        <a class="m3-chip m3-chip--assist" href="../../../tools.html"><i class="fas fa-tools" aria-hidden="true"></i> Tools</a>
+        <a class="m3-chip m3-chip--assist" href="https://gdips.pages.dev/privacy"><i class="fas fa-lock" aria-hidden="true"></i> Privacy policy</a>
+      </div>
+    </section>
+
+    <section class="m3-container m3-section" style="padding-block-start:0">
+      <div class="m3-split m3-split--reverse">
+        <aside class="m3-aside">
+          <div class="m3-card m3-card--filled" style="padding:var(--m3-space-5)">
+            <p class="m3-label-large m3-text-muted">At a glance</p>
+            <ul class="m3-list" style="padding:8px 0 0">
+              <li class="m3-list-item" style="min-height:44px"><span class="m3-list-item__headline">Founder</span><span class="m3-list-item__trailing">Fless</span></li>
+              <li class="m3-list-item" style="min-height:44px"><span class="m3-list-item__headline">Platform</span><span class="m3-list-item__trailing">GDPS Core</span></li>
+              <li class="m3-list-item" style="min-height:44px"><span class="m3-list-item__headline">Region</span><span class="m3-list-item__trailing">Indonesia 🇮🇩</span></li>
+              <li class="m3-list-item" style="min-height:44px"><span class="m3-list-item__headline">Access</span><span class="m3-list-item__trailing">Free</span></li>
+            </ul>
+            <a class="m3-button m3-button--tonal m3-button--full" style="margin-block-start:16px" href="https://gdi.ps.fhgdps.com/dashboard/register" target="_blank" rel="noopener">
+              <i class="fas fa-user-plus" aria-hidden="true"></i><span>Create an account</span>
+            </a>
+          </div>
+        </aside>
+
+        <div class="m3-panel m3-reveal">
+          <div class="m3-prose" style="max-width:none">
+            <p>
+              <strong>GDIPS</strong> is a Geometry Dash Private Server (GDPS) developed by
+              Fless with a spirit of freedom, creativity and community. On
+              FreedomGDPS you can:
+            </p>
+            <ul>
+              <li>Create and share your own unique levels without strict limitations.</li>
+              <li>Access cool features such as UploadSong, Gauntlet, DemonList and much more!</li>
+              <li>Join an active community through Discord and our social media.</li>
+              <li>Take part in events, rates and community competitions.</li>
+            </ul>
+            <p>
+              GDIPS was built out of the wish to provide a free space for Geometry Dash
+              creators, without being bound to the official platform rules. Anyone can
+              become something here!
+            </p>
+            <p>Join and be part of the <strong>level builder revolution!</strong> 🎮✨</p>
+          </div>
+
+          <div class="m3-grid m3-grid--3" style="margin-block-start:24px">
+            <div class="m3-tile">
+              <span class="m3-tile__icon"><i class="fas fa-cloud-arrow-up" aria-hidden="true"></i></span>
+              <p class="m3-tile__title">UploadSong</p>
+              <p class="m3-tile__text">Reupload the songs you love and keep them playable for everyone.</p>
+            </div>
+            <div class="m3-tile">
+              <span class="m3-tile__icon m3-tile__icon--secondary"><i class="fas fa-fire" aria-hidden="true"></i></span>
+              <p class="m3-tile__title">Demon List</p>
+              <p class="m3-tile__text">Community rankings for the hardest levels, with a dedicated leaderboard.</p>
+            </div>
+            <div class="m3-tile">
+              <span class="m3-tile__icon m3-tile__icon--tertiary"><i class="fas fa-people-group" aria-hidden="true"></i></span>
+              <p class="m3-tile__title">Community events</p>
+              <p class="m3-tile__text">Events, gauntlets and competitions hosted by the community, for the community.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="m3-footer">
+    <div class="m3-container">
+      <div class="m3-footer__grid">
+        <div>
+          <p class="m3-footer__brand">
+            <img src="https://gdi.ps.fhgdps.com/dashboard/icon.png" alt="">
+            GDIPS
+          </p>
+          <p style="margin-block-start:12px;max-width:38ch">
+            Geometry Dash Indonesia Private Server — free, community-run and open source.
+          </p>
+        </div>
+        <div>
+          <p class="m3-footer__heading">Site</p>
+          <div class="m3-footer__links">
+            <a href="../main/index.html">Our Team</a>
+            <a href="../download/index.html">Download</a>
+            <a href="../rating-system/index.html">Rating Standard</a>
+            <a href="./index.html">About</a>
+          </div>
+        </div>
+        <div>
+          <p class="m3-footer__heading">Community</p>
+          <div class="m3-footer__links">
+            <a href="../../../demonlist/index.html">Demon List</a>
+            <a href="../../../feedback/index.html">Feedback</a>
+            <a href="../../../wa.html">WhatsApp</a>
+            <a href="https://gdi.ps.fhgdps.com/dashboard" target="_blank" rel="noopener">Dashboard</a>
+          </div>
+        </div>
+      </div>
+      <div class="m3-footer__bottom">
+        <span>Made with <span style="color:var(--m3-primary)">❤</span> · All rights reserved · GDIPS <span class="gd-year">2025</span></span>
+        <span>Not affiliated with Geometry Dash or RobTop Games</span>
+      </div>
+    </div>
+  </footer>
+
+  <nav class="m3-nav-bar m3-show-below-md" aria-label="Primary">
+    <a class="m3-nav-bar__item" href="../main/index.html">
+      <span class="m3-nav-bar__icon"><i class="fas fa-people-group" aria-hidden="true"></i></span>
+      <span>Team</span>
+    </a>
+    <a class="m3-nav-bar__item" href="../../../tools.html">
+      <span class="m3-nav-bar__icon"><i class="fas fa-tools" aria-hidden="true"></i></span>
+      <span>Tools</span>
+    </a>
+    <a class="m3-nav-bar__item" href="../rating-system/index.html">
+      <span class="m3-nav-bar__icon"><i class="fas fa-star" aria-hidden="true"></i></span>
+      <span>Rating</span>
+    </a>
+    <a class="m3-nav-bar__item" href="../download/index.html">
+      <span class="m3-nav-bar__icon"><i class="fas fa-download" aria-hidden="true"></i></span>
+      <span>Download</span>
+    </a>
+  </nav>
+
+  <script>
+    document.querySelectorAll('.gd-year').forEach(function (el) {
+      el.textContent = new Date().getFullYear();
+    });
+
+    (function () {
+      var toggle = document.getElementById('drawerTheme');
+      function sync() { toggle.checked = window.M3Color.theme() === 'dark'; }
+      toggle.addEventListener('change', function () { window.M3Color.setTheme(toggle.checked ? 'dark' : 'light'); });
+      document.documentElement.addEventListener('m3color:theme', sync);
+      sync();
+    })();
+  </script>
 </body>
-
 </html>

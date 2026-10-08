@@ -1,398 +1,128 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-seed="crimson">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Leaderboard - GDIPS Demonlist</title>
+  <meta name="description" content="Top GDIPS demon list players ranked by points, completed demons and creator points">
+  <meta name="theme-color" content="#FFF7F6">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏆</text></svg>">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --primary: #ff4754;
-      --primary-dark: #e63e4a;
-      --secondary: #ff7b84;
-      --accent: #ffb74d;
-      --bg: #0f0f12;
-      --surface: #1a1a1f;
-      --surface-light: #24242b;
-      --text: #f0f0f0;
-      --text-muted: #b0b0b0;
-      --glow: rgba(255, 71, 84, 0.3);
-      --radius: 16px;
-      --radius-sm: 8px;
-      --shadow: 0 8px 24px rgba(0,0,0,0.4);
-      --easy: #4caf50;
-      --medium: #ff9800;
-      --hard: #f44336;
-      --insane: #9c27b0;
-      --extreme: #2196f3;
-      --gd-yellow: #ffcc00;
-      --gd-blue: #00a2ff;
-    }
-    * { margin:0; padding:0; box-sizing:border-box; transition: all 0.2s ease; }
-    body { font-family: 'Rubik', sans-serif; background: var(--bg); color: var(--text); min-height:100vh; display:flex; flex-direction:column; }
-    header { 
-      background: var(--surface); 
-      padding:1.5rem 1rem; 
-      position:sticky; 
-      top:0; 
-      z-index:100; 
-      box-shadow:0 4px 12px rgba(0,0,0,0.3); 
-    }
-    .header-container { 
-      max-width:1200px; 
-      margin:0 auto; 
-      display:flex; 
-      align-items:center; 
-      justify-content:space-between; 
-      gap: 2rem;
-      flex-wrap: wrap;
-      animation: fadeInDown 0.7s cubic-bezier(0.77, 0, 0.175, 1);
-    }
-    @keyframes fadeInDown {
-      0% {
-        opacity: 0;
-        transform: translateY(-40px);
-      }
-      100% {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-    .header-logo {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      cursor: pointer;
-      user-select: none;
-    }
-    .header-logo img {
-      max-height: 50px;
-      margin-bottom: 0;
-      border-radius: 50%;
-      background: var(--surface-light);
-      transition: transform 0.3s cubic-bezier(.7,0,.3,1);
-    }
-    .header-logo span {
-      font-size: 1.5rem;
-      font-weight: 700;
-      background: linear-gradient(45deg, var(--primary), var(--accent));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      text-fill-color: transparent;
-      letter-spacing: 1px;
-      transition: text-shadow 0.3s;
-    }
-
-    /* Hamburger */
-    .hamburger {
-      display: none;
-      flex-direction: column;
-      justify-content: center;
-      width: 40px;
-      height: 40px;
-      background: transparent;
-      border: none;
-      cursor: pointer;
-      z-index: 200;
-      margin-left: 1rem;
-      position: relative;
-    }
-    .hamburger span {
-      display: block;
-      height: 4px;
-      width: 28px;
-      margin: 4px auto;
-      background: var(--primary);
-      border-radius: 2px;
-      transition: all 0.4s cubic-bezier(.7,0,.3,1);
-    }
-    .hamburger.open span:nth-child(1) {
-      transform: translateY(8px) rotate(45deg);
-    }
-    .hamburger.open span:nth-child(2) {
-      opacity: 0;
-    }
-    .hamburger.open span:nth-child(3) {
-      transform: translateY(-8px) rotate(-45deg);
-    }
-
-    nav {
-      display: flex;
-      gap: 1.5rem;
-      margin-top: 1rem;
-      align-items: center;
-      transition: max-height 0.3s cubic-bezier(.7,0,.3,1), opacity 0.3s;
-    }
-    nav a {
-      color: var(--text-muted);
-      text-decoration: none;
-      font-weight: 500;
-      padding: .5rem 1rem;
-      border-radius: var(--radius-sm);
-      display: flex;
-      align-items: center;
-      gap: .5rem;
-      transition: background 0.2s, color 0.2s;
-    }
-    nav a:hover, nav a.active {
-      color: var(--text);
-      background: var(--surface-light);
-    }
-    nav a.active { color: var(--primary); }
-
-    @media (max-width: 768px) {
-      .header-container { 
-        flex-direction: row; 
-        align-items: center; 
-        gap: 1rem;
-      }
-      .header-logo {
-        margin-right: auto;
-      }
-      .hamburger { 
-        display: flex; 
-      }
-      nav {
-        flex-direction: column;
-        gap: 0.5rem;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        right: 0;
-        background: var(--surface);
-        border-radius: 0 0 var(--radius) var(--radius);
-        box-shadow: 0 8px 24px rgba(0,0,0,0.3);
-        margin-top: .2rem;
-        padding: 1rem 0.5rem .7rem 0.5rem;
-        opacity: 0;
-        max-height: 0;
-        pointer-events: none;
-      }
-      nav.active {
-        opacity: 1;
-        max-height: 320px;
-        pointer-events: auto;
-        animation: fadeInMenu 0.3s;
-      }
-      @keyframes fadeInMenu {
-        from {
-          opacity: 0;
-          transform: translateY(-12px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-      main { padding: 1rem 0.25rem; }
-    }
-
-    main {
-      flex: 1;
-      padding: 2rem 1rem;
-      max-width: 1200px;
-      margin: 0 auto;
-      width: 100%;
-    }
-
-    .leaderboard-container {
-      background: var(--surface);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      overflow: hidden;
-      border: 1px solid rgba(255,255,255,0.05);
-    }
-    .leaderboard-header {
-      background: linear-gradient(90deg, var(--primary), var(--primary-dark));
-      padding: 1.5rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-    .leaderboard-header h2 {
-      font-size: 1.5rem;
-      font-weight: 700;
-      display: flex;
-      align-items: center;
-      gap: .8rem;
-    }
-    .leaderboard-controls {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-    }
-    .leaderboard-controls button, .leaderboard-controls input[type="text"] {
-      background: rgba(0,0,0,0.2);
-      border: none;
-      color: white;
-      padding: .5rem 1rem;
-      border-radius: var(--radius-sm);
-      font-size: 1rem;
-      outline: none;
-      display: flex;
-      align-items: center;
-      gap: .5rem;
-    }
-    .leaderboard-controls button:hover, .leaderboard-controls input[type="text"]:focus {
-      background: rgba(0,0,0,0.3);
-    }
-    .leaderboard-controls input[type="text"] {
-      border: 1px solid var(--surface-light);
-      background: var(--surface-light);
-      color: var(--text);
-      padding-left: 2.2rem;
-      width: 180px;
-      transition: width 0.2s;
-    }
-    .search-wrapper {
-      position: relative;
-      display: flex;
-      align-items: center;
-    }
-    .search-wrapper i {
-      position: absolute;
-      left: 0.7rem;
-      color: var(--text-muted);
-      pointer-events: none;
-      font-size: 1rem;
-    }
-
-    .leaderboard-table {
-      width: 100%;
-      border-collapse: collapse;
-      min-width: 600px;
-      font-size: 1.05rem;
-      background: var(--surface);
-    }
-    .leaderboard-table thead th {
-      background: var(--surface-light);
-      padding: 1rem;
-      text-align: left;
-      font-weight: 700;
-      color: var(--text-muted);
-      text-transform: uppercase;
-      font-size: .9rem;
-      letter-spacing: 1px;
-      border-bottom: 2px solid var(--primary-dark);
-      position: sticky;
-      top: 0;
-      z-index: 1;
-    }
-    .leaderboard-table td {
-      padding: 0.9rem 1rem;
-      border-bottom: 1px solid rgba(255,255,255,0.04);
-      vertical-align: middle;
-      font-weight: 500;
-      background: var(--surface);
-    }
-    .leaderboard-table tr:last-child td { border-bottom: none; }
-    .leaderboard-table tr:hover td { background: rgba(255,255,255,0.03); }
-
-    /* Medal styles for top 3 */
-    .rank-medal {
-      font-size: 1.3em;
-      font-weight: bold;
-      vertical-align: middle;
-      display: inline-block;
-      width: 1.7em;
-      text-align: center;
-      line-height: 1.2em;
-    }
-    .rank-1 { color: #ffd700; text-shadow: 0 0 7px #ffd70055; }
-    .rank-2 { color: #c0c0c0; text-shadow: 0 0 7px #c0c0c055; }
-    .rank-3 { color: #cd7f32; text-shadow: 0 0 7px #cd7f3255; }
-
-    @media (max-width: 900px) {
-      .leaderboard-table { min-width: 480px; font-size: .97rem;}
-      .leaderboard-table th, .leaderboard-table td { padding: 0.6rem 0.5rem; }
-      .leaderboard-header { flex-direction: column; gap: 1rem; align-items: flex-start; }
-      .leaderboard-controls { width: 100%; justify-content: flex-start; flex-direction: column; gap: 0.5rem; }
-    }
-    @media (max-width: 600px) {
-      .leaderboard-table { min-width: unset; font-size: .92rem;}
-      .leaderboard-container { margin: 0 -0.5rem; border-radius: 0; }
-      .leaderboard-header { padding: 1.2rem 0.5rem; }
-      .leaderboard-table th, .leaderboard-table td { padding: 0.45rem 0.3rem; }
-      .header-logo img { max-height: 40px; }
-      .header-logo span { font-size: 1.13rem; }
-    }
-
-    /* footer */
-    footer {
-      background: var(--surface);
-      color: var(--text-muted);
-      text-align: center;
-      padding: 2rem 1rem;
-      margin-top: auto;
-      font-size: .9rem;
-      border-top: 1px solid rgba(255,255,255,0.05);
-    }
-  </style>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,400;8..144,500;8..144,600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/m3/palettes.css">
+  <link rel="stylesheet" href="../assets/m3/tokens.css">
+  <link rel="stylesheet" href="../assets/m3/components.css">
+  <link rel="stylesheet" href="../assets/m3/site.css">
+  <link rel="stylesheet" href="styles.css">
+  <script src="../assets/m3/color.js"></script>
 </head>
-<body>
-  <header>
-    <div class="header-container">
-      <div class="header-logo" onclick="location.href='index.html'" title="Go to Demon List">
-        <img src="demon.png" alt="GDIDM Logo" />
+<body class="list-page" data-list="leaderboard">
+  <a class="skip-link" href="#main">Skip to leaderboard</a>
+
+  <header class="list-app-bar" id="appBar">
+    <div class="header-bar">
+      <a class="logo-wrap" href="index.html" aria-label="GDIPS Demon List home">
+        <img src="demon.png" alt="" width="44" height="44">
         <span>GDIPS Demon List</span>
-      </div>
-      <button class="hamburger" id="hamburgerBtn" aria-label="Open navigation" aria-expanded="false">
+      </a>
+
+      <button type="button" class="hamburger" id="hamburgerBtn" aria-label="Open navigation" aria-expanded="false" aria-controls="mainNav">
         <span></span>
         <span></span>
         <span></span>
       </button>
-      <nav id="mainNav">
-        <a href="index.html"><i class="fas fa-list"></i> Demon List</a>
-        <a href="submit.html"><i class="fas fa-plus-circle"></i> Submit Level</a>
-        <a href="info.html"><i class="fas fa-info-circle"></i> About</a>
-        <a href="best.html" class="active"><i class="fas fa-trophy"></i> Leaderboard</a>
+
+      <nav id="mainNav" aria-label="Main">
+        <a href="index.html"><i class="fas fa-list" aria-hidden="true"></i> Demon List</a>
+        <a href="pemonlist.html"><i class="fas fa-star" aria-hidden="true"></i> Pemon List</a>
+        <a href="impossiblelist.html"><i class="fas fa-skull-crossbones" aria-hidden="true"></i> Impossible List</a>
+        <a href="info.html"><i class="fas fa-info-circle" aria-hidden="true"></i> About</a>
+        <a href="best.html" class="active" aria-current="page"><i class="fas fa-trophy" aria-hidden="true"></i> Leaderboard</a>
       </nav>
+
+      <div class="header-actions">
+        <div class="m3-menu-anchor">
+          <button type="button" class="btn-icon" data-m3-menu-trigger="#bestSeedMenu" aria-haspopup="true" aria-expanded="false" aria-label="Dynamic colour">
+            <i class="fas fa-palette" aria-hidden="true"></i>
+          </button>
+          <div class="m3-menu m3-menu--end m3-menu--bottom list-menu" id="bestSeedMenu">
+            <p class="list-menu__head">Dynamic colour</p>
+            <div data-m3-color-picker></div>
+          </div>
+        </div>
+        <button type="button" class="btn-icon m3-theme-toggle" aria-label="Switch between light and dark theme">
+          <i class="fas fa-moon m3-theme-toggle__light" aria-hidden="true"></i>
+          <i class="fas fa-sun m3-theme-toggle__dark" aria-hidden="true"></i>
+        </button>
+      </div>
     </div>
   </header>
 
-  <main>
+  <main id="main" class="m3-main">
     <div class="leaderboard-container">
-      <div class="leaderboard-header">
-        <h2><i class="fas fa-trophy"></i> Top Players Leaderboard</h2>
+      <header class="leaderboard-header">
+        <div>
+          <h1><i class="fas fa-trophy" aria-hidden="true"></i> Top Players Leaderboard</h1>
+          <p class="leaderboard-sub">Ranked by weighted points across every verified GDIPS completion</p>
+        </div>
         <div class="leaderboard-controls">
-          <div class="search-wrapper">
-            <i class="fas fa-search"></i>
-            <input type="text" id="searchInput" placeholder="Search player...">
+          <div class="search-wrapper" role="search">
+            <i class="fas fa-search" aria-hidden="true"></i>
+            <label class="sr-only" for="searchInput">Search player</label>
+            <input type="text" id="searchInput" placeholder="Search player..." autocomplete="off">
           </div>
         </div>
-      </div>
-      <div style="overflow-x:auto;">
-      <table class="leaderboard-table">
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>Player</th>
-            <th>Points</th>
-            <th>Demons</th>
-            <th>CP</th>
-            <th>Last Record</th>
-          </tr>
-        </thead>
-        <tbody id="tableBody">
-          <tr><td colspan="6">Loading...</td></tr>
-        </tbody>
-      </table>
+      </header>
+
+      <div class="table-scroll">
+        <table class="leaderboard-table">
+          <caption class="sr-only">GDIPS demon list leaderboard</caption>
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Player</th>
+              <th scope="col">Points</th>
+              <th scope="col">Demons</th>
+              <th scope="col">CP</th>
+              <th scope="col">Last Record</th>
+            </tr>
+          </thead>
+          <tbody id="tableBody" aria-live="polite">
+            <tr><td colspan="6">Loading…</td></tr>
+          </tbody>
+        </table>
       </div>
     </div>
   </main>
 
-  <footer>
-    <p>© 2025 GDIPS Demon List | All Rights Reserved</p>
-    <p>Not affiliated with Geometry Dash or RobTop Games</p>
+  <footer class="list-footer">
+    <div class="footer-content">
+      <div class="footer-brand">
+        <i class="fas fa-trophy" aria-hidden="true"></i>
+        <span>GDIPS Demon List</span>
+      </div>
+      <nav class="footer-links" aria-label="Footer">
+        <a href="index.html" class="footer-link">Demon List</a>
+        <a href="pemonlist.html" class="footer-link">Pemon List</a>
+        <a href="impossiblelist.html" class="footer-link">Impossible List</a>
+        <a href="info.html" class="footer-link">About</a>
+      </nav>
+      <p class="footer-note">&copy; <span id="year">2025</span> GDIPS Demon List | All Rights Reserved &middot; Not affiliated with Geometry Dash or RobTop Games</p>
+    </div>
   </footer>
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
+  <script src="../assets/m3/ui.js" defer></script>
   <script>
+
+    (function () {    document.getElementById('year').textContent = new Date().getFullYear();
+
+    /* Mobile navigation */
     const hamburgerBtn = document.getElementById('hamburgerBtn');
     const mainNav = document.getElementById('mainNav');
-    hamburgerBtn.addEventListener('click', function() {
+    hamburgerBtn.addEventListener('click', function () {
       mainNav.classList.toggle('active');
       this.classList.toggle('open');
       this.setAttribute('aria-expanded', mainNav.classList.contains('active'));
@@ -406,6 +136,25 @@
         }
       });
     });
+
+    /* Scrolled app bar state */
+    (function () {
+      const bar = document.getElementById('appBar');
+      const onScroll = () => bar.classList.toggle('is-scrolled', window.scrollY > 8);
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+    })();
+
+    /* Colour menu trigger state */
+    document.querySelectorAll('.m3-menu').forEach(function (menu) {
+      var trigger = document.querySelector('[data-m3-menu-trigger="#' + menu.id + '"]');
+      if (!trigger) return;
+      new MutationObserver(function () {
+        trigger.setAttribute('aria-expanded', String(menu.classList.contains('is-open')));
+      }).observe(menu, { attributes: true, attributeFilter: ['class'] });
+    });
+
+    /* Leaderboard data */
     const csvUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vT4lg62rVOAXsMSWM38OXt5bWUJjWpJSoqmO7AgkYO3ABorCaKGYmC3R6pHqBGgzQ49KNQngzvUl3Aa/pub?gid=0&single=true&output=csv';
     const tableBody = document.getElementById('tableBody');
     const searchInput = document.getElementById('searchInput');
@@ -442,6 +191,10 @@
       const q = query.trim().toLowerCase();
       return allRows.filter(r => String(r.player).toLowerCase().includes(q));
     }
+    if (typeof Papa === 'undefined') {
+      tableBody.innerHTML = '<tr><td colspan="6">Failed to load data.</td></tr>';
+      return;
+    }
     Papa.parse(csvUrl, {
       download: true,
       header: true,
@@ -465,6 +218,7 @@
     searchInput.addEventListener('input', e => {
       renderRows(filterRows(e.target.value));
     });
+    })();
   </script>
 </body>
 </html>

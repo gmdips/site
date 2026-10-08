@@ -1,476 +1,222 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Boot Menu</title>
-    <style>
-        /* ========== CSS Variables ========== */
-        :root {
-            --bg: #0a0a0a;
-            --fg: #c8c8c8;
-            --fg-dim: #5a5a5a;
-            --accent: #e0e0e0;
-            --highlight-bg: rgba(255, 255, 255, 0.08);
-            --highlight-border: rgba(255, 255, 255, 0.15);
-            --cursor-color: #c8c8c8;
-            --boot-color: #8ae234;
-            --spacing-xs: 4px;
-            --spacing-sm: 8px;
-            --spacing-md: 16px;
-            --spacing-lg: 24px;
-            --font-main: 'Fira Code', 'Cascadia Code', Consolas, 'Courier New', monospace;
-            --font-size-base: clamp(14px, 1.6vw, 18px);
-            --font-size-sm: clamp(11px, 1.2vw, 14px);
-            --font-size-lg: clamp(16px, 2vw, 22px);
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GDIPS · Choose your entry</title>
+  <meta name="description" content="GDIPS — Geometry Dash Indonesia Private Server. Choose a language and boot into the site.">
+  <meta name="theme-color" content="#FFF7F6">
+  <link rel="icon" href="https://gdi.ps.fhgdps.com/dashboard/icon.png" type="image/png">
 
-        /* ========== Reset & Anti-Scroll ========== */
-        *,
-        *::before,
-        *::after {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,300..800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-        html,
-        body {
-            overflow: hidden;
-            width: 100vw;
-            height: 100vh;
-            background: var(--bg);
-            color: var(--fg);
-            font-family: var(--font-main);
-            font-size: var(--font-size-base);
-            line-height: 1.6;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-            /* Mencegah pull-to-refresh & bounce scroll di mobile */
-            overscroll-behavior: none;
-            touch-action: none;
-            user-select: none;
-        }
-
-        /* ========== Container Utama ========== */
-        .boot-screen {
-            width: 100%;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-        }
-
-        /* ========== Efek CRT Scanline (halus) ========== */
-        .boot-screen::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: repeating-linear-gradient(0deg,
-                    transparent,
-                    transparent 2px,
-                    rgba(0, 0, 0, 0.08) 2px,
-                    rgba(0, 0, 0, 0.08) 4px);
-            pointer-events: none;
-            z-index: 10;
-        }
-
-        /* ========== Panel Menu ========== */
-        .menu-container {
-            width: min(580px, 90vw);
-            position: relative;
-            z-index: 1;
-            transition: opacity 0.3s ease;
-        }
-
-        .menu-container.hidden {
-            opacity: 0;
-            pointer-events: none;
-        }
-
-        /* ========== Header Bootloader ========== */
-        .boot-header {
-            color: var(--fg-dim);
-            font-size: var(--font-size-sm);
-            margin-bottom: var(--spacing-lg);
-            padding-bottom: var(--spacing-md);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-            letter-spacing: 0.5px;
-        }
-
-        .boot-header .version {
-            color: var(--fg);
-            font-weight: 600;
-        }
-
-        /* ========== Item Menu ========== */
-        .menu-list {
-            list-style: none;
-            display: flex;
-            flex-direction: column;
-            gap: var(--spacing-xs);
-        }
-
-        .menu-item {
-            display: flex;
-            align-items: center;
-            padding: var(--spacing-sm) var(--spacing-md);
-            border: 1px solid transparent;
-            border-radius: 2px;
-            cursor: pointer;
-            transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
-            position: relative;
-            color: var(--fg-dim);
-            letter-spacing: 0.3px;
-            text-decoration: none;
-        }
-
-        .menu-item:focus {
-            outline: none;
-        }
-
-        .menu-item:hover {
-            background: var(--highlight-bg);
-            color: var(--fg);
-        }
-
-        .menu-item.active {
-            background: var(--highlight-bg);
-            border-color: var(--highlight-border);
-            color: var(--accent);
-        }
-
-        /* Indikator > pada item aktif */
-        .menu-item .indicator {
-            width: 1.4em;
-            text-align: center;
-            color: var(--accent);
-            opacity: 0;
-            transition: opacity 0.15s ease;
-            flex-shrink: 0;
-        }
-
-        .menu-item.active .indicator {
-            opacity: 1;
-        }
-
-        /* Label index [1], [2], [3] */
-        .menu-item .index-label {
-            color: var(--fg-dim);
-            margin-right: var(--spacing-sm);
-            font-size: var(--font-size-sm);
-            flex-shrink: 0;
-            min-width: 2em;
-        }
-
-        .menu-item.active .index-label {
-            color: var(--accent);
-        }
-
-        /* ========== Footer Hint ========== */
-        .boot-footer {
-            margin-top: var(--spacing-lg);
-            padding-top: var(--spacing-md);
-            border-top: 1px solid rgba(255, 255, 255, 0.06);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            color: var(--fg-dim);
-            font-size: var(--font-size-sm);
-        }
-
-        .boot-footer kbd {
-            display: inline-block;
-            padding: 1px 6px;
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            border-radius: 3px;
-            font-family: inherit;
-            font-size: 0.9em;
-            color: var(--fg);
-            background: rgba(255, 255, 255, 0.04);
-            margin: 0 2px;
-        }
-
-        /* ========== Kursor Berkedip ========== */
-        .cursor-blink {
-            display: inline-block;
-            width: 8px;
-            height: 1.2em;
-            background: var(--cursor-color);
-            vertical-align: text-bottom;
-            margin-left: 4px;
-            animation: blink 1s step-end infinite;
-        }
-
-        @keyframes blink {
-
-            0%,
-            100% {
-                opacity: 1;
-            }
-
-            50% {
-                opacity: 0;
-            }
-        }
-
-        /* ========== Area Boot Animation ========== */
-        .boot-output {
-            position: absolute;
-            inset: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 5;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.2s ease;
-        }
-
-        .boot-output.visible {
-            opacity: 1;
-        }
-
-        .boot-output-text {
-            color: var(--boot-color);
-            font-size: var(--font-size-lg);
-            white-space: nowrap;
-            min-height: 1.6em;
-        }
-
-        /* Loading dots animasi */
-        .loading-dots::after {
-            content: '';
-            animation: dots 1.5s steps(4, end) infinite;
-        }
-
-        @keyframes dots {
-            0% {
-                content: '';
-            }
-
-            25% {
-                content: '.';
-            }
-
-            50% {
-                content: '..';
-            }
-
-            75% {
-                content: '...';
-            }
-
-            100% {
-                content: '';
-            }
-        }
-
-        /* ========== Vignette Halus ========== */
-        .vignette {
-            position: fixed;
-            inset: 0;
-            background: radial-gradient(ellipse at center, transparent 50%, rgba(0, 0, 0, 0.5) 100%);
-            pointer-events: none;
-            z-index: 2;
-        }
-
-        /* ========== Reduced Motion ========== */
-        @media (prefers-reduced-motion: reduce) {
-            .cursor-blink {
-                animation: none;
-                opacity: 1;
-            }
-
-            .loading-dots::after {
-                animation: none;
-                content: '...';
-            }
-
-            .menu-item {
-                transition: none;
-            }
-        }
-    </style>
+  <!-- Material You 3 design system -->
+  <link rel="stylesheet" href="../assets/m3/palettes.css">
+  <link rel="stylesheet" href="../assets/m3/tokens.css">
+  <link rel="stylesheet" href="../assets/m3/components.css">
+  <link rel="stylesheet" href="../assets/m3/site.css">
+  <link rel="stylesheet" href="../assets/m3/pages.css">
+  <script src="../assets/m3/color.js"></script>
+  <script src="../assets/m3/ui.js" defer></script>
 </head>
 
-<body>
-    <!-- Vignette overlay untuk kedalaman visual -->
-    <div class="vignette" aria-hidden="true"></div>
+<body class="m3-page gd-boot-page">
+  <a class="m3-skip-link" href="#bootMenu">Skip to menu</a>
 
-    <main class="boot-screen" role="main">
+  <main class="gd-boot" id="main">
+    <div class="gd-boot__glow" aria-hidden="true">
+      <span class="gd-boot__orb gd-boot__orb--primary"></span>
+      <span class="gd-boot__orb gd-boot__orb--tertiary"></span>
+      <span class="gd-boot__grid"></span>
+    </div>
 
-        <!-- Panel menu utama -->
-        <div class="menu-container" id="menuContainer">
-            <!-- Header identitas bootloader -->
-            <header class="boot-header">
-                <span class="version">GDI </span>
-                <p style="font-size: 8px; position: relative; top: -6px;">Open-Source</p>v255 &ndash; entry pages
-            </header>
+    <div class="m3-container gd-boot__inner">
+      <header class="m3-app-bar__title gd-boot__brand">
+        <span class="m3-app-bar__brand-mark">
+          <img src="https://gdi.ps.fhgdps.com/dashboard/icon.png" alt="">
+        </span>
+        <span>
+          GDIPS
+          <span class="gd-boot__brand-sub">Open&nbsp;Source</span>
+        </span>
+        <span class="m3-badge m3-badge--outline m3-mono">v255</span>
+      </header>
 
-            <!-- Daftar menu boot -->
-            <div class="menu-list" id="menuList" role="listbox" aria-label="Boot menu">
-                <a href="./en/main/" class="menu-item active" role="option" aria-selected="true" data-index="0"
-                    tabindex="0">
-                    <span class="indicator">></span>
-                    <span class="index-label">[1]</span>
-                    <span class="item-text">English</span>
-                </a>
-                <a href="./id/utama/" class="menu-item" role="option" aria-selected="false" data-index="1"
-                    tabindex="-1">
-                    <span class="indicator">></span>
-                    <span class="index-label">[2]</span>
-                    <span class="item-text">Bahasa Indonesia</span>
-                </a>
-                <a href="https://github.com/gmdips/gmdips" class="menu-item" role="option" aria-selected="false"
-                    data-index="2" tabindex="-1">
-                    <span class="indicator">></span>
-                    <span class="index-label">[3]</span>
-                    <span class="item-text">Contribute</span>
-                </a>
-            </div>
-
-            <!-- Footer petunjuk tombol -->
-            <footer class="boot-footer">
-                <span><kbd>&uarr;</kbd><kbd>&darr;</kbd> select</span>
-                <span><kbd>Enter</kbd> boot</span>
-            </footer>
+      <section class="gd-boot__card m3-card m3-card--outlined m3-elevation-2" aria-labelledby="bootTitle">
+        <div class="gd-boot__card-head">
+          <p class="m3-label-large m3-text-muted">Entry pages · bootloader</p>
+          <h1 class="m3-display-small" id="bootTitle">Where do you want to go?</h1>
+          <p class="m3-body-medium m3-text-muted">
+            Pick a language to enter the GDIPS hub. Everything else — download, rating
+            standards, tools and the demon list — is one tap away.
+          </p>
         </div>
 
-        <!-- Area tampilan saat proses boot -->
-        <div class="boot-output" id="bootOutput" aria-live="polite">
-            <span class="boot-output-text" id="bootText"></span>
+        <div class="gd-boot__menu" id="bootMenu" role="listbox" aria-label="Boot menu">
+          <a href="./en/main/" class="gd-boot__item is-active" role="option" aria-selected="true" data-index="0" tabindex="0">
+            <span class="gd-boot__indicator" aria-hidden="true"><i class="fas fa-arrow-right"></i></span>
+            <span class="gd-boot__item-icon" aria-hidden="true"><i class="fas fa-globe"></i></span>
+            <span class="gd-boot__item-text">
+              <span class="gd-boot__item-title">English</span>
+              <span class="gd-boot__item-sub">Continue in English</span>
+            </span>
+            <span class="gd-boot__item-key m3-mono">1</span>
+          </a>
+
+          <a href="./id/utama/" class="gd-boot__item" role="option" aria-selected="false" data-index="1" tabindex="-1">
+            <span class="gd-boot__indicator" aria-hidden="true"><i class="fas fa-arrow-right"></i></span>
+            <span class="gd-boot__item-icon" aria-hidden="true"><i class="fas fa-flag"></i></span>
+            <span class="gd-boot__item-text">
+              <span class="gd-boot__item-title">Bahasa Indonesia</span>
+              <span class="gd-boot__item-sub">Lanjutkan dalam Bahasa Indonesia</span>
+            </span>
+            <span class="gd-boot__item-key m3-mono">2</span>
+          </a>
+
+          <a href="https://github.com/gmdips/gmdips" target="_blank" rel="noopener" class="gd-boot__item" role="option" aria-selected="false" data-index="2" tabindex="-1">
+            <span class="gd-boot__indicator" aria-hidden="true"><i class="fas fa-arrow-right"></i></span>
+            <span class="gd-boot__item-icon" aria-hidden="true"><i class="fab fa-github"></i></span>
+            <span class="gd-boot__item-text">
+              <span class="gd-boot__item-title">Contribute</span>
+              <span class="gd-boot__item-sub">Open the project on GitHub</span>
+            </span>
+            <span class="gd-boot__item-key m3-mono">3</span>
+          </a>
         </div>
 
-    </main>
+        <footer class="gd-boot__foot">
+          <span class="m3-row"><kbd>↑</kbd><kbd>↓</kbd> <span class="m3-text-muted m3-label-large">select</span></span>
+          <span class="m3-row"><kbd>Enter</kbd> <span class="m3-text-muted m3-label-large">boot</span></span>
+          <span class="m3-row gd-boot__theme">
+            <button type="button" class="m3-icon-button m3-theme-toggle m3-tooltip" data-tooltip="Toggle theme" aria-label="Switch theme">
+              <i class="fas fa-moon m3-theme-toggle__light" aria-hidden="true"></i>
+              <i class="fas fa-sun m3-theme-toggle__dark" aria-hidden="true"></i>
+            </button>
+          </span>
+        </footer>
+      </section>
+    </div>
 
-    <script>
-        /* ========== State Aplikasi ========== */
-        const items = document.querySelectorAll('.menu-item');
-        const menuContainer = document.getElementById('menuContainer');
-        const bootOutput = document.getElementById('bootOutput');
-        const bootText = document.getElementById('bootText');
-        let activeIndex = 0;
-        let isBooting = false; // Mencegah input saat animasi boot berjalan
+    <div class="gd-boot__output" id="bootOutput" aria-live="polite">
+      <div class="gd-boot__output-card">
+        <p class="gd-boot__output-text m3-mono" id="bootText"></p>
+        <div class="m3-progress-linear m3-progress-linear--indeterminate" role="progressbar" aria-label="Booting"></div>
+      </div>
+    </div>
+  </main>
 
-        /* ========== Fungsi Navigasi ========== */
+  <script>
+    /* ========== Application state (logic preserved) ========== */
+    const items = document.querySelectorAll('.gd-boot__item');
+    const menu = document.getElementById('bootMenu');
+    const bootOutput = document.getElementById('bootOutput');
+    const bootText = document.getElementById('bootText');
+    let activeIndex = 0;
+    let isBooting = false; // blocks input while the boot animation plays
 
-        // Pindahkan fokus ke item pada index tertentu
-        function setActive(index) {
-            if (isBooting) return;
-            // Batas atas/bawah (wrap-around)
-            if (index < 0) index = items.length - 1;
-            if (index >= items.length) index = 0;
-            activeIndex = index;
+    /* ========== Navigation ========== */
+    function setActive(index) {
+      if (isBooting) return;
+      if (index < 0) index = items.length - 1;
+      if (index >= items.length) index = 0;
+      activeIndex = index;
 
-            items.forEach((item, i) => {
-                const isActive = i === activeIndex;
-                item.classList.toggle('active', isActive);
-                item.setAttribute('aria-selected', isActive);
-                item.setAttribute('tabindex', isActive ? '0' : '-1');
-            });
+      items.forEach((item, i) => {
+        const isActive = i === activeIndex;
+        item.classList.toggle('is-active', isActive);
+        item.setAttribute('aria-selected', String(isActive));
+        item.setAttribute('tabindex', isActive ? '0' : '-1');
+      });
 
-            // Fokuskan elemen DOM agar screen reader mengikuti
-            items[activeIndex].focus();
-        }
+      items[activeIndex].focus({ preventScroll: true });
+    }
 
-        // Jalankan animasi boot untuk item yang dipilih
-        function bootSelected() {
-            if (isBooting) return;
-            isBooting = true;
+    /* Boot the selected entry */
+    function bootSelected() {
+      if (isBooting) return;
+      isBooting = true;
 
-            const item = items[activeIndex];
-            const label = item.querySelector('.item-text').textContent;
-            const targetUrl = item.getAttribute('href');
-            const message = `Booting ${label}`;
+      const item = items[activeIndex];
+      const label = item.querySelector('.gd-boot__item-title').textContent;
+      const targetUrl = item.getAttribute('href');
+      const message = `Booting ${label}`;
 
-            // Sembunyikan menu, tampilkan area boot
-            menuContainer.classList.add('hidden');
-            bootOutput.classList.add('visible');
+      menu.classList.add('is-hidden');
+      bootOutput.classList.add('is-visible');
 
-            // Efek ketikan satu karakter per saat
-            let charIndex = 0;
-            bootText.textContent = '';
+      let charIndex = 0;
+      bootText.textContent = '';
 
-            function typeChar() {
-                if (charIndex < message.length) {
-                    bootText.textContent += message[charIndex];
-                    charIndex++;
-                    setTimeout(typeChar, 35 + Math.random() * 25);
-                } else {
-                    // Setelah selesai mengetik, tambahkan loading dots
-                    bootText.classList.add('loading-dots');
-                    // Tunggu 1.5 detik, lalu pindah halaman
-                    setTimeout(() => {
-                        bootText.classList.remove('loading-dots');
-                        if (targetUrl && targetUrl !== '#') {
-                            window.location.href = targetUrl;
-                        } else {
-                            resetToMenu();
-                        }
-                    }, 1500);
-                }
+      (function typeChar() {
+        if (charIndex < message.length) {
+          bootText.textContent += message[charIndex++];
+          setTimeout(typeChar, 35 + Math.random() * 25);
+        } else {
+          bootText.classList.add('is-loading');
+          setTimeout(() => {
+            bootText.classList.remove('is-loading');
+            if (targetUrl && targetUrl !== '#') {
+              window.location.href = targetUrl;
+            } else {
+              resetToMenu();
             }
-
-            typeChar();
+          }, 1500);
         }
+      })();
+    }
 
-        // Kembalikan ke tampilan menu
-        function resetToMenu() {
-            bootOutput.classList.remove('visible');
-            bootText.textContent = '';
-            menuContainer.classList.remove('hidden');
-            isBooting = false;
-            setActive(activeIndex);
+    /* Return to the menu */
+    function resetToMenu() {
+      bootOutput.classList.remove('is-visible');
+      bootText.textContent = '';
+      menu.classList.remove('is-hidden');
+      isBooting = false;
+      setActive(activeIndex);
+    }
+
+    /* ========== Keyboard ========== */
+    document.addEventListener('keydown', (e) => {
+      if (isBooting) return;
+      switch (e.key) {
+        case 'ArrowUp':
+          e.preventDefault();
+          setActive(activeIndex - 1);
+          break;
+        case 'ArrowDown':
+          e.preventDefault();
+          setActive(activeIndex + 1);
+          break;
+        case 'Enter':
+          e.preventDefault();
+          bootSelected();
+          break;
+        case '1': case '2': case '3': {
+          e.preventDefault();
+          const idx = parseInt(e.key, 10) - 1;
+          if (idx >= 0 && idx < items.length) {
+            setActive(idx);
+            bootSelected();
+          }
+          break;
         }
+      }
+    });
 
-        /* ========== Event: Keyboard ========== */
-        document.addEventListener('keydown', (e) => {
-            if (isBooting) return;
+    /* ========== Pointer ========== */
+    items.forEach((item) => {
+      item.addEventListener('click', (e) => {
+        e.preventDefault();
+        const idx = parseInt(item.dataset.index, 10);
+        setActive(idx);
+        setTimeout(bootSelected, 80); // let the highlight register first
+      });
+    });
 
-            switch (e.key) {
-                case 'ArrowUp':
-                    e.preventDefault();
-                    setActive(activeIndex - 1);
-                    break;
-                case 'ArrowDown':
-                    e.preventDefault();
-                    setActive(activeIndex + 1);
-                    break;
-                case 'Enter':
-                    e.preventDefault();
-                    bootSelected();
-                    break;
-                // Shortcut angka 1-3 untuk langsung pilih
-                case '1': case '2': case '3': {
-                    e.preventDefault();
-                    const idx = parseInt(e.key) - 1;
-                    if (idx >= 0 && idx < items.length) {
-                        setActive(idx);
-                        bootSelected();
-                    }
-                    break;
-                }
-            }
-        });
-
-        /* ========== Event: Klik Mouse ========== */
-        items.forEach((item) => {
-            item.addEventListener('click', (e) => {
-                e.preventDefault();
-                const idx = parseInt(item.dataset.index);
-                setActive(idx);
-                // Sedikit delay supaya visual highlight terlihat dulu sebelum boot
-                setTimeout(bootSelected, 80);
-            });
-        });
-
-        /* ========== Inisialisasi ========== */
-        // Pastikan item pertama aktif saat halaman dimuat
-        setActive(0);
-    </script>
+    /* ========== Init ========== */
+    setActive(0);
+  </script>
 </body>
-
 </html>
