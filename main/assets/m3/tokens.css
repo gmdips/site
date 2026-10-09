@@ -6,6 +6,22 @@
    colour, so themes are fully dynamic.
    ========================================================================== */
 
+/* Self-hosted UI faces (no third-party font requests). Variable weight axes. */
+@font-face {
+  font-family: 'Roboto Flex';
+  src: url('../vendor/fonts/roboto-flex-latin-wght-normal.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 100 1000;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: url('../vendor/fonts/jetbrains-mono-latin-wght-normal.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 100 800;
+  font-display: swap;
+}
+
 /* Local display face used for GDIPS "game style" headlines (404, bootloader) */
 @font-face {
   font-family: 'Pusab';

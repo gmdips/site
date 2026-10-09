@@ -1452,8 +1452,11 @@ select.m3-field__input {
   align-items: center;
   gap: var(--m3-space-2);
   min-height: var(--m3-appbar-height);
-  padding-inline: var(--m3-space-2);
 }
+
+.m3-app-bar__row:not(.m3-container) { padding-inline: var(--m3-space-2); }
+/* Header and page body share one measure so their edges line up. */
+.m3-app-bar__row.m3-container--wide { max-width: var(--m3-content-max); }
 
 .m3-app-bar__title {
   display: flex;

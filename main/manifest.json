@@ -1,20 +1,18 @@
 {
   "name": "Geometry Dash Indonesia Private Server",
   "short_name": "GDIPS",
-  "start_url": "/",
+  "description": "GDIPS: Geometry Dash Indonesia Private Server, a free, community-run project.",
+  "id": "/pages/",
+  "start_url": "/pages/",
+  "scope": "/",
   "display": "standalone",
-  "background_color": "#121212",
-  "theme_color": "#4fc3f7",
+  "orientation": "any",
+  "background_color": "#FFF7F6",
+  "theme_color": "#C8102E",
+  "lang": "en",
   "icons": [
-    {
-      "src": "https://gdi.ps.fhgdps.com/dashboard/icon.png",
-      "sizes": "192x192",
-      "type": "image/png"
-    },
-    {
-      "src": "https://gdi.ps.fhgdps.com/dashboard/icon.png",
-      "sizes": "512x512",
-      "type": "image/png"
-    }
+    { "src": "/assets/brand/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/assets/brand/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "/assets/brand/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
   ]
 }

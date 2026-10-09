@@ -503,7 +503,9 @@
             function setupPrintFunctionality() {
                 const printBtn = document.createElement('button');
                 printBtn.className = 'action-btn';
-                printBtn.innerHTML = '<i class="fas fa-print"></i>';
+                printBtn.innerHTML = '<i class="fas fa-print" aria-hidden="true"></i>';
+                printBtn.title = 'Print';
+                printBtn.setAttribute('aria-label', 'Print');
                 printBtn.addEventListener('click', () => window.print());
                 
                 const controlsSection = document.querySelector('.controls-section .action-buttons');
@@ -684,13 +686,13 @@
                             <li>Missing Papa Parse library</li>
                         </ul>
                         <div class="error-actions">
-                            <button class="action-btn" onclick="DemonListApp.retryLoading()">
+                            <button class="action-btn action-btn--labelled" onclick="DemonListApp.retryLoading()">
                                 <i class="fas fa-redo"></i> Retry
                             </button>
-                            <button class="action-btn" onclick="DemonListApp.loadCachedData()">
+                            <button class="action-btn action-btn--labelled" onclick="DemonListApp.loadCachedData()">
                                 <i class="fas fa-database"></i> Use Cached Data
                             </button>
-                            <button class="action-btn" onclick="DemonListApp.loadSampleData()">
+                            <button class="action-btn action-btn--labelled" onclick="DemonListApp.loadSampleData()">
                                 <i class="fas fa-flask"></i> Load Sample Data
                             </button>
                         </div>

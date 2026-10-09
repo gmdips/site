@@ -105,3 +105,17 @@ pressed, disabled, loading and error states.
 
 `site.css` and the page stylesheets trim chrome (app bar, drawers, action rows,
 pagination, toasts) and switch to plain black-on-white surfaces for printing.
+
+## Brand, people and vendored assets
+
+Every asset the site needs is served from this repository. Nothing is loaded from a third-party CDN except the AdSense script.
+
+| Folder | Contents | Notes |
+| --- | --- | --- |
+| `assets/brand/` | `gdips-mark.svg` (master mark), `favicon.svg`, `favicon-32.png`, `apple-touch-icon.png`, `icon-192.png`, `icon-512.png`, `icon-maskable-512.png` | Icons are rendered from the SVG masters. Re-render them after editing the SVG. |
+| `assets/people/` | One SVG avatar per contributor (`<slug>.svg`) | Initials on a tonal background. To use real photos, drop an image at the same path with the same name. |
+| `assets/vendor/fontawesome/` | Font Awesome Free 6.4.0 CSS and the solid, regular and brands WOFF2 files | CC BY 4.0 icons, SIL OFL fonts, MIT code. See `LICENSE.txt`. |
+| `assets/vendor/papaparse/` | PapaParse 5.3.2 (MIT) | Used by the demon list and feedback apps to read published Google Sheets CSV. |
+| `assets/vendor/fonts/` | Roboto Flex and JetBrains Mono, variable WOFF2 (Latin) | Declared in `tokens.css` as `Roboto Flex` and `JetBrains Mono`. SIL OFL. |
+
+`sw.js` (site root) precaches the app shell and serves same-origin requests network-first. Cross-origin data, such as the Google Sheets CSV, is never cached by the service worker.

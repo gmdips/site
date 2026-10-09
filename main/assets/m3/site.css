@@ -155,6 +155,7 @@
   font-size: var(--m3-label-large-size);
   font-weight: var(--m3-label-large-weight);
   white-space: nowrap;
+  z-index: 1;
 }
 
 .m3-hero__badge--tl { inset-block-start: 4%; inset-inline-start: 0; }

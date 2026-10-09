@@ -1711,3 +1711,38 @@ img.lazy.loaded, img.lazy[src] { opacity: 1; }
 .leaderboard-table td[colspan] { text-align: center; color: var(--m3-on-surface-variant); padding-block: var(--m3-space-8); }
 .rank-1, .rank-2, .rank-3 { filter: drop-shadow(0 1px 1px rgb(0 0 0 / 0.25)); }
 .leaderboard-table tbody tr:nth-child(1) { background: color-mix(in srgb, var(--m3-tertiary) 10%, transparent); }
+
+/* ── Brand mark + labelled action buttons ─────────────────────────────── */
+.brand-mark {
+    display: block;
+    width: 32px;
+    height: 32px;
+    border-radius: 10px;
+    flex: 0 0 auto;
+    box-shadow: 0 2px 8px rgba(156, 10, 34, 0.25);
+}
+.brand-mark--sm {
+    width: 24px;
+    height: 24px;
+    border-radius: 7px;
+    box-shadow: none;
+}
+.action-btn.action-btn--labelled {
+    width: auto;
+    height: auto;
+    min-height: 40px;
+    padding: 8px 18px;
+    border-radius: 999px;
+    gap: 8px;
+    white-space: nowrap;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+.action-btn.action-btn--labelled i {
+    font-size: 0.95rem;
+    line-height: 1;
+}
+.action-btn.action-btn--labelled {
+    background: var(--m3-secondary-container, #e8def8);
+    color: var(--m3-on-secondary-container, #1d192b);
+}
