@@ -2,5 +2,9 @@
 /pages/id/rate  /pages/id/rating-system/  301
 /pages/id/rate.html  /pages/id/rating-system/  301
 
+# Dashboard: site links use /dashboard/... and are forwarded to the live dashboard host
+/dashboard  https://gdips.wasmer.app/dashboard  302
+/dashboard/*  https://gdips.wasmer.app/dashboard/:splat  302
+
 # 404 fallback
 /*        /404.html       404
