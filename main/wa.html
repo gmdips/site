@@ -1,85 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta http-equiv="refresh" content="3; url=https://chat.whatsapp.com/Fmh5DoSjbWkBje0ab3RAEF?mode=ac_t" />
-  <title>Redirecting to GDIPS WhatsApp Group</title>
-  <style>
-    body {
-      background: linear-gradient(135deg, #232526, #414345);
-      color: #fff;
-      font-family: 'Poppins', sans-serif;
-      text-align: center;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      margin: 0;
-      animation: fadeIn 1s ease-in-out;
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    .logo {
-      width: 200px;
-      margin-bottom: 20px;
-      animation: pulse 1.8s infinite alternate;
-    }
-    @keyframes pulse {
-      from { transform: scale(1); }
-      to { transform: scale(1.05); }
-    }
-    h1 {
-      font-size: 2rem;
-      margin-bottom: 10px;
-      font-weight: 600;
-    }
-    p {
-      font-size: 1rem;
-      color: #ccc;
-      margin-bottom: 15px;
-    }
-    .countdown {
-      font-size: 2rem;
-      font-weight: bold;
-      color: #1dd1a1;
-      margin: 10px 0 30px;
-    }
-    .manual-link {
-      padding: 12px 24px;
-      background: #1dd1a1;
-      color: #000;
-      text-decoration: none;
-      font-weight: bold;
-      border-radius: 50px;
-      box-shadow: 0 4px 15px rgba(29, 209, 161, 0.4);
-      transition: all 0.3s ease;
-    }
-    .manual-link:hover {
-      background: #10ac84;
-      box-shadow: 0 6px 18px rgba(16, 172, 132, 0.5);
-      transform: translateY(-3px);
-    }
-  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Redirecting to the GDIPS WhatsApp group</title>
+  <meta name="description" content="You are being redirected to the GDIPS community WhatsApp group.">
+  <meta name="theme-color" content="#FFF7F6">
+  <meta http-equiv="refresh" content="3; url=https://chat.whatsapp.com/Fmh5DoSjbWkBje0ab3RAEF?mode=ac_t">
+  <link rel="icon" href="assets/brand/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="assets/brand/favicon-32.png" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="assets/brand/apple-touch-icon.png">
+  <link rel="manifest" href="manifest.json">
+
+  <link rel="stylesheet" href="assets/vendor/fontawesome/css/all.min.css">
+
+  <!-- Material You 3 design system -->
+  <link rel="stylesheet" href="assets/m3/palettes.css">
+  <link rel="stylesheet" href="assets/m3/tokens.css">
+  <link rel="stylesheet" href="assets/m3/components.css">
+  <link rel="stylesheet" href="assets/m3/site.css">
+  <link rel="stylesheet" href="assets/m3/pages.css">
+  <script src="assets/m3/color.js"></script>
+  <script src="assets/m3/ui.js" defer></script>
 </head>
-<body>
-  <img src="https://i.imgur.com/gecSW49.png" alt="GDIPS Logo" class="logo" />
-  <h1>GDIPS WhatsApp Group</h1>
-  <p>Redirecting you to our community group...</p>
-  <div class="countdown" id="countdown">3</div>
-  <a href="https://chat.whatsapp.com/Fmh5DoSjbWkBje0ab3RAEF?mode=ac_t" class="manual-link">
-    Click here if not redirected automatically
-  </a>
+
+<body class="m3-page">
+  <main class="gd-redirect" id="main">
+    <div class="gd-redirect__card m3-animate-in">
+      <span class="m3-badge m3-badge--primary"><i class="fab fa-whatsapp" aria-hidden="true"></i> Community</span>
+      <img class="gd-redirect__logo" src="assets/brand/gdips-mark.svg" alt="GDIPS logo">
+      <h1 class="m3-headline-small">GDIPS WhatsApp group</h1>
+      <p class="m3-body-medium m3-text-muted">Redirecting you to our community group…</p>
+
+      <p class="gd-redirect__count" id="countdown" aria-live="polite">3</p>
+
+      <div class="m3-progress-linear gd-redirect__ring" aria-hidden="true">
+        <div class="m3-progress-linear__bar" id="countdownBar" style="width:0%"></div>
+      </div>
+
+      <a class="m3-button m3-button--lg m3-button--full" href="https://chat.whatsapp.com/Fmh5DoSjbWkBje0ab3RAEF?mode=ac_t">
+        <i class="fab fa-whatsapp" aria-hidden="true"></i><span>Open the group now</span>
+      </a>
+      <p class="m3-body-small m3-text-muted">Click the button if you are not redirected automatically.</p>
+    </div>
+  </main>
 
   <script>
+    /* Countdown behaviour preserved (3 → 0), plus a progress ring */
     let count = 3;
     const countdown = document.getElementById('countdown');
+    const bar = document.getElementById('countdownBar');
     const timer = setInterval(() => {
       count--;
       countdown.textContent = count;
+      bar.style.width = ((3 - Math.max(count, 0)) / 3 * 100) + '%';
       if (count <= 0) {
         clearInterval(timer);
       }

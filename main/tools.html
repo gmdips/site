@@ -1,155 +1,278 @@
 <!DOCTYPE html>
 <html lang="id">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GDIPS - Alat</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="assets/batik.css">
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9138741540234649"
-        crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alat Bantu · GDIPS</title>
+  <meta name="description" content="Alat bantu GDIPS: unggah lagu, unggah ulang level, dan pencarian lagu komunitas (perlu login).">
+  <meta name="theme-color" content="#FFF7F6">
+  <link rel="icon" href="assets/brand/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="assets/brand/favicon-32.png" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="assets/brand/apple-touch-icon.png">
+  <link rel="manifest" href="manifest.json">
+
+  <link rel="stylesheet" href="assets/vendor/fontawesome/css/all.min.css">
+
+  <!-- Material You 3 design system -->
+  <link rel="stylesheet" href="assets/m3/palettes.css">
+  <link rel="stylesheet" href="assets/m3/tokens.css">
+  <link rel="stylesheet" href="assets/m3/components.css">
+  <link rel="stylesheet" href="assets/m3/site.css">
+  <link rel="stylesheet" href="assets/m3/pages.css">
+  <script src="assets/m3/color.js"></script>
+  <script src="assets/m3/ui.js" defer></script>
+
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9138741540234649" crossorigin="anonymous"></script>
 </head>
 
-<body>
-    <header>
-        <nav>
-            <div class="logo">
-                <i class="fas fa-hashtag"></i>
-                <span>GDIPS</span>
-            </div>
-            <button class="menu-toggle" id="menuToggle" aria-label="Menu navigasi">
-                <i class="fas fa-bars"></i>
-            </button>
-            <ul class="nav-links" id="navLinks">
-                <li><a href="/"><i class="fas fa-home"></i> Beranda</a></li>
-                <li><a href='/tools'><i class="fas fa-tools"></i> Alat</a></li>
-                <li><a href='/rate'><i class="fas fa-star"></i> Rating</a></li>
-                <li><a href='/download'><i class="fas fa-download"></i> Unduh</a></li>
-            </ul>
-        </nav>
-    </header>
+<body class="m3-page">
+  <a class="m3-skip-link" href="#main">Lewati ke konten</a>
 
-    <section class="hero">
-        <!-- Floating decorative elements -->
-        <div class="floating" style="font-size: 2rem;">🔧</div>
-        <div class="floating" style="font-size: 1.7rem;">🇮🇩</div>
-        <div class="floating" style="font-size: 1.3rem;">🧰</div>
+  <header class="m3-app-bar">
+    <div class="m3-container m3-container--wide m3-app-bar__row">
+      <button type="button" class="m3-icon-button" data-m3-drawer-toggle="#navDrawer" aria-label="Buka menu" aria-controls="navDrawer">
+        <i class="fas fa-bars" aria-hidden="true"></i>
+      </button>
+      <a class="m3-app-bar__title" href="./pages/id/utama/index.html">
+        <span class="m3-app-bar__brand-mark"><img src="assets/brand/gdips-mark.svg" alt=""></span>
+        <span>GDIPS</span>
+      </a>
+      <div class="m3-app-bar__actions">
+        <button type="button" class="m3-icon-button m3-theme-toggle m3-tooltip" data-tooltip="Ganti tema" aria-label="Ganti tema">
+          <i class="fas fa-moon m3-theme-toggle__light" aria-hidden="true"></i>
+          <i class="fas fa-sun m3-theme-toggle__dark" aria-hidden="true"></i>
+        </button>
+        <a class="m3-button m3-hide-sm" href="/dashboard" target="_blank" rel="noopener">
+          <i class="fas fa-right-to-bracket" aria-hidden="true"></i><span>Masuk</span>
+        </a>
+      </div>
+    </div>
+  </header>
 
-        <div class="icon-container">
-            <img src="https://gdi.ps.fhgdps.com/dashboard/icon.png" class="icon" alt="GDIPS Logo">
-        </div>
-        <h2>Alat Bantu</h2>
-        <p>Tempat Di Mana Anda Mungkin Membutuhkan Alat Ini Seperti Unggah Lagu, Unggah Ulang Level, dll (perlu login)
-        </p>
-    </section>
+  <div class="m3-scrim" data-m3-scrim-for="#navDrawer"></div>
 
-    <div class="credits-container">
-        <!-- Credit Card 1 -->
-        <div class="credit-card">
-            <span class="role">Upload Song</span>
-            <h3>Via Direct Link</h3>
-            <p>Reupload Your Song Via Link Dropbox, etc.</p>
-            <a href="https://gdi.ps.fhgdps.com/dashboard/reupload/songAdd.php">
-                <button class="view-btn">
-                    <i class="fas fa-external-link-alt"></i> View
-                </button>
-            </a>
-        </div>
-
-        <!-- Credit Card 2 -->
-        <div class="credit-card">
-            <span class="role">Upload Song</span>
-            <h3>Via Upload File</h3>
-            <p>Reupload Your Song Via File Mp3, etc.</p>
-            <a href="https://gdi.ps.fhgdps.com/dashboard/songs">
-                <button class="view-btn">
-                    <i class="fas fa-external-link-alt"></i> View
-                </button>
-            </a>
-        </div>
-
-        <div class="credit-card">
-            <span class="role">Search Song</span>
-            <h3>Search Tab Song</h3>
-            <p>Search for Audio That the Community Has Reuploaded</p>
-            <a href="https://gdi.ps.fhgdps.com/dashboard/stats/songList.php">
-                <button class="view-btn">
-                    <i class="fas fa-external-link-alt"></i> View
-                </button>
-            </a>
-        </div>
-
-        <div class="credit-card">
-            <span class="role">Reupload Level</span>
-            <h3>Level Re-up</h3>
-            <p>A Place Where You Can Reupload Your Created Levels On Other Servers, Not The Original Server</p>
-            <a href="https://gdi.ps.fhgdps.com/dashboard/levels/levelReupload.php">
-                <button class="view-btn">
-                    <i class="fas fa-external-link-alt"></i> View
-                </button>
-            </a>
-        </div>
+  <nav class="m3-drawer" id="navDrawer" aria-label="Navigasi utama">
+    <div class="m3-drawer__head">
+      <span class="m3-drawer__brand">
+        <img src="assets/brand/gdips-mark.svg" alt="">
+        GDIPS
+      </span>
+      <button type="button" class="m3-icon-button" data-m3-drawer-close aria-label="Tutup menu">
+        <i class="fas fa-xmark" aria-hidden="true"></i>
+      </button>
     </div>
 
-    <footer>
-        <p>Dibuat dengan <span class="heart">❤️</span> | Semua Hak Dilindungi | <a href="#"><span>GDIPS 2025</span></a>
-        </p>
-    </footer>
+    <p class="m3-drawer__label">Situs</p>
+    <a class="m3-drawer__item" href="./pages/id/utama/index.html"><i class="fas fa-people-group" aria-hidden="true"></i><span>Tim Kami</span></a>
+    <a class="m3-drawer__item" href="./pages/id/download/index.html"><i class="fas fa-download" aria-hidden="true"></i><span>Unduh</span></a>
+    <a class="m3-drawer__item" href="./pages/id/rating-system/index.html"><i class="fas fa-star" aria-hidden="true"></i><span>Standar Rate</span></a>
+    <a class="m3-drawer__item" href="./tools.html" aria-current="page"><i class="fas fa-tools" aria-hidden="true"></i><span>Alat</span></a>
+    <a class="m3-drawer__item" href="./pages/id/about/index.html"><i class="fas fa-circle-info" aria-hidden="true"></i><span>Tentang</span></a>
 
-    <script>
-        // Mobile menu toggle
-        const menuToggle = document.getElementById('menuToggle');
-        const navLinks = document.getElementById('navLinks');
+    <p class="m3-drawer__label">Komunitas</p>
+    <a class="m3-drawer__item" href="/dashboard" target="_blank" rel="noopener"><i class="fas fa-gamepad" aria-hidden="true"></i><span>Dashboard server</span></a>
+    <a class="m3-drawer__item" href="./demonlist/index.html"><i class="fas fa-fire" aria-hidden="true"></i><span>Demon List</span></a>
+    <a class="m3-drawer__item" href="./feedback/index.html"><i class="fas fa-comment-dots" aria-hidden="true"></i><span>Masukan</span></a>
+    <a class="m3-drawer__item" href="./wa.html"><i class="fab fa-whatsapp" aria-hidden="true"></i><span>Grup WhatsApp</span></a>
 
-        menuToggle.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-        });
+    <p class="m3-drawer__label">Tampilan</p>
+    <div style="padding-inline:12px">
+      <label class="m3-switch" for="drawerTheme">
+        <input type="checkbox" id="drawerTheme">
+        <span>Tema gelap</span>
+      </label>
+      <div class="m3-label-float" style="margin-block:12px 8px">Warna dinamis</div>
+      <div data-m3-color-picker></div>
+    </div>
 
-        // Add sparkle effects randomly
-        function addSparkles() {
-            const hero = document.querySelector('.hero');
+    <div class="m3-drawer__footer">
+      © <span class="gd-year">2025</span> GDIPS · Dibuat dengan <i class="fas fa-heart" style="color:var(--m3-primary)" aria-hidden="true"></i> oleh komunitas
+    </div>
+  </nav>
 
-            for (let i = 0; i < 15; i++) {
-                const sparkle = document.createElement('div');
-                sparkle.classList.add('sparkle');
-                sparkle.style.left = `${Math.random() * 100}%`;
-                sparkle.style.top = `${Math.random() * 100}%`;
-                sparkle.style.animationDelay = `${Math.random() * 2}s`;
-                hero.appendChild(sparkle);
-            }
-        }
+  <main class="m3-main m3-main--offset" id="main">
+    <section class="m3-hero">
+      <div class="m3-container m3-hero__grid">
+        <div>
+          <span class="m3-hero__eyebrow"><i class="fas fa-tools" aria-hidden="true"></i> Alat Bantu</span>
+          <h1 class="m3-hero__title">Semua alat <em>GDIPS</em> di satu tempat</h1>
+          <p class="m3-hero__lead">
+            Tempat di mana Anda mungkin membutuhkan alat seperti unggah lagu, unggah ulang
+            level, dan pencarian lagu komunitas. Semua alat memerlukan akun GDIPS.
+          </p>
+          <div class="m3-hero__actions m3-row">
+            <a class="m3-button m3-button--lg" href="/dashboard" target="_blank" rel="noopener">
+              <i class="fas fa-right-to-bracket" aria-hidden="true"></i><span>Masuk dashboard</span>
+            </a>
+            <a class="m3-button m3-button--outlined m3-button--lg" href="/dashboard/register" target="_blank" rel="noopener">
+              <i class="fas fa-user-plus" aria-hidden="true"></i><span>Daftar akun</span>
+            </a>
+          </div>
+        </div>
+        <div class="m3-hero__visual">
+          <div class="m3-hero__orb">
+            <img src="assets/brand/gdips-mark.svg" alt="Ikon GDIPS">
+          </div>
+          <span class="m3-hero__badge m3-hero__badge--tl"><i class="fas fa-lock" aria-hidden="true"></i> Perlu login</span>
+          <span class="m3-hero__badge m3-hero__badge--br"><i class="fas fa-music" aria-hidden="true"></i> UploadSong</span>
+        </div>
+      </div>
+    </section>
 
-        // Run after page loads
-        window.addEventListener('load', addSparkles);
+    <section class="m3-container m3-section">
+      <div class="m3-section-head m3-reveal">
+        <div>
+          <h2 class="m3-section-head__title">Alat yang tersedia</h2>
+          <p class="m3-section-head__sub">Klik salah satu kartu untuk membuka alat di dashboard GDIPS.</p>
+        </div>
+        <span class="m3-badge m3-badge--outline"><i class="fas fa-screwdriver-wrench" aria-hidden="true"></i> 4 alat</span>
+      </div>
 
-        // Intersection Observer for card animations
-        const cards = document.querySelectorAll('.credit-card');
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
+      <div class="m3-grid m3-grid--2">
+        <article class="m3-card m3-card--elevated m3-card--interactive m3-reveal">
+          <a class="gd-tool" href="/dashboard/reupload/songAdd.php" style="color:inherit;text-decoration:none">
+            <div class="gd-tool__head">
+              <span class="gd-card-icon"><i class="fas fa-link" aria-hidden="true"></i></span>
+              <div>
+                <p class="m3-label-medium m3-text-muted">Upload Song</p>
+                <h3 class="gd-tool__title">Via Direct Link</h3>
+              </div>
+            </div>
+            <p class="m3-card__text">Reupload lagu kamu lewat link Dropbox, dan sejenisnya.</p>
+            <div class="gd-tool__actions">
+              <span class="m3-button m3-button--tonal"><i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i><span>Buka alat</span></span>
+            </div>
+          </a>
+        </article>
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, observerOptions);
+        <article class="m3-card m3-card--elevated m3-card--interactive m3-reveal" data-m3-reveal-delay="60">
+          <a class="gd-tool" href="/dashboard/songs" style="color:inherit;text-decoration:none">
+            <div class="gd-tool__head">
+              <span class="gd-card-icon" style="background:var(--m3-secondary-container);color:var(--m3-on-secondary-container)"><i class="fas fa-file-arrow-up" aria-hidden="true"></i></span>
+              <div>
+                <p class="m3-label-medium m3-text-muted">Upload Song</p>
+                <h3 class="gd-tool__title">Via Upload File</h3>
+              </div>
+            </div>
+            <p class="m3-card__text">Reupload lagu kamu dengan mengunggah file MP3, dan sejenisnya.</p>
+            <div class="gd-tool__actions">
+              <span class="m3-button m3-button--tonal"><i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i><span>Buka alat</span></span>
+            </div>
+          </a>
+        </article>
 
-        cards.forEach(card => {
-            card.style.opacity = '0';
-            card.style.transform = 'translateY(20px)';
-            card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-            observer.observe(card);
-        });
-    </script>
+        <article class="m3-card m3-card--elevated m3-card--interactive m3-reveal">
+          <a class="gd-tool" href="/dashboard/stats/songList.php" style="color:inherit;text-decoration:none">
+            <div class="gd-tool__head">
+              <span class="gd-card-icon" style="background:var(--m3-tertiary-container);color:var(--m3-on-tertiary-container)"><i class="fas fa-magnifying-glass" aria-hidden="true"></i></span>
+              <div>
+                <p class="m3-label-medium m3-text-muted">Search Song</p>
+                <h3 class="gd-tool__title">Search Tab Song</h3>
+              </div>
+            </div>
+            <p class="m3-card__text">Cari audio yang sudah di-reupload oleh komunitas.</p>
+            <div class="gd-tool__actions">
+              <span class="m3-button m3-button--tonal"><i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i><span>Buka alat</span></span>
+            </div>
+          </a>
+        </article>
+
+        <article class="m3-card m3-card--elevated m3-card--interactive m3-reveal" data-m3-reveal-delay="60">
+          <a class="gd-tool" href="/dashboard/levels/levelReupload.php" style="color:inherit;text-decoration:none">
+            <div class="gd-tool__head">
+              <span class="gd-card-icon" style="background:var(--m3-surface-container-highest);color:var(--m3-on-surface-variant)"><i class="fas fa-rotate" aria-hidden="true"></i></span>
+              <div>
+                <p class="m3-label-medium m3-text-muted">Reupload Level</p>
+                <h3 class="gd-tool__title">Level Re-up</h3>
+              </div>
+            </div>
+            <p class="m3-card__text">Tempat untuk mengunggah ulang level buatanmu dari server lain — bukan server aslinya.</p>
+            <div class="gd-tool__actions">
+              <span class="m3-button m3-button--tonal"><i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i><span>Buka alat</span></span>
+            </div>
+          </a>
+        </article>
+      </div>
+
+      <div class="m3-banner m3-banner--warn m3-reveal" style="margin-block-start:32px">
+        <i class="fas fa-triangle-exclamation" aria-hidden="true"></i>
+        <div>
+          <strong>Belum punya akun?</strong>
+          <span class="m3-card__text" style="display:block">Semua alat di halaman ini memerlukan login ke dashboard GDIPS. Daftar gratis di dashboard, lalu kembali ke halaman ini.</span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="m3-footer">
+    <div class="m3-container">
+      <div class="m3-footer__grid">
+        <div>
+          <p class="m3-footer__brand">
+            <img src="assets/brand/gdips-mark.svg" alt="">
+            GDIPS
+          </p>
+          <p style="margin-block-start:12px;max-width:38ch">
+            Geometry Dash Indonesia Private Server — gratis, dikelola komunitas, dan open source.
+          </p>
+        </div>
+        <div>
+          <p class="m3-footer__heading">Situs</p>
+          <div class="m3-footer__links">
+            <a href="./pages/id/utama/index.html">Tim Kami</a>
+            <a href="./pages/id/download/index.html">Unduh</a>
+            <a href="./pages/id/rating-system/index.html">Standar Rate</a>
+            <a href="./pages/id/about/index.html">Tentang</a>
+          </div>
+        </div>
+        <div>
+          <p class="m3-footer__heading">Komunitas</p>
+          <div class="m3-footer__links">
+            <a href="./demonlist/index.html">Demon List</a>
+            <a href="./feedback/index.html">Masukan</a>
+            <a href="./wa.html">WhatsApp</a>
+            <a href="/dashboard" target="_blank" rel="noopener">Dashboard</a>
+          </div>
+        </div>
+      </div>
+      <div class="m3-footer__bottom">
+        <span>Dibuat dengan <span style="color:var(--m3-primary)"><i class="fa-solid fa-heart" aria-hidden="true"></i></span> · Semua hak dilindungi · GDIPS <span class="gd-year">2025</span></span>
+        <span>Tidak berafiliasi dengan Geometry Dash atau RobTop Games</span>
+      </div>
+    </div>
+  </footer>
+
+  <nav class="m3-nav-bar m3-show-below-md" aria-label="Navigasi utama">
+    <a class="m3-nav-bar__item" href="./pages/id/utama/index.html">
+      <span class="m3-nav-bar__icon"><i class="fas fa-people-group" aria-hidden="true"></i></span>
+      <span>Tim</span>
+    </a>
+    <a class="m3-nav-bar__item" href="./tools.html" aria-current="page">
+      <span class="m3-nav-bar__icon"><i class="fas fa-tools" aria-hidden="true"></i></span>
+      <span>Alat</span>
+    </a>
+    <a class="m3-nav-bar__item" href="./pages/id/rating-system/index.html">
+      <span class="m3-nav-bar__icon"><i class="fas fa-star" aria-hidden="true"></i></span>
+      <span>Rating</span>
+    </a>
+    <a class="m3-nav-bar__item" href="./pages/id/download/index.html">
+      <span class="m3-nav-bar__icon"><i class="fas fa-download" aria-hidden="true"></i></span>
+      <span>Unduh</span>
+    </a>
+  </nav>
+
+  <script>
+    document.querySelectorAll('.gd-year').forEach(function (el) {
+      el.textContent = new Date().getFullYear();
+    });
+
+    (function () {
+      var toggle = document.getElementById('drawerTheme');
+      function sync() { toggle.checked = window.M3Color.theme() === 'dark'; }
+      toggle.addEventListener('change', function () { window.M3Color.setTheme(toggle.checked ? 'dark' : 'light'); });
+      document.documentElement.addEventListener('m3color:theme', sync);
+      sync();
+    })();
+  </script>
 </body>
-
 </html>

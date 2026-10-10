@@ -3,165 +3,131 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GDIPS - Info</title>
+  <title>FAQ · GDIPS</title>
+  <meta name="description" content="Frequently asked questions about GDIPS — what it is, pricing, and the iOS client.">
+  <meta name="theme-color" content="#FFF7F6">
+  <link rel="icon" href="../assets/brand/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="../assets/brand/favicon-32.png" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="../assets/brand/apple-touch-icon.png">
+  <link rel="manifest" href="../manifest.json">
 
-  <!-- Font Pusab -->
-  <style>
-    @font-face {
-      font-family: 'Pusab';
-      src: url('https://fless.rf.gd/gauntlet/assets/Pusab.ttf') format('truetype');
-      font-display: swap;
-    }
-    * { margin:0; padding:0; box-sizing:border-box; }
+  <link rel="stylesheet" href="../assets/vendor/fontawesome/css/all.min.css">
 
-    body {
-      font-family: 'Pusab', sans-serif;
-      background: #000;
-      color: #eee;
-      min-height: 100vh;
-      overflow-x: hidden;
-      position: relative;
-      padding: 2rem;
-    }
-    /* moving background */
-    body::before {
-      content:"";
-      position:fixed; top:0; left:0;
-      width:200%; height:200%;
-      background:url('https://fless.rf.gd/gauntlet/assets/img/bg-pattern.png') repeat;
-      background-size:contain;
-      opacity:0.05;
-      animation:scrollBG 60s linear infinite;
-      z-index:-1;
-    }
-    @keyframes scrollBG {
-      from { transform:translate(0,0); }
-      to   { transform:translate(-50%,-50%); }
-    }
-
-    h1 {
-      text-align:center;
-      color:#fff;
-      margin-bottom:1.5rem;
-      font-size:2rem;
-    }
-    .tabs {
-      display:flex;
-      flex-wrap:wrap;
-      justify-content:center;
-      gap:0.5rem;
-      margin-bottom:1.5rem;
-    }
-    .tab {
-      background:#222;
-      color:#ccc;
-      padding:0.6rem 1rem;
-      border-radius:6px;
-      cursor:pointer;
-      transition:background 0.2s,color 0.2s;
-    }
-    .tab.active,
-    .tab:hover {
-      background:#eee;
-      color:#000;
-    }
-
-    .content {
-      display:none;
-      max-width:800px;
-      margin:0 auto 2rem;
-      text-align:left;
-      background:#111;
-      padding:1.2rem;
-      border-radius:8px;
-    }
-    .content.active {
-      display:block;
-    }
-    .content h2 {
-      color:#fff;
-      margin-bottom:0.5rem;
-    }
-    .content p, .content li {
-      color:#ddd;
-      margin-bottom:0.75rem;
-      line-height:1.4;
-    }
-    .content a {
-      color:#4fc3f7;
-      text-decoration:underline;
-    }
-    .content ul {
-      list-style:disc;
-      padding-left:1.2rem;
-    }
-
-    .back {
-      text-align:center;
-      margin-bottom:2rem;
-    }
-    .btn {
-      display:inline-block;
-      background:#fff;
-      color:#000;
-      padding:0.6rem 1.2rem;
-      border-radius:6px;
-      text-decoration:none;
-      font-weight:bold;
-      margin:0.25rem;
-      transition:background 0.2s,transform 0.1s;
-    }
-    .btn:hover {
-      background:#ddd;
-      transform:translateY(-2px);
-    }
-
-    footer {
-      text-align:center;
-      color:#777;
-      font-size:0.75rem;
-      margin-top:auto;
-    }
-  </style>
+  <!-- Material You 3 design system -->
+  <link rel="stylesheet" href="../assets/m3/palettes.css">
+  <link rel="stylesheet" href="../assets/m3/tokens.css">
+  <link rel="stylesheet" href="../assets/m3/components.css">
+  <link rel="stylesheet" href="../assets/m3/site.css">
+  <link rel="stylesheet" href="../assets/m3/pages.css">
+  <script src="../assets/m3/color.js"></script>
+  <script src="../assets/m3/ui.js" defer></script>
 </head>
-<body>
 
-  <h1>Frequently Asked Question GDIPS</h1>
-  <div class="tabs">
-    <div class="tab active" onclick="showTab('faq', this)">FAQ</div>
-    <div class="tab" onclick="showTab('about', this)">Tentang</div>
-  </div>
+<body class="m3-page">
+  <a class="m3-skip-link" href="#main">Skip to content</a>
 
-  <div id="faq" class="content active">
-    <h2>FAQ</h2>
-    <p><strong>Q: What is GDIPS?</strong><br>GDIPS (Freedom Geometry Dash Private Server) is a server that promises freedom</p>
-    <p><strong>Q: Is This Free?</strong><br>Yes, it's completely free to play.</p>
-    <p><strong>Q: iOS Version?</strong><br>For the time being, use <a href="https://geode-sdk.org/mods/km7dev.gdps-switcher?version=1.1.3" target="_blank">GDPS Switcher</a> on Geode.</p>
-  </div>
+  <header class="m3-app-bar">
+    <div class="m3-container m3-container--wide m3-app-bar__row">
+      <a class="m3-app-bar__title" href="../pages/en/main/index.html">
+        <span class="m3-app-bar__brand-mark"><img src="../assets/brand/gdips-mark.svg" alt=""></span>
+        <span>GDIPS</span>
+      </a>
+      <div class="m3-app-bar__actions">
+        <button type="button" class="m3-icon-button m3-theme-toggle m3-tooltip" data-tooltip="Toggle theme" aria-label="Switch theme">
+          <i class="fas fa-moon m3-theme-toggle__light" aria-hidden="true"></i>
+          <i class="fas fa-sun m3-theme-toggle__dark" aria-hidden="true"></i>
+        </button>
+        <a class="m3-button m3-button--tonal m3-hide-sm" href="../pages/en/main/index.html">
+          <i class="fas fa-house" aria-hidden="true"></i><span>GDIPS home</span>
+        </a>
+      </div>
+    </div>
+  </header>
 
-  <div id="about" class="content">
-    <h2>Tentang Kami</h2>
-    <p>GDIPS was developed by two people who wanted to create a free-to-express Geometry Dash server.</p>
-  </div>
+  <main class="m3-main" id="main">
+    <section class="m3-container gd-page-head">
+      <span class="m3-hero__eyebrow" style="width:fit-content"><i class="fas fa-circle-question" aria-hidden="true"></i> Help centre</span>
+      <h1 class="gd-page-head__title">Frequently asked questions</h1>
+      <p class="gd-page-head__lead">Everything you need to know about GDIPS — switch between the FAQ and the about tab below.</p>
+    </section>
 
-  <div class="back">
-    <a href="/" class="btn">Home</a>
-    <a href="/download" class="btn">Download</a>
-    <a href="/feedback/contacs" class="btn">Contacts</a>
-  </div>
+    <section class="m3-container" style="padding-block-end:8px">
+      <nav class="m3-tabs" aria-label="Feedback pages">
+        <a class="m3-tab" href="./index.html"><i class="fas fa-table-list" aria-hidden="true"></i> Feedback</a>
+        <a class="m3-tab" href="./terms.html"><i class="fas fa-file-contract" aria-hidden="true"></i> Terms of Service</a>
+        <a class="m3-tab is-active" href="./faq.html" aria-current="page"><i class="fas fa-circle-question" aria-hidden="true"></i> FAQ</a>
+        <a class="m3-tab" href="./contact.html"><i class="fas fa-envelope" aria-hidden="true"></i> Contact</a>
+      </nav>
+    </section>
 
-  <footer>&copy; <span id="year"></span> GDIPS by Community</footer>
+    <section class="m3-container m3-section" style="padding-block-start:24px">
+      <div class="m3-tabs" data-m3-tabs role="tablist" aria-label="FAQ sections" style="border:none;margin-block-end:16px">
+        <button type="button" class="m3-tab is-active" id="tabFaq" role="tab" aria-selected="true" aria-controls="faq"><i class="fas fa-circle-question" aria-hidden="true"></i> FAQ</button>
+        <button type="button" class="m3-tab" id="tabAbout" role="tab" aria-selected="false" aria-controls="about"><i class="fas fa-circle-info" aria-hidden="true"></i> Tentang</button>
+      </div>
+
+      <div class="m3-tab-panel" id="faq" role="tabpanel" aria-labelledby="tabFaq">
+        <div class="gd-faq-list">
+          <details class="m3-expansion" open>
+            <summary class="m3-expansion__summary">What is GDIPS?</summary>
+            <div class="m3-expansion__content">
+              GDIPS (Freedom Geometry Dash Private Server) is a server that promises freedom — create, share and play
+              without strict limitations.
+            </div>
+          </details>
+
+          <details class="m3-expansion">
+            <summary class="m3-expansion__summary">Is it free?</summary>
+            <div class="m3-expansion__content">Yes, it's completely free to play.</div>
+          </details>
+
+          <details class="m3-expansion">
+            <summary class="m3-expansion__summary">Is there an iOS version?</summary>
+            <div class="m3-expansion__content">
+              For the time being, use
+              <a href="https://geode-sdk.org/mods/km7dev.gdps-switcher?version=1.1.3" target="_blank" rel="noopener">GDPS Switcher</a>
+              on Geode.
+            </div>
+          </details>
+        </div>
+      </div>
+
+      <div class="m3-tab-panel" id="about" role="tabpanel" aria-labelledby="tabAbout" hidden>
+        <div class="m3-panel m3-prose" style="max-width:none">
+          <h2 class="m3-title-large">Tentang kami</h2>
+          <p>GDIPS was developed by two people who wanted to create a free-to-express Geometry Dash server.</p>
+          <p>
+            Still curious? Read the <a href="../pages/en/about/index.html">about page</a> for the full story, or
+            <a href="./contact.html">contact us</a> directly.
+          </p>
+        </div>
+      </div>
+
+      <div class="m3-row" style="margin-block-start:24px">
+        <a class="m3-button" href="../pages/en/main/index.html"><i class="fas fa-house" aria-hidden="true"></i><span>Home</span></a>
+        <a class="m3-button m3-button--tonal" href="../pages/en/download/index.html"><i class="fas fa-download" aria-hidden="true"></i><span>Download</span></a>
+        <a class="m3-button m3-button--outlined" href="./contact.html"><i class="fas fa-envelope" aria-hidden="true"></i><span>Contacts</span></a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="m3-footer">
+    <div class="m3-container">
+      <div class="m3-footer__bottom" style="margin-block-start:0;border-block-start:none">
+        <span>© <span class="gd-year">2025</span> GDIPS by Community</span>
+        <span class="m3-row">
+          <a href="./terms.html">Terms</a>
+          <a href="./contact.html">Contact</a>
+          <a href="https://stats.uptimerobot.com/wpCeS1LMcH" target="_blank" rel="noopener">Server status</a>
+        </span>
+      </div>
+    </div>
+  </footer>
 
   <script>
-    // Footer year
-    document.getElementById('year').textContent = new Date().getFullYear();
-    // Tab switching
-    function showTab(id, el) {
-      document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
-      document.querySelectorAll('.content').forEach(c=>c.classList.remove('active'));
-      el.classList.add('active');
-      document.getElementById(id).classList.add('active');
-    }
+    document.querySelectorAll('.gd-year').forEach(function (el) {
+      el.textContent = new Date().getFullYear();
+    });
   </script>
 </body>
 </html>

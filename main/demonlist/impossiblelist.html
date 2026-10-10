@@ -1,3521 +1,497 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-seed="crimson">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GDIPS Imposssible List</title>
+  <title>GDIPS Impossible List</title>
   <meta name="description" content="The most challenging levels in GDIPS that push the limits of what's possible">
   <meta name="keywords" content="GDIPS, Geometry Dash, Impossible List, Extreme Levels">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💀</text></svg>">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
-    <style>
-        :root {
-            --primary: #ef4444;
-            --primary-dark: #dc2626;
-            --secondary: #8b5cf6;
-            --accent: #ec4899;
-            --success: #10b981;
-            --warning: #f59e0b;
-            --error: #ef4444;
-            --surface: #1e293b;
-            --surface-light: #334155;
-            --text: #f1f5f9;
-            --text-muted: #94a3b8;
-            --radius: 0.5rem;
-            --radius-sm: 0.375rem;
-            --radius-xs: 0.25rem;
-            --space-xs: 0.5rem;
-            --space-sm: 0.75rem;
-            --space-md: 1rem;
-            --space-lg: 1.5rem;
-            --space-xl: 2rem;
-            --transition: all 0.3s ease;
-            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #0f172a;
-            color: var(--text);
-            line-height: 1.6;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 var(--space-md);
-            width: 100%;
-        }
-
-        header {
-            background-color: var(--surface);
-            padding: var(--space-md) 0;
-            box-shadow: var(--shadow);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: var(--space-sm);
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--primary);
-        }
-
-        .header-actions {
-            display: flex;
-            gap: var(--space-sm);
-        }
-
-        .btn {
-            padding: 0.5rem 1rem;
-            border-radius: var(--radius-sm);
-            border: none;
-            background: var(--primary);
-            color: white;
-            font-weight: 500;
-            cursor: pointer;
-            transition: var(--transition);
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .btn:hover {
-            background: var(--primary-dark);
-        }
-
-        .btn-secondary {
-            background: var(--surface-light);
-        }
-
-        .btn-secondary:hover {
-            background: rgba(255, 255, 255, 0.1);
-        }
-
-        .btn-icon {
-            width: 2.5rem;
-            height: 2.5rem;
-            border-radius: 50%;
-            padding: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .sidebar {
-            position: fixed;
-            top: 0;
-            left: -300px;
-            width: 300px;
-            height: 100vh;
-            background: var(--surface);
-            box-shadow: var(--shadow);
-            z-index: 1000;
-            transition: left 0.3s ease;
-            overflow-y: auto;
-        }
-
-        .sidebar.active {
-            left: 0;
-        }
-
-        .sidebar-header {
-            padding: var(--space-md);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid var(--surface-light);
-        }
-
-        .sidebar-title {
-            font-size: 1.25rem;
-            font-weight: 600;
-        }
-
-        .close-sidebar {
-            background: none;
-            border: none;
-            color: var(--text);
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
-
-        .sidebar-content {
-            padding: var(--space-md);
-        }
-
-        .sidebar-section {
-            margin-bottom: var(--space-lg);
-        }
-
-        .sidebar-section-title {
-            font-size: 0.875rem;
-            font-weight: 600;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            margin-bottom: var(--space-sm);
-        }
-
-        .sidebar-link {
-            display: flex;
-            align-items: center;
-            gap: var(--space-sm);
-            padding: var(--space-sm);
-            border-radius: var(--radius-sm);
-            color: var(--text);
-            text-decoration: none;
-            transition: var(--transition);
-        }
-
-        .sidebar-link:hover {
-            background: var(--surface-light);
-        }
-
-        .user-profile {
-            display: flex;
-            align-items: center;
-            gap: var(--space-sm);
-            padding: var(--space-md);
-            background: var(--surface-light);
-            border-radius: var(--radius);
-            margin-bottom: var(--space-md);
-        }
-
-        .user-avatar {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background: var(--primary);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.25rem;
-        }
-
-        .user-info {
-            flex: 1;
-        }
-
-        .user-name {
-            font-weight: 600;
-            margin-bottom: 0.25rem;
-        }
-
-        .user-level {
-            font-size: 0.875rem;
-            color: var(--text-muted);
-        }
-
-        .user-stats {
-            display: flex;
-            gap: var(--space-md);
-            margin-top: var(--space-sm);
-        }
-
-        .user-stat {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .user-stat-value {
-            font-weight: 600;
-        }
-
-        .user-stat-label {
-            font-size: 0.75rem;
-            color: var(--text-muted);
-        }
-
-        .stats-bar {
-            background: var(--surface);
-            padding: var(--space-md);
-            border-radius: var(--radius);
-            margin-bottom: var(--space-lg);
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-            gap: var(--space-md);
-        }
-
-        .stat-item {
-            text-align: center;
-        }
-
-        .stat-value {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--primary);
-        }
-
-        .stat-label {
-            font-size: 0.875rem;
-            color: var(--text-muted);
-        }
-
-        .controls-section {
-            background: var(--surface);
-            padding: var(--space-md);
-            border-radius: var(--radius);
-            margin-bottom: var(--space-lg);
-        }
-
-        .search-container {
-            position: relative;
-            margin-bottom: var(--space-md);
-        }
-
-        .search-input {
-            width: 100%;
-            padding: 0.75rem 1rem 0.75rem 2.5rem;
-            border-radius: var(--radius);
-            border: 1px solid var(--surface-light);
-            background: var(--surface);
-            color: var(--text);
-            font-size: 1rem;
-        }
-
-        .search-icon {
-            position: absolute;
-            left: 0.75rem;
-            top: 50%;
-            transform: translateY(-50%);
-            color: var(--text-muted);
-        }
-
-        .filter-controls {
-            display: flex;
-            gap: var(--space-sm);
-            flex-wrap: wrap;
-            margin-bottom: var(--space-md);
-        }
-
-        .filter-dropdown {
-            position: relative;
-        }
-
-        .filter-btn {
-            padding: 0.5rem 1rem;
-            border-radius: var(--radius-sm);
-            border: 1px solid var(--surface-light);
-            background: var(--surface);
-            color: var(--text);
-            font-weight: 500;
-            cursor: pointer;
-            transition: var(--transition);
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .filter-btn:hover {
-            background: var(--surface-light);
-        }
-
-        .filter-menu {
-            position: absolute;
-            top: 100%;
-            left: 0;
-            right: 0;
-            background: var(--surface);
-            border: 1px solid var(--surface-light);
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
-            z-index: 100;
-            margin-top: 0.25rem;
-            display: none;
-        }
-
-        .filter-menu.active {
-            display: block;
-        }
-
-        .filter-option {
-            padding: 0.5rem 1rem;
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .filter-option:hover {
-            background: var(--surface-light);
-        }
-
-        .filter-option.active {
-            background: var(--primary);
-        }
-
-        .view-controls {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .view-buttons {
-            display: flex;
-            gap: var(--space-xs);
-        }
-
-        .view-btn {
-            width: 2rem;
-            height: 2rem;
-            border-radius: var(--radius-xs);
-            border: 1px solid var(--surface-light);
-            background: var(--surface);
-            color: var(--text);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .view-btn:hover {
-            background: var(--surface-light);
-        }
-
-        .view-btn.active {
-            background: var(--primary);
-            border-color: var(--primary);
-        }
-
-        .action-buttons {
-            display: flex;
-            gap: var(--space-xs);
-        }
-
-        .action-btn {
-            padding: 0.5rem;
-            border-radius: var(--radius-xs);
-            border: 1px solid var(--surface-light);
-            background: var(--surface);
-            color: var(--text);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .action-btn:hover {
-            background: var(--surface-light);
-        }
-
-        .demon-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: var(--space-md);
-            margin-bottom: var(--space-xl);
-        }
-
-        .demon-grid.list-view {
-            grid-template-columns: 1fr;
-        }
-
-        .demon-card {
-            background: var(--surface);
-            border-radius: var(--radius);
-            overflow: hidden;
-            position: relative;
-            transition: var(--transition);
-            display: flex;
-            flex-direction: column;
-        }
-
-        .demon-card:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--shadow);
-        }
-
-        .card-rank {
-            position: absolute;
-            top: var(--space-sm);
-            left: var(--space-sm);
-            background: var(--primary);
-            color: white;
-            font-weight: 700;
-            font-size: 0.875rem;
-            border-radius: 50%;
-            width: 30px;
-            height: 30px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 1;
-        }
-
-        .card-favorite {
-            position: absolute;
-            top: var(--space-sm);
-            right: var(--space-sm);
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            background: rgba(0, 0, 0, 0.5);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--text-muted);
-            cursor: pointer;
-            z-index: 1;
-            transition: var(--transition);
-        }
-
-        .card-favorite:hover {
-            background: rgba(0, 0, 0, 0.7);
-        }
-
-        .card-favorite.active {
-            color: var(--accent);
-        }
-
-        .completion-badge {
-            position: absolute;
-            top: var(--space-sm);
-            left: 50%;
-            transform: translateX(-50%);
-            background: var(--success);
-            color: white;
-            font-weight: 600;
-            font-size: 0.75rem;
-            padding: 0.25rem 0.5rem;
-            border-radius: var(--radius-xs);
-            display: flex;
-            align-items: center;
-            gap: 0.25rem;
-            z-index: 1;
-        }
-
-        .card-thumb {
-            width: 100%;
-            height: 180px;
-            object-fit: cover;
-            cursor: pointer;
-        }
-
-        .no-video-thumb {
-            width: 100%;
-            height: 180px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: var(--surface-light);
-            color: var(--text-muted);
-        }
-
-        .play-btn-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: rgba(0, 0, 0, 0.3);
-            opacity: 0;
-            transition: var(--transition);
-            cursor: pointer;
-        }
-
-        .demon-card:hover .play-btn-overlay {
-            opacity: 1;
-        }
-
-        .card-content {
-            padding: var(--space-md);
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            gap: var(--space-sm);
-        }
-
-        .level-title {
-            font-weight: 600;
-            font-size: 1.125rem;
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .level-title:hover {
-            color: var(--primary);
-        }
-
-        .level-info-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .diff-pill {
-            padding: 0.25rem 0.5rem;
-            border-radius: var(--radius-xs);
-            font-size: 0.75rem;
-            font-weight: 600;
-            text-transform: capitalize;
-        }
-
-        .diff-pill.easy {
-            background: #10b981;
-            color: white;
-        }
-
-        .diff-pill.medium {
-            background: #3b82f6;
-            color: white;
-        }
-
-        .diff-pill.hard {
-            background: #8b5cf6;
-            color: white;
-        }
-
-        .diff-pill.insane {
-            background: #ec4899;
-            color: white;
-        }
-
-        .diff-pill.extreme {
-            background: #ef4444;
-            color: white;
-        }
-
-        .diff-pill.impossible {
-            background: #000;
-            color: white;
-        }
-
-        .lvl-id-badge {
-            background: var(--surface-light);
-            padding: 0.25rem 0.5rem;
-            border-radius: var(--radius-xs);
-            font-size: 0.75rem;
-        }
-
-        .creator-row {
-            display: flex;
-            justify-content: space-between;
-            font-size: 0.875rem;
-            color: var(--text-muted);
-        }
-
-        .creator-row span {
-            display: flex;
-            align-items: center;
-            gap: 0.25rem;
-        }
-
-        .rating-container {
-            display: flex;
-            align-items: center;
-            gap: var(--space-sm);
-        }
-
-        .rating-stars {
-            color: var(--accent);
-        }
-
-        .rating-value {
-            font-size: 0.875rem;
-            color: var(--text-muted);
-        }
-
-        .filter-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.25rem;
-        }
-
-        .filter-tag {
-            background: var(--surface-light);
-            padding: 0.25rem 0.5rem;
-            border-radius: var(--radius-xs);
-            font-size: 0.75rem;
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .filter-tag:hover {
-            background: var(--primary);
-        }
-
-        .card-actions {
-            display: flex;
-            gap: var(--space-xs);
-            margin-top: auto;
-        }
-
-        .card-action-btn {
-            flex: 1;
-            padding: 0.5rem;
-            background: var(--surface-light);
-            border: none;
-            border-radius: var(--radius-xs);
-            color: var(--text);
-            font-size: 0.75rem;
-            cursor: pointer;
-            transition: var(--transition);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.25rem;
-        }
-
-        .card-action-btn:hover {
-            background: var(--primary);
-        }
-
-        .pagination {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: var(--space-xs);
-            margin: var(--space-xl) 0;
-        }
-
-        .page-btn {
-            width: 2.5rem;
-            height: 2.5rem;
-            border-radius: var(--radius-sm);
-            border: 1px solid var(--surface-light);
-            background: var(--surface);
-            color: var(--text);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .page-btn:hover:not(:disabled) {
-            background: var(--surface-light);
-        }
-
-        .page-btn.active {
-            background: var(--primary);
-            border-color: var(--primary);
-        }
-
-        .page-btn:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-        }
-
-        .page-info {
-            padding: 0 var(--space-sm);
-            color: var(--text-muted);
-        }
-
-        .modal {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.8);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 2000;
-            opacity: 0;
-            visibility: hidden;
-            transition: var(--transition);
-        }
-
-        .modal.active {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .modal-content {
-            background: var(--surface);
-            border-radius: var(--radius);
-            width: 90%;
-            max-width: 800px;
-            max-height: 90vh;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .modal-header {
-            padding: var(--space-md);
-            border-bottom: 1px solid var(--surface-light);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .modal-title {
-            font-size: 1.25rem;
-            font-weight: 600;
-        }
-
-        .modal-close {
-            background: none;
-            border: none;
-            color: var(--text);
-            font-size: 1.5rem;
-            cursor: pointer;
-            width: 2rem;
-            height: 2rem;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: var(--transition);
-        }
-
-        .modal-close:hover {
-            background: var(--surface-light);
-        }
-
-        .modal-body {
-            padding: var(--space-md);
-            overflow-y: auto;
-            flex: 1;
-        }
-
-        .modal-footer {
-            padding: var(--space-md);
-            border-top: 1px solid var(--surface-light);
-            display: flex;
-            justify-content: flex-end;
-            gap: var(--space-sm);
-        }
-
-        .modal-btn {
-            padding: 0.5rem 1rem;
-            border-radius: var(--radius-sm);
-            border: none;
-            font-weight: 500;
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .modal-btn-primary {
-            background: var(--primary);
-            color: white;
-        }
-
-        .modal-btn-primary:hover {
-            background: var(--primary-dark);
-        }
-
-        .modal-btn-secondary {
-            background: var(--surface-light);
-            color: var(--text);
-        }
-
-        .modal-btn-secondary:hover {
-            background: rgba(255, 255, 255, 0.1);
-        }
-
-        .video-container {
-            position: relative;
-            padding-bottom: 56.25%;
-            height: 0;
-            overflow: hidden;
-        }
-
-        .video-container iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-        }
-
-        .detail-group {
-            display: grid;
-            grid-template-columns: 1fr 2fr;
-            gap: var(--space-sm);
-            padding: var(--space-sm) 0;
-            border-bottom: 1px solid var(--surface-light);
-        }
-
-        .detail-label {
-            font-weight: 600;
-            color: var(--text-muted);
-        }
-
-        .detail-value {
-            color: var(--text);
-        }
-
-        .advanced-filter-section {
-            background: var(--surface);
-            padding: var(--space-md);
-            border-radius: var(--radius);
-            margin-bottom: var(--space-lg);
-            display: none;
-        }
-
-        .advanced-filter-section.active {
-            display: block;
-        }
-
-        .filter-group {
-            margin-bottom: var(--space-md);
-        }
-
-        .filter-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 500;
-        }
-
-        .filter-group input,
-        .filter-group select {
-            width: 100%;
-            padding: 0.75rem;
-            border-radius: var(--radius-sm);
-            border: 1px solid var(--surface-light);
-            background: var(--surface);
-            color: var(--text);
-        }
-
-        .filter-group input[type="checkbox"] {
-            width: auto;
-        }
-
-        .filter-actions {
-            display: flex;
-            gap: var(--space-sm);
-            justify-content: flex-end;
-        }
-
-        .toast-container {
-            position: fixed;
-            bottom: var(--space-md);
-            right: var(--space-md);
-            z-index: 3000;
-            display: flex;
-            flex-direction: column;
-            gap: var(--space-sm);
-        }
-
-        .toast {
-            background: var(--surface);
-            border-radius: var(--radius-sm);
-            padding: var(--space-md);
-            display: flex;
-            align-items: center;
-            gap: var(--space-sm);
-            min-width: 250px;
-            box-shadow: var(--shadow);
-            transform: translateX(120%);
-            transition: transform 0.3s ease;
-        }
-
-        .toast.show {
-            transform: translateX(0);
-        }
-
-        .toast.success {
-            border-left: 4px solid var(--success);
-        }
-
-        .toast.error {
-            border-left: 4px solid var(--error);
-        }
-
-        .toast.warning {
-            border-left: 4px solid var(--warning);
-        }
-
-        .toast.info {
-            border-left: 4px solid var(--primary);
-        }
-
-        .skeleton-card {
-            background: var(--surface);
-            border-radius: var(--radius);
-            overflow: hidden;
-            animation: pulse 1.5s infinite;
-        }
-
-        .skeleton {
-            background: linear-gradient(90deg, var(--surface) 25%, var(--surface-light) 50%, var(--surface) 75%);
-            background-size: 200% 100%;
-            animation: loading 1.5s infinite;
-        }
-
-        .skeleton-thumb {
-            height: 180px;
-        }
-
-        .skeleton-content {
-            padding: var(--space-md);
-        }
-
-        .skeleton-title {
-            height: 1.5rem;
-            border-radius: var(--radius-xs);
-            margin-bottom: var(--space-sm);
-        }
-
-        .skeleton-info {
-            height: 1rem;
-            border-radius: var(--radius-xs);
-            width: 60%;
-            margin-bottom: var(--space-sm);
-        }
-
-        .skeleton-creator {
-            height: 1rem;
-            border-radius: var(--radius-xs);
-            width: 80%;
-        }
-
-        @keyframes loading {
-            0% {
-                background-position: 200% 0;
-            }
-            100% {
-                background-position: -200% 0;
-            }
-        }
-
-        @keyframes pulse {
-            0% {
-                opacity: 1;
-            }
-            50% {
-                opacity: 0.8;
-            }
-            100% {
-                opacity: 1;
-            }
-        }
-
-        .error-container {
-            text-align: center;
-            padding: var(--space-xl);
-            background: var(--surface);
-            border-radius: var(--radius);
-        }
-
-        .error-content {
-            max-width: 500px;
-            margin: 0 auto;
-        }
-
-        .error-content i {
-            font-size: 3rem;
-            color: var(--error);
-            margin-bottom: var(--space-md);
-        }
-
-        .error-content h3 {
-            margin-bottom: var(--space-sm);
-        }
-
-        .error-content ul {
-            text-align: left;
-            margin: var(--space-md) 0;
-            padding-left: var(--space-lg);
-        }
-
-        .error-actions {
-            display: flex;
-            justify-content: center;
-            gap: var(--space-sm);
-            margin-top: var(--space-lg);
-        }
-
-        footer {
-            background: var(--surface);
-            padding: var(--space-lg) 0;
-            margin-top: auto;
-            text-align: center;
-            color: var(--text-muted);
-        }
-
-        .footer-content {
-            display: flex;
-            flex-direction: column;
-            gap: var(--space-md);
-        }
-
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            gap: var(--space-md);
-            flex-wrap: wrap;
-        }
-
-        .footer-link {
-            color: var(--text-muted);
-            text-decoration: none;
-            transition: var(--transition);
-        }
-
-        .footer-link:hover {
-            color: var(--primary);
-        }
-
-        @media (max-width: 768px) {
-            .demon-grid {
-                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            }
-            
-            .filter-controls {
-                flex-direction: column;
-            }
-            
-            .view-controls {
-                flex-direction: column;
-                gap: var(--space-sm);
-            }
-            
-            .action-buttons {
-                justify-content: center;
-            }
-        }
-    </style>
+  <meta name="theme-color" content="#FFF7F6">
+  <link rel="icon" href="../assets/brand/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="../assets/brand/favicon-32.png" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="../assets/brand/apple-touch-icon.png">
+  <link rel="manifest" href="../manifest.json">
+  <link rel="stylesheet" href="../assets/vendor/fontawesome/css/all.min.css">
+  <link rel="stylesheet" href="../assets/m3/palettes.css">
+  <link rel="stylesheet" href="../assets/m3/tokens.css">
+  <link rel="stylesheet" href="../assets/m3/components.css">
+  <link rel="stylesheet" href="../assets/m3/site.css">
+  <link rel="stylesheet" href="styles.css">
+  <script src="../assets/m3/color.js"></script>
 </head>
-<body>
-    <header>
-        <div class="container">
-            <div class="header-content">
-                <div class="logo">
-                    <i class="fas fa-skull"></i>
-                    <span>GDIPS Impossible List</span>
-                </div>
-                <div class="header-actions">
-                    <button id="openSidebar" class="btn btn-icon">
-                        <i class="fas fa-bars"></i>
-                    </button>
-                    <button id="themeToggle" class="btn btn-icon">
-                        <i class="fas fa-moon"></i>
-                    </button>
-                </div>
-            </div>
-        </div>
-    </header>
+<body class="list-page" data-list="impossiblelist">
+  <a class="skip-link" href="#main">Skip to list</a>
 
+  <header class="list-app-bar" id="appBar">
     <div class="container">
-        <div class="stats-bar">
-            <div class="stat-item">
-                <div class="stat-value" id="totalDemons">0</div>
-                <div class="stat-label">Total Impossible</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-value" id="extremeDemons">0</div>
-                <div class="stat-label">Extreme Impossible</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-value" id="lastUpdated">-</div>
-                <div class="stat-label">Last Updated</div>
-            </div>
-        </div>
-
-        <div class="controls-section">
-            <div class="search-container">
-                <i class="fas fa-search search-icon"></i>
-                <input type="text" id="searchInput" class="search-input" placeholder="Search impossible levels...">
-                <div id="searchSuggestions" class="search-suggestions"></div>
-            </div>
-
-            <div class="filter-controls">
-                <div class="filter-dropdown">
-                    <button id="difficultyFilter" class="filter-btn">
-                        <span>Difficulty</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </button>
-                    <div id="difficultyMenu" class="filter-menu">
-                        <div class="filter-option active" data-value="all">All Difficulties</div>
-                        <div class="filter-option" data-value="easy">Easy</div>
-                        <div class="filter-option" data-value="medium">Medium</div>
-                        <div class="filter-option" data-value="hard">Hard</div>
-                        <div class="filter-option" data-value="insane">Insane</div>
-                        <div class="filter-option" data-value="extreme">Extreme</div>
-                        <div class="filter-option" data-value="impossible">Impossible</div>
-                    </div>
-                </div>
-
-                <div class="filter-dropdown">
-                    <button id="sortFilter" class="filter-btn">
-                        <span>Rank</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </button>
-                    <div id="sortMenu" class="filter-menu">
-                        <div class="filter-option active" data-value="rank">Rank</div>
-                        <div class="filter-option" data-value="name">Name</div>
-                        <div class="filter-option" data-value="difficulty">Difficulty</div>
-                        <div class="filter-option" data-value="creator">Creator</div>
-                        <div class="filter-option" data-value="rating">Rating</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="view-controls">
-                <div class="view-buttons">
-                    <button id="gridView" class="view-btn active">
-                        <i class="fas fa-th"></i>
-                    </button>
-                    <button id="listView" class="view-btn">
-                        <i class="fas fa-list"></i>
-                    </button>
-                </div>
-
-                <div class="action-buttons">
-                    <button id="randomBtn" class="action-btn" title="Random Impossible">
-                        <i class="fas fa-random"></i>
-                    </button>
-                    <button id="compareBtn" class="action-btn" title="Compare">
-                        <i class="fas fa-balance-scale"></i>
-                    </button>
-                    <button id="advancedFilterBtn" class="action-btn" title="Advanced Filters">
-                        <i class="fas fa-filter"></i>
-                    </button>
-                    <button id="exportBtn" class="action-btn" title="Export Data">
-                        <i class="fas fa-download"></i>
-                    </button>
-                    <button id="recommendationsBtn" class="action-btn" title="Recommendations">
-                        <i class="fas fa-magic"></i>
-                    </button>
-                </div>
-            </div>
-        </div>
-
-        <div id="advancedFilterSection" class="advanced-filter-section">
-            <h3>Advanced Filters</h3>
-            <div class="filter-group">
-                <label for="minRating">Minimum Rating</label>
-                <input type="range" id="minRating" min="0" max="5" step="0.5" value="0">
-                <div class="range-value">0</div>
-            </div>
-            <div class="filter-group">
-                <label for="maxRating">Maximum Rating</label>
-                <input type="range" id="maxRating" min="0" max="5" step="0.5" value="5">
-                <div class="range-value">5</div>
-            </div>
-            <div class="filter-group">
-                <label for="creatorFilter">Creator</label>
-                <input type="text" id="creatorFilter" placeholder="Filter by creator...">
-            </div>
-            <div class="filter-group">
-                <label for="verifierFilter">Verifier</label>
-                <input type="text" id="verifierFilter" placeholder="Filter by verifier...">
-            </div>
-            <div class="filter-group">
-                <label>
-                    <input type="checkbox" id="hasVideo"> Has Video
-                </label>
-            </div>
-            <div class="filter-group">
-                <label for="completedFilter">Completion Status</label>
-                <select id="completedFilter">
-                    <option value="all">All</option>
-                    <option value="completed">Completed</option>
-                    <option value="not-completed">Not Completed</option>
-                </select>
-            </div>
-            <div class="filter-group">
-                <label for="tagFilter">Tags</label>
-                <input type="text" id="tagFilter" placeholder="Filter by tags...">
-            </div>
-            <div class="filter-actions">
-                <button id="applyFilters" class="btn">Apply Filters</button>
-                <button id="resetFilters" class="btn btn-secondary">Reset</button>
-            </div>
-        </div>
-
-        <div id="loadingMsg" class="loading-message">Loading impossible levels...</div>
-        <div id="demonCardGrid" class="demon-grid"></div>
-        <div id="pagination" class="pagination"></div>
-    </div>
-
-    <div id="sidebarNav" class="sidebar">
-        <div class="sidebar-header">
-            <h3 class="sidebar-title">Menu</h3>
-            <button id="closeSidebar" class="close-sidebar">
-                <i class="fas fa-times"></i>
+      <div class="header-content">
+        <button type="button" id="openSidebar" class="btn-icon" aria-label="Open navigation" aria-controls="sidebarNav" aria-expanded="false">
+          <i class="fas fa-bars" aria-hidden="true"></i>
+        </button>
+        <a class="logo" href="index.html" aria-label="GDIPS Impossible List home">
+          <img class="brand-mark" src="../assets/brand/gdips-mark.svg" alt="" width="32" height="32">
+          <span>GDIPS Impossible List</span>
+        </a>
+        <div class="header-actions">
+          <div class="m3-menu-anchor">
+            <button type="button" class="btn-icon" data-m3-menu-trigger="#listSeedMenu" aria-haspopup="true" aria-expanded="false" aria-label="Dynamic colour">
+              <i class="fas fa-palette" aria-hidden="true"></i>
             </button>
+            <div class="m3-menu m3-menu--end m3-menu--bottom list-menu" id="listSeedMenu">
+              <p class="list-menu__head">Dynamic colour</p>
+              <div data-m3-color-picker></div>
+            </div>
+          </div>
+          <button type="button" class="btn-icon m3-theme-toggle" aria-label="Switch between light and dark theme">
+            <i class="fas fa-moon m3-theme-toggle__light" aria-hidden="true"></i>
+            <i class="fas fa-sun m3-theme-toggle__dark" aria-hidden="true"></i>
+          </button>
         </div>
-        <div class="sidebar-content">
-            <div class="user-profile" id="userProfileSection">
-                <div class="user-avatar">
-                    <i class="fas fa-user"></i>
-                </div>
-                <div class="user-info">
-                    <div class="user-name" id="userName">Guest</div>
-                    <div class="user-level" id="userLevel">Level 1</div>
-                    <div class="user-stats">
-                        <div class="user-stat">
-                            <div class="user-stat-value" id="userCompleted">0</div>
-                            <div class="user-stat-label">Completed</div>
-                        </div>
-                        <div class="user-stat">
-                            <div class="user-stat-value" id="userFavorites">0</div>
-                            <div class="user-stat-label">Favorites</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="sidebar-section">
-                <div class="sidebar-section-title">Navigation</div>
-                <a href="demonlist.html" class="sidebar-link">
-                    <i class="fas fa-fire"></i>
-                    <span>Demon List</span>
-                </a>
-                <a href="pemonlist.html" class="sidebar-link">
-                    <i class="fas fa-star"></i>
-                    <span>Pemon List</span>
-                </a>
-                <a href="impossiblelist.html" class="sidebar-link">
-                    <i class="fas fa-skull"></i>
-                    <span>Impossible List</span>
-                </a>
-            </div>
-            <div class="sidebar-section">
-                <div class="sidebar-section-title">Your Lists</div>
-                <a href="#" id="favoritesLink" class="sidebar-link">
-                    <i class="fas fa-heart"></i>
-                    <span>Favorites</span>
-                </a>
-                <a href="#" id="recentLink" class="sidebar-link">
-                    <i class="fas fa-history"></i>
-                    <span>Recently Viewed</span>
-                </a>
-                <a href="#" id="progressLink" class="sidebar-link">
-                    <i class="fas fa-chart-line"></i>
-                    <span>Your Progress</span>
-                </a>
-            </div>
-            <div class="sidebar-section">
-                <div class="sidebar-section-title">Achievements</div>
-                <a href="#" id="achievementsLink" class="sidebar-link">
-                    <i class="fas fa-trophy"></i>
-                    <span>View Achievements</span>
-                </a>
-            </div>
-            <div class="sidebar-section">
-                <div class="sidebar-section-title">Settings</div>
-                <a href="#" onclick="DemonListApp.showSettingsModal()" class="sidebar-link">
-                    <i class="fas fa-cog"></i>
-                    <span>Settings</span>
-                </a>
-            </div>
-        </div>
+      </div>
     </div>
+  </header>
 
-    <div id="videoModal" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3 class="modal-title">Video Preview</h3>
-                <button id="closeVideoModal" class="modal-close">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="video-container">
-                    <iframe id="youtubeFrame" src="" frameborder="0" allowfullscreen></iframe>
-                </div>
-            </div>
+  <nav class="tab-nav" aria-label="List pages">
+    <a href="index.html" class="tab-nav-item">
+      <i class="fas fa-list" aria-hidden="true"></i> Demon List
+    </a>
+    <a href="pemonlist.html" class="tab-nav-item">
+      <i class="fas fa-star" aria-hidden="true"></i> Pemon List
+    </a>
+    <a href="impossiblelist.html" class="tab-nav-item active" aria-current="page">
+      <i class="fas fa-skull-crossbones" aria-hidden="true"></i> Impossible List
+    </a>
+    <a href="info.html" class="tab-nav-item">
+      <i class="fas fa-info-circle" aria-hidden="true"></i> About
+    </a>
+    <a href="best.html" class="tab-nav-item">
+      <i class="fas fa-trophy" aria-hidden="true"></i> Leaderboard
+    </a>
+  </nav>
+
+  <main id="main" class="m3-main">
+    <div class="container">
+      <section class="stats-bar" aria-label="List statistics">
+        <div class="stat-item">
+          <div class="stat-value" id="totalDemons">0</div>
+          <div class="stat-label">Total Impossible</div>
         </div>
+        <div class="stat-item">
+          <div class="stat-value" id="extremeDemons">0</div>
+          <div class="stat-label">Extreme Impossible</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value" id="lastUpdated">-</div>
+          <div class="stat-label">Last Updated</div>
+        </div>
+      </section>
+
+      <section class="controls-section" aria-label="Search and filters">
+        <div class="search-container" role="search">
+          <i class="fas fa-search search-icon" aria-hidden="true"></i>
+          <input type="text" id="searchInput" class="search-input" placeholder="Search impossible levels..." aria-label="Search impossible levels..." autocomplete="off">
+          <div id="searchSuggestions" class="search-suggestions" role="listbox" aria-label="Search suggestions"></div>
+        </div>
+
+        <div class="filter-controls">
+          <div class="filter-dropdown">
+            <button type="button" id="difficultyFilter" class="filter-btn" aria-haspopup="true" aria-expanded="false">
+              <span>Difficulty</span>
+              <i class="fas fa-chevron-down" aria-hidden="true"></i>
+            </button>
+            <div id="difficultyMenu" class="filter-menu" role="menu" aria-label="Filter by difficulty">
+              <div class="filter-option active" data-value="all" role="menuitemradio" aria-checked="true" tabindex="0">All Difficulties</div>
+              <div class="filter-option" data-value="easy" role="menuitemradio" aria-checked="false" tabindex="0">Easy</div>
+              <div class="filter-option" data-value="medium" role="menuitemradio" aria-checked="false" tabindex="0">Medium</div>
+              <div class="filter-option" data-value="hard" role="menuitemradio" aria-checked="false" tabindex="0">Hard</div>
+              <div class="filter-option" data-value="insane" role="menuitemradio" aria-checked="false" tabindex="0">Insane</div>
+              <div class="filter-option" data-value="extreme" role="menuitemradio" aria-checked="false" tabindex="0">Extreme</div>
+              <div class="filter-option" data-value="impossible" role="menuitemradio" aria-checked="false" tabindex="0">Impossible</div>
+            </div>
+          </div>
+
+          <div class="filter-dropdown">
+            <button type="button" id="sortFilter" class="filter-btn" aria-haspopup="true" aria-expanded="false">
+              <span>Rank</span>
+              <i class="fas fa-chevron-down" aria-hidden="true"></i>
+            </button>
+            <div id="sortMenu" class="filter-menu" role="menu" aria-label="Sort by">
+              <div class="filter-option active" data-value="rank" role="menuitemradio" aria-checked="true" tabindex="0">Rank</div>
+              <div class="filter-option" data-value="name" role="menuitemradio" aria-checked="false" tabindex="0">Name</div>
+              <div class="filter-option" data-value="difficulty" role="menuitemradio" aria-checked="false" tabindex="0">Difficulty</div>
+              <div class="filter-option" data-value="creator" role="menuitemradio" aria-checked="false" tabindex="0">Creator</div>
+              <div class="filter-option" data-value="rating" role="menuitemradio" aria-checked="false" tabindex="0">Rating</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="view-controls">
+          <div class="view-buttons" role="group" aria-label="Layout">
+            <button type="button" id="gridView" class="view-btn active" aria-label="Grid view" aria-pressed="true">
+              <i class="fas fa-th" aria-hidden="true"></i>
+            </button>
+            <button type="button" id="listView" class="view-btn" aria-label="List view" aria-pressed="false">
+              <i class="fas fa-list" aria-hidden="true"></i>
+            </button>
+          </div>
+
+          <div class="action-buttons">
+            <button type="button" id="randomBtn" class="action-btn" title="Random Impossible" aria-label="Random Impossible">
+              <i class="fas fa-random" aria-hidden="true"></i>
+            </button>
+            <button type="button" id="compareBtn" class="action-btn" title="Compare levels" aria-label="Compare levels">
+              <i class="fas fa-balance-scale" aria-hidden="true"></i>
+            </button>
+            <button type="button" id="advancedFilterBtn" class="action-btn" title="Advanced filters" aria-label="Advanced filters" aria-expanded="false" aria-controls="advancedFilterSection">
+              <i class="fas fa-filter" aria-hidden="true"></i>
+            </button>
+            <button type="button" id="exportBtn" class="action-btn" title="Export data" aria-label="Export data">
+              <i class="fas fa-download" aria-hidden="true"></i>
+            </button>
+            <button type="button" id="recommendationsBtn" class="action-btn" title="Recommendations" aria-label="Recommendations">
+              <i class="fas fa-magic" aria-hidden="true"></i>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <section id="advancedFilterSection" class="advanced-filter-section" aria-label="Advanced filters">
+        <h3>Advanced Filters</h3>
+        <div class="filter-group">
+          <label for="minRating">Minimum Rating</label>
+          <input type="range" id="minRating" min="0" max="5" step="0.5" value="0">
+          <div class="range-value">0</div>
+        </div>
+        <div class="filter-group">
+          <label for="maxRating">Maximum Rating</label>
+          <input type="range" id="maxRating" min="0" max="5" step="0.5" value="5">
+          <div class="range-value">5</div>
+        </div>
+        <div class="filter-group">
+          <label for="creatorFilter">Creator</label>
+          <input type="text" id="creatorFilter" placeholder="Filter by creator...">
+        </div>
+        <div class="filter-group">
+          <label for="verifierFilter">Verifier</label>
+          <input type="text" id="verifierFilter" placeholder="Filter by verifier...">
+        </div>
+        <div class="filter-group">
+          <label class="checkbox-field">
+            <input type="checkbox" id="hasVideo"> Has Video
+          </label>
+        </div>
+        <div class="filter-group">
+          <label for="completedFilter">Completion Status</label>
+          <select id="completedFilter">
+            <option value="all">All</option>
+            <option value="completed">Completed</option>
+            <option value="not-completed">Not Completed</option>
+          </select>
+        </div>
+        <div class="filter-group">
+          <label for="tagFilter">Tags</label>
+          <input type="text" id="tagFilter" placeholder="Filter by tags...">
+        </div>
+        <div class="filter-actions">
+          <button type="button" id="applyFilters" class="btn">Apply Filters</button>
+          <button type="button" id="resetFilters" class="btn btn-secondary">Reset</button>
+        </div>
+      </section>
+
+      <div id="loadingMsg" class="loading-message" role="status" aria-live="polite">Loading impossible levels...</div>
+      <div id="demonCardGrid" class="demon-grid" aria-live="polite"></div>
+      <nav id="pagination" class="pagination" aria-label="Pagination"></nav>
     </div>
+  </main>
 
-    <div id="detailsModal" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3 id="detailsModalTitle" class="modal-title">Level Details</h3>
-                <button id="closeDetailsModal" class="modal-close">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div id="levelDetails"></div>
-            </div>
-            <div class="modal-footer">
-                <button id="watchVideo" class="modal-btn modal-btn-primary">
-                    <i class="fas fa-play"></i> Watch Video
-                </button>
-                <button id="statisticsBtn" class="modal-btn modal-btn-secondary">
-                    <i class="fas fa-chart-bar"></i> Statistics
-                </button>
-                <button id="reviewsBtn" class="modal-btn modal-btn-secondary">
-                    <i class="fas fa-comments"></i> Reviews
-                </button>
-                <button id="closeDetails" class="modal-btn modal-btn-secondary">Close</button>
-            </div>
-        </div>
+  <div id="sidebarScrim" class="drawer-scrim" aria-hidden="true"></div>
+
+  <aside id="sidebarNav" class="sidebar" aria-label="List navigation" aria-hidden="true">
+    <div class="sidebar-header">
+      <h3 class="sidebar-title">Menu</h3>
+      <button type="button" id="closeSidebar" class="btn-icon" aria-label="Close navigation">
+        <i class="fas fa-times" aria-hidden="true"></i>
+      </button>
     </div>
-
-    <div id="ratingModal" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3 id="ratingModalTitle" class="modal-title">Rate Level</h3>
-                <button id="closeRatingModal" class="modal-close">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div id="ratingContent"></div>
-            </div>
-            <div class="modal-footer">
-                <button id="submitRating" class="modal-btn modal-btn-primary">Submit Rating</button>
-            </div>
+    <div class="sidebar-content">
+      <div class="user-profile" id="userProfileSection">
+        <div class="user-avatar">
+          <i class="fas fa-user" aria-hidden="true"></i>
         </div>
+        <div class="user-info">
+          <div class="user-name" id="userName">Guest</div>
+          <div class="user-level" id="userLevel">Level 1</div>
+          <div class="user-stats">
+            <div class="user-stat">
+              <div class="user-stat-value" id="userCompleted">0</div>
+              <div class="user-stat-label">Completed</div>
+            </div>
+            <div class="user-stat">
+              <div class="user-stat-value" id="userFavorites">0</div>
+              <div class="user-stat-label">Favorites</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="sidebar-section">
+        <div class="sidebar-section-title">Navigation</div>
+        <a href="index.html" class="sidebar-link">
+          <i class="fas fa-fire" aria-hidden="true"></i>
+          <span>Demon List</span>
+        </a>
+        <a href="pemonlist.html" class="sidebar-link">
+          <i class="fas fa-star" aria-hidden="true"></i>
+          <span>Pemon List</span>
+        </a>
+        <a href="impossiblelist.html" class="sidebar-link active" aria-current="page">
+          <i class="fas fa-skull" aria-hidden="true"></i>
+          <span>Impossible List</span>
+        </a>
+        <a href="info.html" class="sidebar-link">
+          <i class="fas fa-info-circle" aria-hidden="true"></i>
+          <span>About</span>
+        </a>
+        <a href="best.html" class="sidebar-link">
+          <i class="fas fa-trophy" aria-hidden="true"></i>
+          <span>Leaderboard</span>
+        </a>
+      </div>
+      <div class="sidebar-section">
+        <div class="sidebar-section-title">Your Lists</div>
+        <a href="#" id="favoritesLink" class="sidebar-link">
+          <i class="fas fa-heart" aria-hidden="true"></i>
+          <span>Favorites</span>
+        </a>
+        <a href="#" id="recentLink" class="sidebar-link">
+          <i class="fas fa-history" aria-hidden="true"></i>
+          <span>Recently Viewed</span>
+        </a>
+        <a href="#" id="progressLink" class="sidebar-link">
+          <i class="fas fa-chart-line" aria-hidden="true"></i>
+          <span>Your Progress</span>
+        </a>
+      </div>
+      <div class="sidebar-section">
+        <div class="sidebar-section-title">Achievements</div>
+        <a href="#" id="achievementsLink" class="sidebar-link">
+          <i class="fas fa-trophy" aria-hidden="true"></i>
+          <span>View Achievements</span>
+        </a>
+      </div>
+      <div class="sidebar-section">
+        <div class="sidebar-section-title">Settings</div>
+        <a href="#" id="settingsLink" class="sidebar-link">
+          <i class="fas fa-cog" aria-hidden="true"></i>
+          <span>Settings</span>
+        </a>
+      </div>
     </div>
+  </aside>
 
-    <div id="progressModal" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3 id="progressModalTitle" class="modal-title">Update Progress</h3>
-                <button id="closeProgressModal" class="modal-close">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div id="progressContent"></div>
-            </div>
-            <div class="modal-footer">
-                <button id="updateProgress" class="modal-btn modal-btn-primary">Update Progress</button>
-            </div>
+  <div id="videoModal" class="modal" role="dialog" aria-modal="true" aria-label="Video preview">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title">Video Preview</h3>
+        <button type="button" id="closeVideoModal" class="modal-close" aria-label="Close video preview">
+          <i class="fas fa-times" aria-hidden="true"></i>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="video-container">
+          <iframe id="youtubeFrame" src="" title="Level showcase video" frameborder="0" allowfullscreen></iframe>
         </div>
+      </div>
     </div>
+  </div>
 
-    <div id="statisticsModal" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3 id="statisticsModalTitle" class="modal-title">Level Statistics</h3>
-                <button id="closeStatisticsModal" class="modal-close">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div id="statisticsContent"></div>
-            </div>
-        </div>
+  <div id="detailsModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="detailsModalTitle">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 id="detailsModalTitle" class="modal-title">Level Details</h3>
+        <button type="button" id="closeDetailsModal" class="modal-close" aria-label="Close level details">
+          <i class="fas fa-times" aria-hidden="true"></i>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div id="levelDetails"></div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="watchVideo" class="modal-btn modal-btn-primary">
+          <i class="fas fa-play" aria-hidden="true"></i> Watch Video
+        </button>
+        <button type="button" id="statisticsBtn" class="modal-btn modal-btn-secondary">
+          <i class="fas fa-chart-bar" aria-hidden="true"></i> Statistics
+        </button>
+        <button type="button" id="reviewsBtn" class="modal-btn modal-btn-secondary">
+          <i class="fas fa-comments" aria-hidden="true"></i> Reviews
+        </button>
+        <button type="button" id="closeDetails" class="modal-btn modal-btn-secondary">Close</button>
+      </div>
     </div>
+  </div>
 
-    <div id="reviewsModal" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3 id="reviewsModalTitle" class="modal-title">Level Reviews</h3>
-                <button id="closeReviewsModal" class="modal-close">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div id="reviewsContent"></div>
-            </div>
-            <div class="modal-footer">
-                <button id="addReview" class="modal-btn modal-btn-primary">Add Review</button>
-            </div>
-        </div>
+  <div id="ratingModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="ratingModalTitle">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 id="ratingModalTitle" class="modal-title">Rate Level</h3>
+        <button type="button" id="closeRatingModal" class="modal-close" aria-label="Close rating dialog">
+          <i class="fas fa-times" aria-hidden="true"></i>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div id="ratingContent"></div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="submitRating" class="modal-btn modal-btn-primary">Submit Rating</button>
+      </div>
     </div>
+  </div>
 
-    <div id="compareModal" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3 class="modal-title">Compare Levels</h3>
-                <button class="modal-close">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div id="comparisonContainer"></div>
-            </div>
-        </div>
+  <div id="progressModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="progressModalTitle">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 id="progressModalTitle" class="modal-title">Update Progress</h3>
+        <button type="button" id="closeProgressModal" class="modal-close" aria-label="Close progress dialog">
+          <i class="fas fa-times" aria-hidden="true"></i>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div id="progressContent"></div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="updateProgress" class="modal-btn modal-btn-primary">Update Progress</button>
+      </div>
     </div>
+  </div>
 
-    <div id="toastContainer" class="toast-container"></div>
+  <div id="statisticsModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="statisticsModalTitle">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 id="statisticsModalTitle" class="modal-title">Level Statistics</h3>
+        <button type="button" id="closeStatisticsModal" class="modal-close" aria-label="Close statistics dialog">
+          <i class="fas fa-times" aria-hidden="true"></i>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div id="statisticsContent"></div>
+      </div>
+    </div>
+  </div>
 
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-links">
-                    <a href="demonlist.html" class="footer-link">Demon List</a>
-                    <a href="pemonlist.html" class="footer-link">Pemon List</a>
-                    <a href="impossiblelist.html" class="footer-link">Impossible List</a>
-                    <a href="#" onclick="DemonListApp.showSettingsModal()" class="footer-link">Settings</a>
-                </div>
-                <div>
-                    <p>&copy; <span id="year">2023</span> GDIPS Impossible List. All rights reserved.</p>
-                </div>
-            </div>
+  <div id="reviewsModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="reviewsModalTitle">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 id="reviewsModalTitle" class="modal-title">Level Reviews</h3>
+        <button type="button" id="closeReviewsModal" class="modal-close" aria-label="Close reviews dialog">
+          <i class="fas fa-times" aria-hidden="true"></i>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div id="reviewsContent"></div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="addReview" class="modal-btn modal-btn-primary">Add Review</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="compareModal" class="modal" role="dialog" aria-modal="true" aria-label="Compare levels">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title">Compare Levels</h3>
+        <button type="button" class="modal-close" aria-label="Close comparison">
+          <i class="fas fa-times" aria-hidden="true"></i>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div id="comparisonContainer"></div>
+      </div>
+    </div>
+  </div>
+
+  <div id="toastContainer" class="toast-container" role="status" aria-live="polite"></div>
+
+  <footer class="list-footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <img class="brand-mark brand-mark--sm" src="../assets/brand/gdips-mark.svg" alt="" width="24" height="24">
+          <span>GDIPS Impossible List</span>
         </div>
-    </footer>
+        <nav class="footer-links" aria-label="Footer">
+          <a href="index.html" class="footer-link">Demon List</a>
+          <a href="pemonlist.html" class="footer-link">Pemon List</a>
+          <a href="impossiblelist.html" class="footer-link">Impossible List</a>
+          <a href="info.html" class="footer-link">About</a>
+          <a href="best.html" class="footer-link">Leaderboard</a>
+          <a href="#" id="footerSettingsLink" class="footer-link">Settings</a>
+        </nav>
+        <p class="footer-note">&copy; <span id="year">2025</span> GDIPS Impossible List. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
-    <script>
-        /**
-         * GDIPS Demon List - Enhanced JavaScript
-         * A comprehensive demon list viewer with filtering, sorting, and user profiles
-         */
+  <script src="../assets/vendor/papaparse/papaparse.min.js"></script>
+  <script src="script.js" defer></script>
+  <script src="../assets/m3/ui.js" defer></script>
+  <script>
+    /* Small shell helpers: keep the navigation drawer's accessible state and
+       the scrim in sync with the class driven by script.js, and route the
+       settings shortcuts to the app's own dialog. */
+    (function () {
+      var sidebar = document.getElementById('sidebarNav');
+      var scrim = document.getElementById('sidebarScrim');
+      var openBtn = document.getElementById('openSidebar');
+      var closeBtn = document.getElementById('closeSidebar');
 
-        // Module pattern for better organization
-        const DemonListApp = (() => {
-            // Private variables
-            let demonData = [];
-            let pemonData = [];
-            let impossibleData = [];
-            let filteredData = [];
-            let favorites = [];
-            let recentlyViewed = [];
-            let completedLevels = [];
-            let userAchievements = [];
-            let userRatings = {};
-            let levelProgress = {};
-            let searchHistory = [];
-            let communityReviews = {};
-            let currentPage = 1;
-            let ITEMS_PER_PAGE = parseInt(localStorage.getItem('pageSize')) || 12;
-            let currentSort = 'rank';
-            let currentFilter = 'all';
-            let viewMode = 'grid';
-            let selectedForCompare = [];
-            let userProfile = {
-                username: 'gravatar',
-                avatar: 'gravatar',
-                completedCount: 0,
-                favoriteCount: 0,
-                level: 1,
-                experience: 0,
-                joinDate: new Date().toISOString()
-            };
-            
-            // Data sources configuration
-            const DATA_SOURCES = {
-                demonlist: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSDN7HUdFLEi7P5CkSFXFz_b16Os_8hdEItayViA0TfNze8nudO6sxlJgL9h2K8gkYMQah6RS1KXvL2/pub?gid=1550981254&single=true&output=csv',
-                pemonlist: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRULqi0QRDR6gfQo8P2bfqpcqnnZJSkD1ZT-D2XiF7urmzvLwcf10L85KSVp20q65AkMjsha6Lg2LIQ/pub?output=csv',
-                impossiblelist: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQ4iVSl1wTRfOZwLAoyZF-ej_Be2LCgtpXnHgswXbZJczu1EXvrWsGvffpPtAtWxx6-XlOcGsgaHDLo/pub?output=csv'
-            };
-            
-            // Achievement definitions
-            const ACHIEVEMENTS = {
-                firstLevel: {
-                    id: 'firstLevel',
-                    title: 'First Steps',
-                    description: 'View your first level',
-                    icon: 'fa-shoe-prints',
-                    condition: () => recentlyViewed.length >= 1
-                },
-                explorer: {
-                    id: 'explorer',
-                    title: 'Explorer',
-                    description: 'View 10 different levels',
-                    icon: 'fa-compass',
-                    condition: () => recentlyViewed.length >= 10
-                },
-                collector: {
-                    id: 'collector',
-                    title: 'Collector',
-                    description: 'Add 5 levels to favorites',
-                    icon: 'fa-heart',
-                    condition: () => favorites.length >= 5
-                },
-                completer: {
-                    id: 'completer',
-                    title: 'Demon Slayer',
-                    description: 'Complete 3 levels',
-                    icon: 'fa-skull',
-                    condition: () => completedLevels.length >= 3
-                },
-                master: {
-                    id: 'master',
-                    title: 'Demon Master',
-                    description: 'Complete 10 levels',
-                    icon: 'fa-crown',
-                    condition: () => completedLevels.length >= 10
-                },
-                reviewer: {
-                    id: 'reviewer',
-                    title: 'Critic',
-                    description: 'Rate 5 levels',
-                    icon: 'fa-star',
-                    condition: () => Object.keys(userRatings).length >= 5
-                },
-                progressTracker: {
-                    id: 'progressTracker',
-                    title: 'Progress Tracker',
-                    description: 'Track progress on 5 levels',
-                    icon: 'fa-chart-line',
-                    condition: () => Object.keys(levelProgress).length >= 5
-                },
-                communityMember: {
-                    id: 'communityMember',
-                    title: 'Community Member',
-                    description: 'Write 3 reviews',
-                    icon: 'fa-comments',
-                    condition: () => Object.values(communityReviews).flat().length >= 3
-                }
-            };
-            
-            // DOM element references
-            const elements = {};
-            
-            // Initialize app
-            function init() {
-                cacheElements();
-                loadUserData();
-                initializeEventListeners();
-                loadData();
-                updateUserProfile();
-                checkAchievements();
-                updateYear();
-                initializeTheme();
-                setupServiceWorker();
-                setupSearchSuggestions();
-                setupRecommendationEngine();
-            }
-            
-            // Cache DOM elements for better performance
-            function cacheElements() {
-                elements.cardGrid = document.getElementById('demonCardGrid');
-                elements.loadingMsg = document.getElementById('loadingMsg');
-                elements.searchInput = document.getElementById('searchInput');
-                elements.difficultyMenu = document.getElementById('difficultyMenu');
-                elements.sortMenu = document.getElementById('sortMenu');
-                elements.pagination = document.getElementById('pagination');
-                elements.sidebar = document.getElementById('sidebarNav');
-                elements.toastContainer = document.getElementById('toastContainer');
-                elements.videoModal = document.getElementById('videoModal');
-                elements.detailsModal = document.getElementById('detailsModal');
-                elements.compareModal = document.getElementById('compareModal');
-                elements.advancedFilterSection = document.getElementById('advancedFilterSection');
-                elements.ratingModal = document.getElementById('ratingModal');
-                elements.statisticsModal = document.getElementById('statisticsModal');
-                elements.reviewsModal = document.getElementById('reviewsModal');
-                elements.progressModal = document.getElementById('progressModal');
-                elements.searchSuggestions = document.getElementById('searchSuggestions');
-            }
-            
-            // Load user data from localStorage
-            function loadUserData() {
-                favorites = JSON.parse(localStorage.getItem('favorites')) || [];
-                recentlyViewed = JSON.parse(localStorage.getItem('recentlyViewed')) || [];
-                completedLevels = JSON.parse(localStorage.getItem('completedLevels')) || [];
-                userAchievements = JSON.parse(localStorage.getItem('achievements')) || [];
-                userProfile = JSON.parse(localStorage.getItem('userProfile')) || userProfile;
-                viewMode = localStorage.getItem('viewMode') || 'grid';
-                userRatings = JSON.parse(localStorage.getItem('userRatings')) || {};
-                levelProgress = JSON.parse(localStorage.getItem('levelProgress')) || {};
-                searchHistory = JSON.parse(localStorage.getItem('searchHistory')) || [];
-                communityReviews = JSON.parse(localStorage.getItem('communityReviews')) || {};
-            }
-            
-            // Initialize event listeners
-            function initializeEventListeners() {
-                // Sidebar navigation
-                setupSidebarListeners();
-                
-                // Theme toggle
-                const themeToggle = document.getElementById('themeToggle');
-                if (themeToggle) {
-                    themeToggle.addEventListener('click', toggleTheme);
-                }
-                
-                // Search functionality
-                if (elements.searchInput) {
-                    elements.searchInput.addEventListener('input', debounce(handleSearch, 300));
-                    elements.searchInput.addEventListener('focus', showSearchSuggestions);
-                    elements.searchInput.addEventListener('blur', hideSearchSuggestions);
-                }
-                
-                // Filter menus
-                setupFilterListeners();
-                
-                // View controls
-                setupViewControls();
-                
-                // Action buttons
-                setupActionButtons();
-                
-                // Modal controls
-                setupModalControls();
-                
-                // Keyboard shortcuts
-                setupKeyboardShortcuts();
-                
-                // Advanced filters
-                setupAdvancedFilters();
-                
-                // Infinite scroll
-                window.addEventListener('scroll', throttle(handleInfiniteScroll, 999999));
-                
-                // Print functionality
-                setupPrintFunctionality();
-            }
-            
-            // Setup sidebar listeners
-            function setupSidebarListeners() {
-                const openSidebarBtn = document.getElementById('openSidebar');
-                const closeSidebarBtn = document.getElementById('closeSidebar');
-                
-                if (openSidebarBtn && closeSidebarBtn) {
-                    openSidebarBtn.onclick = () => elements.sidebar.classList.add('active');
-                    closeSidebarBtn.onclick = () => elements.sidebar.classList.remove('active');
-                    
-                    // Close sidebar on click outside
-                    document.addEventListener('click', (e) => {
-                        if (
-                            elements.sidebar.classList.contains('active') &&
-                            !elements.sidebar.contains(e.target) &&
-                            e.target !== openSidebarBtn && !openSidebarBtn.contains(e.target)
-                        ) elements.sidebar.classList.remove('active');
-                    });
-                }
-                
-                // Sidebar links
-                const favoritesLink = document.getElementById('favoritesLink');
-                const recentLink = document.getElementById('recentLink');
-                const achievementsLink = document.getElementById('achievementsLink');
-                const progressLink = document.getElementById('progressLink');
-                
-                if (favoritesLink) {
-                    favoritesLink.addEventListener('click', (e) => {
-                        e.preventDefault();
-                        showFavorites();
-                    });
-                }
-                
-                if (recentLink) {
-                    recentLink.addEventListener('click', (e) => {
-                        e.preventDefault();
-                        showRecentlyViewed();
-                    });
-                }
-                
-                if (achievementsLink) {
-                    achievementsLink.addEventListener('click', (e) => {
-                        e.preventDefault();
-                        showAchievements();
-                    });
-                }
-                
-                if (progressLink) {
-                    progressLink.addEventListener('click', (e) => {
-                        e.preventDefault();
-                        showProgress();
-                    });
-                }
-            }
-            
-            // Setup filter listeners
-            function setupFilterListeners() {
-                const difficultyFilter = document.getElementById('difficultyFilter');
-                const sortFilter = document.getElementById('sortFilter');
-                
-                if (difficultyFilter) {
-                    difficultyFilter.addEventListener('click', toggleDifficultyMenu);
-                }
-                
-                if (sortFilter) {
-                    sortFilter.addEventListener('click', toggleSortMenu);
-                }
-                
-                // Filter options
-                const difficultyOptions = document.querySelectorAll('#difficultyMenu .filter-option');
-                difficultyOptions.forEach(option => {
-                    option.addEventListener('click', () => handleDifficultyFilter(option));
-                });
-                
-                const sortOptions = document.querySelectorAll('#sortMenu .filter-option');
-                sortOptions.forEach(option => {
-                    option.addEventListener('click', () => handleSortFilter(option));
-                });
-            }
-            
-            // Setup view controls
-            function setupViewControls() {
-                const gridView = document.getElementById('gridView');
-                const listView = document.getElementById('listView');
-                
-                if (gridView) {
-                    gridView.addEventListener('click', () => setViewMode('grid'));
-                }
-                
-                if (listView) {
-                    listView.addEventListener('click', () => setViewMode('list'));
-                }
-            }
-            
-            // Setup action buttons
-            function setupActionButtons() {
-                const randomBtn = document.getElementById('randomBtn');
-                const compareBtn = document.getElementById('compareBtn');
-                const advancedFilterBtn = document.getElementById('advancedFilterBtn');
-                const exportBtn = document.getElementById('exportBtn');
-                const recommendationsBtn = document.getElementById('recommendationsBtn');
-                
-                if (randomBtn) {
-                    randomBtn.addEventListener('click', showRandomDemon);
-                }
-                
-                if (compareBtn) {
-                    compareBtn.addEventListener('click', toggleCompareMode);
-                }
-                
-                if (advancedFilterBtn) {
-                    advancedFilterBtn.addEventListener('click', toggleAdvancedFilters);
-                }
-                
-                if (exportBtn) {
-                    exportBtn.addEventListener('click', exportData);
-                }
-                
-                if (recommendationsBtn) {
-                    recommendationsBtn.addEventListener('click', showRecommendations);
-                }
-            }
-            
-            // Setup modal controls
-            function setupModalControls() {
-                const closeVideoModal = document.getElementById('closeVideoModal');
-                const closeDetailsModal = document.getElementById('closeDetailsModal');
-                const closeDetails = document.getElementById('closeDetails');
-                const watchVideo = document.getElementById('watchVideo');
-                const closeRatingModal = document.getElementById('closeRatingModal');
-                const closeStatisticsModal = document.getElementById('closeStatisticsModal');
-                const closeReviewsModal = document.getElementById('closeReviewsModal');
-                const closeProgressModal = document.getElementById('closeProgressModal');
-                
-                if (closeVideoModal) {
-                    closeVideoModal.addEventListener('click', closeVideoModalFn);
-                }
-                
-                if (closeDetailsModal) {
-                    closeDetailsModal.addEventListener('click', closeDetailsModalFn);
-                }
-                
-                if (closeDetails) {
-                    closeDetails.addEventListener('click', closeDetailsModalFn);
-                }
-                
-                if (watchVideo) {
-                    watchVideo.addEventListener('click', () => {
-                        const videoId = watchVideo.dataset.videoId;
-                        if (videoId) {
-                            closeDetailsModalFn();
-                            openModal(videoId);
-                        }
-                    });
-                }
-                
-                if (closeRatingModal) {
-                    closeRatingModal.addEventListener('click', closeRatingModalFn);
-                }
-                
-                if (closeStatisticsModal) {
-                    closeStatisticsModal.addEventListener('click', closeStatisticsModalFn);
-                }
-                
-                if (closeReviewsModal) {
-                    closeReviewsModal.addEventListener('click', closeReviewsModalFn);
-                }
-                
-                if (closeProgressModal) {
-                    closeProgressModal.addEventListener('click', closeProgressModalFn);
-                }
-                
-                // Close modals on background click
-                if (elements.videoModal) {
-                    elements.videoModal.addEventListener('click', (e) => {
-                        if (e.target === e.currentTarget) closeVideoModalFn();
-                    });
-                }
-                
-                if (elements.detailsModal) {
-                    elements.detailsModal.addEventListener('click', (e) => {
-                        if (e.target === e.currentTarget) closeDetailsModalFn();
-                    });
-                }
-                
-                if (elements.ratingModal) {
-                    elements.ratingModal.addEventListener('click', (e) => {
-                        if (e.target === e.currentTarget) closeRatingModalFn();
-                    });
-                }
-                
-                if (elements.statisticsModal) {
-                    elements.statisticsModal.addEventListener('click', (e) => {
-                        if (e.target === e.currentTarget) closeStatisticsModalFn();
-                    });
-                }
-                
-                if (elements.reviewsModal) {
-                    elements.reviewsModal.addEventListener('click', (e) => {
-                        if (e.target === e.currentTarget) closeReviewsModalFn();
-                    });
-                }
-                
-                if (elements.progressModal) {
-                    elements.progressModal.addEventListener('click', (e) => {
-                        if (e.target === e.currentTarget) closeProgressModalFn();
-                    });
-                }
-            }
-            
-            // Setup keyboard shortcuts
-            function setupKeyboardShortcuts() {
-                document.addEventListener('keydown', (e) => {
-                    if (e.key === 'Escape') {
-                        closeVideoModalFn();
-                        closeDetailsModalFn();
-                        closeRatingModalFn();
-                        closeStatisticsModalFn();
-                        closeReviewsModalFn();
-                        closeProgressModalFn();
-                    }
-                    
-                    // Ctrl/Cmd + K for search
-                    if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
-                        e.preventDefault();
-                        if (elements.searchInput) elements.searchInput.focus();
-                    }
-                    
-                    // Ctrl/Cmd + F for favorites
-                    if ((e.ctrlKey || e.metaKey) && e.key === 'f') {
-                        e.preventDefault();
-                        showFavorites();
-                    }
-                    
-                    // Ctrl/Cmd + R for recommendations
-                    if ((e.ctrlKey || e.metaKey) && e.key === 'r') {
-                        e.preventDefault();
-                        showRecommendations();
-                    }
-                    
-                    // Number keys for quick page navigation
-                    if (e.key >= '1' && e.key <= '9' && !e.ctrlKey && !e.metaKey) {
-                        const pageNum = parseInt(e.key);
-                        const totalPages = Math.ceil(filteredData.length / ITEMS_PER_PAGE);
-                        
-                        if (pageNum <= totalPages) {
-                            currentPage = pageNum;
-                            renderCards();
-                            renderPagination();
-                            window.scrollTo({ top: 0, behavior: 'smooth' });
-                        }
-                    }
-                    
-                    // Arrow keys for card navigation
-                    if (e.key === 'ArrowLeft' && currentPage > 1) {
-                        currentPage--;
-                        renderCards();
-                        renderPagination();
-                        window.scrollTo({ top: 0, behavior: 'smooth' });
-                    }
-                    
-                    if (e.key === 'ArrowRight') {
-                        const totalPages = Math.ceil(filteredData.length / ITEMS_PER_PAGE);
-                        if (currentPage < totalPages) {
-                            currentPage++;
-                            renderCards();
-                            renderPagination();
-                            window.scrollTo({ top: 0, behavior: 'smooth' });
-                        }
-                    }
-                });
-            }
-            
-            // Setup advanced filters
-            function setupAdvancedFilters() {
-                const applyFiltersBtn = document.getElementById('applyFilters');
-                const resetFiltersBtn = document.getElementById('resetFilters');
-                
-                if (applyFiltersBtn) {
-                    applyFiltersBtn.addEventListener('click', applyAdvancedFilters);
-                }
-                
-                if (resetFiltersBtn) {
-                    resetFiltersBtn.addEventListener('click', resetAdvancedFilters);
-                }
-                
-                // Range inputs
-                const rangeInputs = document.querySelectorAll('input[type="range"]');
-                rangeInputs.forEach(input => {
-                    input.addEventListener('input', updateRangeValue);
-                });
-            }
-            
-            // Setup print functionality
-            function setupPrintFunctionality() {
-                const printBtn = document.createElement('button');
-                printBtn.className = 'action-btn';
-                printBtn.innerHTML = '<i class="fas fa-print"></i> Print List';
-                printBtn.addEventListener('click', () => window.print());
-                
-                const controlsSection = document.querySelector('.controls-section .action-buttons');
-                if (controlsSection) {
-                    controlsSection.appendChild(printBtn);
-                }
-            }
-            
-            // Setup search suggestions
-            function setupSearchSuggestions() {
-                if (!elements.searchSuggestions) {
-                    elements.searchSuggestions = document.createElement('div');
-                    elements.searchSuggestions.className = 'search-suggestions';
-                    elements.searchSuggestions.style.display = 'none';
-                    
-                    if (elements.searchInput && elements.searchInput.parentElement) {
-                        elements.searchInput.parentElement.appendChild(elements.searchSuggestions);
-                    }
-                }
-            }
-            
-            // Setup recommendation engine
-            function setupRecommendationEngine() {
-                // Initialize recommendation engine based on user preferences
-                // This would analyze user behavior and suggest relevant levels
-            }
-            
-            // Update current year in footer
-            function updateYear() {
-                const currentYear = new Date().getFullYear();
-                const yearElements = document.querySelectorAll('#year, #footerYear');
-                yearElements.forEach(el => {
-                    if (el) el.textContent = currentYear;
-                });
-            }
-            
-            // Initialize theme
-            function initializeTheme() {
-                // Check for system preference first
-                const prefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
-                const savedTheme = localStorage.getItem('theme') || (prefersDarkMode ? 'dark' : 'light');
-                document.documentElement.setAttribute('data-theme', savedTheme);
-                updateThemeIcon(savedTheme);
-                
-                // Listen for system theme changes
-                window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
-                    if (!localStorage.getItem('theme')) {
-                        const newTheme = e.matches ? 'dark' : 'light';
-                        document.documentElement.setAttribute('data-theme', newTheme);
-                        updateThemeIcon(newTheme);
-                    }
-                });
-            }
-            
-            // Setup service worker for offline support
-            function setupServiceWorker() {
-                if ('serviceWorker' in navigator) {
-                    navigator.serviceWorker.register('/sw.js').catch(err => {
-                        console.log('Service worker registration failed:', err);
-                    });
-                }
-            }
-            
-            // Data loading with enhanced error handling
-            async function loadData() {
-                if (!elements.cardGrid) return;
-                
-                // Show skeleton loading
-                elements.cardGrid.innerHTML = '';
-                for (let i = 0; i < 6; i++) {
-                    elements.cardGrid.appendChild(createSkeletonCard());
-                }
-                
-                try {
-                    // Check if Papa Parse is available
-                    if (typeof Papa === 'undefined') {
-                        throw new Error('Papa Parse library is not loaded');
-                    }
-                    
-                    // Determine which data source to use based on current page
-                    let dataSource;
-                    let dataVariable;
-                    
-                    if (window.location.pathname.includes('pemonlist.html')) {
-                        dataSource = DATA_SOURCES.pemonlist;
-                        dataVariable = 'pemonData';
-                    } else if (window.location.pathname.includes('impossiblelist.html')) {
-                        dataSource = DATA_SOURCES.impossiblelist;
-                        dataVariable = 'impossibleData';
-                    } else {
-                        dataSource = DATA_SOURCES.demonlist;
-                        dataVariable = 'demonData';
-                    }
-                    
-                    // Load data with timeout
-                    const controller = new AbortController();
-                    const timeoutId = setTimeout(() => controller.abort(), 10000);
-                    
-                    const response = await fetch(dataSource, { signal: controller.signal });
-                    clearTimeout(timeoutId);
-                    
-                    if (!response.ok) throw new Error('Network response was not ok');
-                    
-                    const csvText = await response.text();
-                    const sanitized = preprocessCSVText(csvText);
-                    const parsedData = await parseCSV(sanitized);
-                    
-                    const validData = parsedData.filter(r => {
-                        const levelName = r.Level || r.Name || '';
-                        return levelName.trim() !== '';
-                    });
-                    
-                    if (validData.length === 0) {
-                        throw new Error('No valid data found');
-                    }
-                    
-                    // Store data in the appropriate variable
-                    if (dataVariable === 'demonData') {
-                        demonData = validData;
-                    } else if (dataVariable === 'pemonData') {
-                        pemonData = validData;
-                    } else {
-                        impossibleData = validData;
-                    }
-                    
-                    // Set filtered data to the loaded data
-                    filteredData = [...validData];
-                    
-                    // Update stats
-                    updateStats();
-                    
-                    // Render the cards
-                    renderCards();
-                    renderPagination();
-                    
-                    // Hide loading message
-                    if (elements.loadingMsg) {
-                        elements.loadingMsg.style.display = 'none';
-                    }
-                    
-                    // Check if user has any progress to restore
-                    restoreUserProgress();
-                    
-                } catch (error) {
-                    console.error('Error loading data:', error);
-                    showError('Failed to load demon data. Please try again later.');
-                }
-            }
-            
-            // Preprocess CSV text to handle common issues
-            function preprocessCSVText(csvText) {
-                // Remove BOM if present
-                if (csvText.charCodeAt(0) === 0xFEFF) {
-                    csvText = csvText.substring(1);
-                }
-                
-                // Fix common CSV issues
-                return csvText
-                    .replace(/""/g, '\\"')  // Fix double quotes
-                    .replace(/,\s*,/g, ',,') // Fix empty fields
-                    .replace(/\r\n/g, '\n'); // Normalize line endings
-            }
-            
-            // Parse CSV data with error handling
-            function parseCSV(csvText) {
-                return new Promise((resolve, reject) => {
-                    Papa.parse(csvText, {
-                        header: true,
-                        skipEmptyLines: true,
-                        transformHeader: header => header.trim(),
-                        complete: results => {
-                            if (results.errors.length > 0) {
-                                console.warn('CSV parsing warnings:', results.errors);
-                            }
-                            resolve(results.data);
-                        },
-                        error: error => reject(error)
-                    });
-                });
-            }
-            
-            // Update statistics in the header
-            function updateStats() {
-                const totalDemonsEl = document.getElementById('totalDemons');
-                const extremeDemonsEl = document.getElementById('extremeDemons');
-                const lastUpdatedEl = document.getElementById('lastUpdated');
-                
-                if (totalDemonsEl) {
-                    totalDemonsEl.textContent = filteredData.length;
-                }
-                
-                if (extremeDemonsEl) {
-                    const extremeCount = filteredData.filter(d => 
-                        (d.Difficulty || '').toLowerCase() === 'extreme' || 
-                        (d.Difficulty || '').toLowerCase() === 'impossible'
-                    ).length;
-                    extremeDemonsEl.textContent = extremeCount;
-                }
-                
-                if (lastUpdatedEl) {
-                    const now = new Date();
-                    lastUpdatedEl.textContent = now.toLocaleDateString();
-                }
-            }
-            
-            // Create skeleton loading card
-            function createSkeletonCard() {
-                const card = document.createElement('div');
-                card.className = 'skeleton-card';
-                
-                card.innerHTML = `
-                    <div class="skeleton skeleton-thumb"></div>
-                    <div class="skeleton-content">
-                        <div class="skeleton skeleton-title"></div>
-                        <div class="skeleton skeleton-info"></div>
-                        <div class="skeleton skeleton-creator"></div>
-                    </div>
-                `;
-                
-                return card;
-            }
-            
-            // Render demon cards
-            function renderCards() {
-                if (!elements.cardGrid) return;
-                
-                elements.cardGrid.innerHTML = '';
-                
-                // Apply view mode
-                if (viewMode === 'list') {
-                    elements.cardGrid.classList.add('list-view');
-                } else {
-                    elements.cardGrid.classList.remove('list-view');
-                }
-                
-                // Calculate pagination
-                const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
-                const endIndex = startIndex + ITEMS_PER_PAGE;
-                const paginatedData = filteredData.slice(startIndex, endIndex);
-                
-                if (paginatedData.length === 0) {
-                    elements.cardGrid.innerHTML = `
-                        <div class="error-container">
-                            <div class="error-content">
-                                <i class="fas fa-search"></i>
-                                <h3>No levels found</h3>
-                                <p>Try adjusting your search or filter criteria</p>
-                                <div class="error-actions">
-                                    <button class="btn" onclick="DemonListApp.resetFilters()">Reset Filters</button>
-                                </div>
-                            </div>
-                        </div>
-                    `;
-                    return;
-                }
-                
-                // Render each card
-                paginatedData.forEach(demon => {
-                    const card = createDemonCard(demon);
-                    elements.cardGrid.appendChild(card);
-                });
-            }
-            
-            // Create a demon card element
-            function createDemonCard(demon) {
-                const card = document.createElement('div');
-                card.className = 'demon-card';
-                
-                // Extract data with fallbacks
-                const levelName = demon.Level || demon.Name || 'Unknown Level';
-                const creator = demon.Creator || 'Unknown';
-                const verifier = demon.Verifier || 'Unknown';
-                const difficulty = (demon.Difficulty || '').toLowerCase();
-                const levelId = demon.ID || '';
-                const videoId = demon.Video || '';
-                const rating = parseFloat(demon.Rating) || 0;
-                const rank = parseInt(demon.Rank) || 0;
-                
-                // Check if level is in favorites
-                const isFavorite = favorites.includes(levelId);
-                
-                // Check if level is completed
-                const isCompleted = completedLevels.includes(levelId);
-                
-                // Generate tags
-                const tags = generateTags(demon);
-                
-                card.innerHTML = `
-                    ${rank > 0 ? `<div class="card-rank">${rank}</div>` : ''}
-                    <div class="card-favorite ${isFavorite ? 'active' : ''}" data-id="${levelId}">
-                        <i class="fas fa-heart"></i>
-                    </div>
-                    ${isCompleted ? '<div class="completion-badge"><i class="fas fa-check"></i> Completed</div>' : ''}
-                    
-                    ${videoId ? `
-                        <div class="play-btn-overlay" data-video-id="${videoId}">
-                            <i class="fas fa-play-circle fa-3x"></i>
-                        </div>
-                    ` : ''}
-                    
-                    ${videoId ? `
-                        <img class="card-thumb" src="https://img.youtube.com/vi/${videoId}/maxresdefault.jpg" alt="${levelName}">
-                    ` : `
-                        <div class="no-video-thumb">
-                            <i class="fas fa-video-slash fa-2x"></i>
-                        </div>
-                    `}
-                    
-                    <div class="card-content">
-                        <h3 class="level-title" data-id="${levelId}">${levelName}</h3>
-                        
-                        <div class="level-info-row">
-                            <div class="diff-pill ${difficulty}">${difficulty || 'unknown'}</div>
-                            ${levelId ? `<div class="lvl-id-badge">ID: ${levelId}</div>` : ''}
-                        </div>
-                        
-                        <div class="creator-row">
-                            <span><i class="fas fa-user"></i> ${creator}</span>
-                            <span><i class="fas fa-check-circle"></i> ${verifier}</span>
-                        </div>
-                        
-                        <div class="rating-container">
-                            <div class="rating-stars">
-                                ${generateStars(rating)}
-                            </div>
-                            <div class="rating-value">${rating.toFixed(1)}</div>
-                        </div>
-                        
-                        <div class="filter-tags">
-                            ${tags.map(tag => `<span class="filter-tag">${tag}</span>`).join('')}
-                        </div>
-                        
-                        <div class="card-actions">
-                            <button class="card-action-btn" data-action="details" data-id="${levelId}">
-                                <i class="fas fa-info-circle"></i> Details
-                            </button>
-                            <button class="card-action-btn" data-action="progress" data-id="${levelId}">
-                                <i class="fas fa-chart-line"></i> Progress
-                            </button>
-                            <button class="card-action-btn" data-action="rate" data-id="${levelId}">
-                                <i class="fas fa-star"></i> Rate
-                            </button>
-                        </div>
-                    </div>
-                `;
-                
-                // Add event listeners
-                setupCardEventListeners(card, demon);
-                
-                return card;
-            }
-            
-            // Generate star rating HTML
-            function generateStars(rating) {
-                let stars = '';
-                const fullStars = Math.floor(rating);
-                const hasHalfStar = rating % 1 >= 0.5;
-                
-                for (let i = 0; i < fullStars; i++) {
-                    stars += '<i class="fas fa-star"></i>';
-                }
-                
-                if (hasHalfStar) {
-                    stars += '<i class="fas fa-star-half-alt"></i>';
-                }
-                
-                const emptyStars = 5 - Math.ceil(rating);
-                for (let i = 0; i < emptyStars; i++) {
-                    stars += '<i class="far fa-star"></i>';
-                }
-                
-                return stars;
-            }
-            
-            // Generate tags for a demon
-            function generateTags(demon) {
-                const tags = [];
-                
-                // Add difficulty tag
-                if (demon.Difficulty) {
-                    tags.push(demon.Difficulty);
-                }
-                
-                // Add creator tag
-                if (demon.Creator) {
-                    tags.push(demon.Creator);
-                }
-                
-                // Add verifier tag
-                if (demon.Verifier && demon.Verifier !== demon.Creator) {
-                    tags.push(`Verified by ${demon.Verifier}`);
-                }
-                
-                // Add video tag
-                if (demon.Video) {
-                    tags.push('Has Video');
-                }
-                
-                // Add custom tags if they exist
-                if (demon.Tags) {
-                    const customTags = demon.Tags.split(',').map(tag => tag.trim());
-                    tags.push(...customTags);
-                }
-                
-                return tags.slice(0, 4); // Limit to 4 tags
-            }
-            
-            // Setup event listeners for a card
-            function setupCardEventListeners(card, demon) {
-                // Favorite button
-                const favoriteBtn = card.querySelector('.card-favorite');
-                if (favoriteBtn) {
-                    favoriteBtn.addEventListener('click', () => toggleFavorite(demon.ID || ''));
-                }
-                
-                // Play button overlay
-                const playBtn = card.querySelector('.play-btn-overlay');
-                if (playBtn) {
-                    playBtn.addEventListener('click', () => {
-                        const videoId = playBtn.dataset.videoId;
-                        if (videoId) openModal(videoId);
-                    });
-                }
-                
-                // Level title click
-                const levelTitle = card.querySelector('.level-title');
-                if (levelTitle) {
-                    levelTitle.addEventListener('click', () => {
-                        const levelId = levelTitle.dataset.id;
-                        showLevelDetails(levelId);
-                        addToRecentlyViewed(levelId);
-                    });
-                }
-                
-                // Card action buttons
-                const actionButtons = card.querySelectorAll('.card-action-btn');
-                actionButtons.forEach(btn => {
-                    btn.addEventListener('click', () => {
-                        const action = btn.dataset.action;
-                        const levelId = btn.dataset.id;
-                        
-                        switch (action) {
-                            case 'details':
-                                showLevelDetails(levelId);
-                                addToRecentlyViewed(levelId);
-                                break;
-                            case 'progress':
-                                showProgressModal(levelId);
-                                break;
-                            case 'rate':
-                                showRatingModal(levelId);
-                                break;
-                        }
-                    });
-                });
-            }
-            
-            // Render pagination
-            function renderPagination() {
-                if (!elements.pagination) return;
-                
-                elements.pagination.innerHTML = '';
-                
-                const totalPages = Math.ceil(filteredData.length / ITEMS_PER_PAGE);
-                
-                if (totalPages <= 1) return;
-                
-                // Previous button
-                const prevBtn = document.createElement('button');
-                prevBtn.className = 'page-btn';
-                prevBtn.innerHTML = '<i class="fas fa-chevron-left"></i>';
-                prevBtn.disabled = currentPage === 1;
-                prevBtn.addEventListener('click', () => {
-                    if (currentPage > 1) {
-                        currentPage--;
-                        renderCards();
-                        renderPagination();
-                        window.scrollTo({ top: 0, behavior: 'smooth' });
-                    }
-                });
-                elements.pagination.appendChild(prevBtn);
-                
-                // Page numbers
-                const maxVisiblePages = 5;
-                let startPage = Math.max(1, currentPage - Math.floor(maxVisiblePages / 2));
-                let endPage = Math.min(totalPages, startPage + maxVisiblePages - 1);
-                
-                if (endPage - startPage + 1 < maxVisiblePages) {
-                    startPage = Math.max(1, endPage - maxVisiblePages + 1);
-                }
-                
-                if (startPage > 1) {
-                    const firstPageBtn = createPageButton(1);
-                    elements.pagination.appendChild(firstPageBtn);
-                    
-                    if (startPage > 2) {
-                        const ellipsis = document.createElement('span');
-                        ellipsis.className = 'page-info';
-                        ellipsis.textContent = '...';
-                        elements.pagination.appendChild(ellipsis);
-                    }
-                }
-                
-                for (let i = startPage; i <= endPage; i++) {
-                    const pageBtn = createPageButton(i);
-                    elements.pagination.appendChild(pageBtn);
-                }
-                
-                if (endPage < totalPages) {
-                    if (endPage < totalPages - 1) {
-                        const ellipsis = document.createElement('span');
-                        ellipsis.className = 'page-info';
-                        ellipsis.textContent = '...';
-                        elements.pagination.appendChild(ellipsis);
-                    }
-                    
-                    const lastPageBtn = createPageButton(totalPages);
-                    elements.pagination.appendChild(lastPageBtn);
-                }
-                
-                // Next button
-                const nextBtn = document.createElement('button');
-                nextBtn.className = 'page-btn';
-                nextBtn.innerHTML = '<i class="fas fa-chevron-right"></i>';
-                nextBtn.disabled = currentPage === totalPages;
-                nextBtn.addEventListener('click', () => {
-                    if (currentPage < totalPages) {
-                        currentPage++;
-                        renderCards();
-                        renderPagination();
-                        window.scrollTo({ top: 0, behavior: 'smooth' });
-                    }
-                });
-                elements.pagination.appendChild(nextBtn);
-                
-                // Page info
-                const pageInfo = document.createElement('div');
-                pageInfo.className = 'page-info';
-                pageInfo.textContent = `Page ${currentPage} of ${totalPages}`;
-                elements.pagination.appendChild(pageInfo);
-            }
-            
-            // Create a page button
-            function createPageButton(pageNum) {
-                const btn = document.createElement('button');
-                btn.className = `page-btn ${pageNum === currentPage ? 'active' : ''}`;
-                btn.textContent = pageNum;
-                btn.addEventListener('click', () => {
-                    currentPage = pageNum;
-                    renderCards();
-                    renderPagination();
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
-                });
-                return btn;
-            }
-            
-            // Toggle difficulty menu
-            function toggleDifficultyMenu() {
-                const difficultyMenu = document.getElementById('difficultyMenu');
-                if (difficultyMenu) {
-                    difficultyMenu.classList.toggle('active');
-                    
-                    // Close other menus
-                    const sortMenu = document.getElementById('sortMenu');
-                    if (sortMenu) sortMenu.classList.remove('active');
-                }
-            }
-            
-            // Toggle sort menu
-            function toggleSortMenu() {
-                const sortMenu = document.getElementById('sortMenu');
-                if (sortMenu) {
-                    sortMenu.classList.toggle('active');
-                    
-                    // Close other menus
-                    const difficultyMenu = document.getElementById('difficultyMenu');
-                    if (difficultyMenu) difficultyMenu.classList.remove('active');
-                }
-            }
-            
-            // Handle difficulty filter
-            function handleDifficultyFilter(option) {
-                currentFilter = option.dataset.value;
-                
-                // Update active state
-                document.querySelectorAll('#difficultyMenu .filter-option').forEach(opt => {
-                    opt.classList.remove('active');
-                });
-                option.classList.add('active');
-                
-                // Update button text
-                const difficultyFilter = document.getElementById('difficultyFilter');
-                if (difficultyFilter) {
-                    difficultyFilter.querySelector('span').textContent = option.textContent;
-                }
-                
-                // Close menu
-                const difficultyMenu = document.getElementById('difficultyMenu');
-                if (difficultyMenu) difficultyMenu.classList.remove('active');
-                
-                // Apply filter
-                applyFilters();
-            }
-            
-            // Handle sort filter
-            function handleSortFilter(option) {
-                currentSort = option.dataset.value;
-                
-                // Update active state
-                document.querySelectorAll('#sortMenu .filter-option').forEach(opt => {
-                    opt.classList.remove('active');
-                });
-                option.classList.add('active');
-                
-                // Update button text
-                const sortFilter = document.getElementById('sortFilter');
-                if (sortFilter) {
-                    sortFilter.querySelector('span').textContent = option.textContent;
-                }
-                
-                // Close menu
-                const sortMenu = document.getElementById('sortMenu');
-                if (sortMenu) sortMenu.classList.remove('active');
-                
-                // Apply sort
-                applySort();
-            }
-            
-            // Apply filters
-            function applyFilters() {
-                // Start with all data
-                filteredData = [...getCurrentData()];
-                
-                // Apply difficulty filter
-                if (currentFilter !== 'all') {
-                    filteredData = filteredData.filter(demon => {
-                        const difficulty = (demon.Difficulty || '').toLowerCase();
-                        return difficulty === currentFilter;
-                    });
-                }
-                
-                // Apply search filter
-                const searchTerm = elements.searchInput ? elements.searchInput.value.toLowerCase() : '';
-                if (searchTerm) {
-                    filteredData = filteredData.filter(demon => {
-                        const levelName = (demon.Level || demon.Name || '').toLowerCase();
-                        const creator = (demon.Creator || '').toLowerCase();
-                        const verifier = (demon.Verifier || '').toLowerCase();
-                        
-                        return levelName.includes(searchTerm) || 
-                               creator.includes(searchTerm) || 
-                               verifier.includes(searchTerm);
-                    });
-                }
-                
-                // Reset to first page
-                currentPage = 1;
-                
-                // Update stats
-                updateStats();
-                
-                // Re-render
-                renderCards();
-                renderPagination();
-            }
-            
-            // Apply sorting
-            function applySort() {
-                switch (currentSort) {
-                    case 'rank':
-                        filteredData.sort((a, b) => {
-                            const rankA = parseInt(a.Rank) || 999;
-                            const rankB = parseInt(b.Rank) || 999;
-                            return rankA - rankB;
-                        });
-                        break;
-                    case 'name':
-                        filteredData.sort((a, b) => {
-                            const nameA = (a.Level || a.Name || '').toLowerCase();
-                            const nameB = (b.Level || b.Name || '').toLowerCase();
-                            return nameA.localeCompare(nameB);
-                        });
-                        break;
-                    case 'difficulty':
-                        filteredData.sort((a, b) => {
-                            const difficultyOrder = ['easy', 'medium', 'hard', 'insane', 'extreme', 'impossible'];
-                            const diffA = (a.Difficulty || '').toLowerCase();
-                            const diffB = (b.Difficulty || '').toLowerCase();
-                            
-                            const indexA = difficultyOrder.indexOf(diffA);
-                            const indexB = difficultyOrder.indexOf(diffB);
-                            
-                            return indexA - indexB;
-                        });
-                        break;
-                    case 'creator':
-                        filteredData.sort((a, b) => {
-                            const creatorA = (a.Creator || '').toLowerCase();
-                            const creatorB = (b.Creator || '').toLowerCase();
-                            return creatorA.localeCompare(creatorB);
-                        });
-                        break;
-                    case 'rating':
-                        filteredData.sort((a, b) => {
-                            const ratingA = parseFloat(a.Rating) || 0;
-                            const ratingB = parseFloat(b.Rating) || 0;
-                            return ratingB - ratingA;
-                        });
-                        break;
-                }
-                
-                // Re-render
-                renderCards();
-            }
-            
-            // Handle search input
-            function handleSearch() {
-                const searchTerm = elements.searchInput ? elements.searchInput.value : '';
-                
-                // Add to search history
-                if (searchTerm && !searchHistory.includes(searchTerm)) {
-                    searchHistory.unshift(searchTerm);
-                    searchHistory = searchHistory.slice(0, 10); // Keep only 10 recent searches
-                    localStorage.setItem('searchHistory', JSON.stringify(searchHistory));
-                }
-                
-                // Apply filters
-                applyFilters();
-            }
-            
-            // Show search suggestions
-            function showSearchSuggestions() {
-                if (!elements.searchSuggestions || !elements.searchInput) return;
-                
-                const searchTerm = elements.searchInput.value.toLowerCase();
-                
-                if (searchTerm.length < 2) {
-                    elements.searchSuggestions.style.display = 'none';
-                    return;
-                }
-                
-                // Get suggestions from search history and level names
-                const suggestions = [];
-                
-                // Add from search history
-                searchHistory.forEach(term => {
-                    if (term.toLowerCase().includes(searchTerm) && !suggestions.includes(term)) {
-                        suggestions.push(term);
-                    }
-                });
-                
-                // Add from level names
-                const currentData = getCurrentData();
-                currentData.forEach(demon => {
-                    const levelName = demon.Level || demon.Name || '';
-                    if (levelName.toLowerCase().includes(searchTerm) && !suggestions.includes(levelName)) {
-                        suggestions.push(levelName);
-                    }
-                });
-                
-                // Add from creators
-                currentData.forEach(demon => {
-                    const creator = demon.Creator || '';
-                    if (creator.toLowerCase().includes(searchTerm) && !suggestions.includes(creator)) {
-                        suggestions.push(creator);
-                    }
-                });
-                
-                // Limit to 5 suggestions
-                const limitedSuggestions = suggestions.slice(0, 5);
-                
-                if (limitedSuggestions.length > 0) {
-                    elements.searchSuggestions.innerHTML = limitedSuggestions
-                        .map(suggestion => `
-                            <div class="suggestion-item" data-suggestion="${suggestion}">
-                                ${suggestion}
-                            </div>
-                        `)
-                        .join('');
-                    
-                    elements.searchSuggestions.style.display = 'block';
-                    
-                    // Add click handlers
-                    elements.searchSuggestions.querySelectorAll('.suggestion-item').forEach(item => {
-                        item.addEventListener('click', () => {
-                            elements.searchInput.value = item.dataset.suggestion;
-                            elements.searchSuggestions.style.display = 'none';
-                            handleSearch();
-                        });
-                    });
-                } else {
-                    elements.searchSuggestions.style.display = 'none';
-                }
-            }
-            
-            // Hide search suggestions
-            function hideSearchSuggestions() {
-                setTimeout(() => {
-                    if (elements.searchSuggestions) {
-                        elements.searchSuggestions.style.display = 'none';
-                    }
-                }, 200);
-            }
-            
-            // Set view mode
-            function setViewMode(mode) {
-                viewMode = mode;
-                localStorage.setItem('viewMode', mode);
-                
-                // Update button states
-                const gridView = document.getElementById('gridView');
-                const listView = document.getElementById('listView');
-                
-                if (gridView) gridView.classList.toggle('active', mode === 'grid');
-                if (listView) listView.classList.toggle('active', mode === 'list');
-                
-                // Re-render cards
-                renderCards();
-            }
-            
-            // Show random demon
-            function showRandomDemon() {
-                const currentData = getCurrentData();
-                if (currentData.length === 0) return;
-                
-                const randomIndex = Math.floor(Math.random() * currentData.length);
-                const randomDemon = currentData[randomIndex];
-                const levelId = randomDemon.ID || '';
-                
-                showLevelDetails(levelId);
-                addToRecentlyViewed(levelId);
-            }
-            
-            // Toggle compare mode
-            function toggleCompareMode() {
-                // Implementation for compare mode
-                showToast('Compare mode coming soon!', 'info');
-            }
-            
-            // Toggle advanced filters
-            function toggleAdvancedFilters() {
-                if (elements.advancedFilterSection) {
-                    elements.advancedFilterSection.classList.toggle('active');
-                }
-            }
-            
-            // Apply advanced filters
-            function applyAdvancedFilters() {
-                // Implementation for advanced filters
-                showToast('Advanced filters applied!', 'success');
-                toggleAdvancedFilters();
-            }
-            
-            // Reset advanced filters
-            function resetAdvancedFilters() {
-                // Reset all filter inputs
-                const filterInputs = elements.advancedFilterSection.querySelectorAll('input, select');
-                filterInputs.forEach(input => {
-                    if (input.type === 'checkbox') {
-                        input.checked = false;
-                    } else if (input.type === 'range') {
-                        input.value = input.min;
-                        updateRangeValue({ target: input });
-                    } else {
-                        input.value = '';
-                    }
-                });
-                
-                // Apply filters
-                applyFilters();
-                showToast('Filters reset!', 'info');
-            }
-            
-            // Update range value display
-            function updateRangeValue(e) {
-                const input = e.target;
-                const valueDisplay = input.parentElement.querySelector('.range-value');
-                if (valueDisplay) {
-                    valueDisplay.textContent = input.value;
-                }
-            }
-            
-            // Export data
-            function exportData() {
-                const currentData = getCurrentData();
-                
-                // Create CSV content
-                const csvContent = Papa.unparse(currentData);
-                
-                // Create download link
-                const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
-                const url = URL.createObjectURL(blob);
-                const link = document.createElement('a');
-                link.setAttribute('href', url);
-                link.setAttribute('download', 'gdips_demon_list.csv');
-                link.style.visibility = 'hidden';
-                document.body.appendChild(link);
-                link.click();
-                document.body.removeChild(link);
-                
-                showToast('Data exported successfully!', 'success');
-            }
-            
-            // Show recommendations
-            function showRecommendations() {
-                // Implementation for recommendations
-                showToast('Recommendations coming soon!', 'info');
-            }
-            
-            // Toggle favorite status
-            function toggleFavorite(levelId) {
-                if (!levelId) return;
-                
-                const index = favorites.indexOf(levelId);
-                if (index === -1) {
-                    favorites.push(levelId);
-                    showToast('Added to favorites!', 'success');
-                } else {
-                    favorites.splice(index, 1);
-                    showToast('Removed from favorites!', 'info');
-                }
-                
-                // Save to localStorage
-                localStorage.setItem('favorites', JSON.stringify(favorites));
-                
-                // Update UI
-                renderCards();
-                updateUserProfile();
-            }
-            
-            // Add to recently viewed
-            function addToRecentlyViewed(levelId) {
-                if (!levelId) return;
-                
-                // Remove if already exists
-                const index = recentlyViewed.indexOf(levelId);
-                if (index !== -1) {
-                    recentlyViewed.splice(index, 1);
-                }
-                
-                // Add to beginning
-                recentlyViewed.unshift(levelId);
-                
-                // Limit to 20 items
-                recentlyViewed = recentlyViewed.slice(0, 20);
-                
-                // Save to localStorage
-                localStorage.setItem('recentlyViewed', JSON.stringify(recentlyViewed));
-            }
-            
-            // Show level details
-            function showLevelDetails(levelId) {
-                if (!levelId || !elements.detailsModal) return;
-                
-                // Find the level data
-                const currentData = getCurrentData();
-                const level = currentData.find(d => d.ID === levelId);
-                
-                if (!level) {
-                    showToast('Level not found!', 'error');
-                    return;
-                }
-                
-                // Update modal title
-                const modalTitle = document.getElementById('detailsModalTitle');
-                if (modalTitle) {
-                    modalTitle.textContent = level.Level || level.Name || 'Unknown Level';
-                }
-                
-                // Populate details
-                const detailsContainer = document.getElementById('levelDetails');
-                if (detailsContainer) {
-                    detailsContainer.innerHTML = generateLevelDetails(level);
-                }
-                
-                // Set video ID for watch button
-                const watchVideoBtn = document.getElementById('watchVideo');
-                if (watchVideoBtn && level.Video) {
-                    watchVideoBtn.dataset.videoId = level.Video;
-                    watchVideoBtn.style.display = 'flex';
-                } else if (watchVideoBtn) {
-                    watchVideoBtn.style.display = 'none';
-                }
-                
-                // Show modal
-                elements.detailsModal.classList.add('active');
-            }
-            
-            // Generate level details HTML
-            function generateLevelDetails(level) {
-                const levelName = level.Level || level.Name || 'Unknown Level';
-                const creator = level.Creator || 'Unknown';
-                const verifier = level.Verifier || 'Unknown';
-                const difficulty = level.Difficulty || 'Unknown';
-                const levelId = level.ID || '';
-                const videoId = level.Video || '';
-                const rating = parseFloat(level.Rating) || 0;
-                const rank = parseInt(level.Rank) || 0;
-                const description = level.Description || 'No description available.';
-                const tags = level.Tags ? level.Tags.split(',').map(tag => tag.trim()) : [];
-                
-                return `
-                    <div class="detail-group">
-                        <div class="detail-label">Level Name</div>
-                        <div class="detail-value">${levelName}</div>
-                    </div>
-                    <div class="detail-group">
-                        <div class="detail-label">Creator</div>
-                        <div class="detail-value">${creator}</div>
-                    </div>
-                    <div class="detail-group">
-                        <div class="detail-label">Verifier</div>
-                        <div class="detail-value">${verifier}</div>
-                    </div>
-                    <div class="detail-group">
-                        <div class="detail-label">Difficulty</div>
-                        <div class="detail-value">
-                            <span class="diff-pill ${difficulty.toLowerCase()}">${difficulty}</span>
-                        </div>
-                    </div>
-                    ${levelId ? `
-                        <div class="detail-group">
-                            <div class="detail-label">Level ID</div>
-                            <div class="detail-value">${levelId}</div>
-                        </div>
-                    ` : ''}
-                    ${rank > 0 ? `
-                        <div class="detail-group">
-                            <div class="detail-label">Rank</div>
-                            <div class="detail-value">#${rank}</div>
-                        </div>
-                    ` : ''}
-                    <div class="detail-group">
-                        <div class="detail-label">Rating</div>
-                        <div class="detail-value">
-                            <div class="rating-container">
-                                <div class="rating-stars">
-                                    ${generateStars(rating)}
-                                </div>
-                                <div class="rating-value">${rating.toFixed(1)}/5.0</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="detail-group">
-                        <div class="detail-label">Description</div>
-                        <div class="detail-value">${description}</div>
-                    </div>
-                    ${tags.length > 0 ? `
-                        <div class="detail-group">
-                            <div class="detail-label">Tags</div>
-                            <div class="detail-value">
-                                <div class="filter-tags">
-                                    ${tags.map(tag => `<span class="filter-tag">${tag}</span>`).join('')}
-                                </div>
-                            </div>
-                        </div>
-                    ` : ''}
-                `;
-            }
-            
-            // Show progress modal
-            function showProgressModal(levelId) {
-                if (!levelId || !elements.progressModal) return;
-                
-                // Find the level data
-                const currentData = getCurrentData();
-                const level = currentData.find(d => d.ID === levelId);
-                
-                if (!level) {
-                    showToast('Level not found!', 'error');
-                    return;
-                }
-                
-                // Update modal title
-                const modalTitle = document.getElementById('progressModalTitle');
-                if (modalTitle) {
-                    modalTitle.textContent = `Update Progress: ${level.Level || level.Name || 'Unknown Level'}`;
-                }
-                
-                // Get current progress
-                const currentProgress = levelProgress[levelId] || {
-                    attempts: 0,
-                    bestPercentage: 0,
-                    completed: false,
-                    notes: ''
-                };
-                
-                // Populate progress content
-                const progressContent = document.getElementById('progressContent');
-                if (progressContent) {
-                    progressContent.innerHTML = `
-                        <div class="filter-group">
-                            <label for="progressAttempts">Attempts</label>
-                            <input type="number" id="progressAttempts" min="0" value="${currentProgress.attempts}">
-                        </div>
-                        <div class="filter-group">
-                            <label for="progressPercentage">Best Percentage (%)</label>
-                            <input type="number" id="progressPercentage" min="0" max="100" value="${currentProgress.bestPercentage}">
-                        </div>
-                        <div class="filter-group">
-                            <label>
-                                <input type="checkbox" id="progressCompleted" ${currentProgress.completed ? 'checked' : ''}>
-                                Completed
-                            </label>
-                        </div>
-                        <div class="filter-group">
-                            <label for="progressNotes">Notes</label>
-                            <textarea id="progressNotes" rows="3">${currentProgress.notes}</textarea>
-                        </div>
-                    `;
-                }
-                
-                // Set level ID for update button
-                const updateProgressBtn = document.getElementById('updateProgress');
-                if (updateProgressBtn) {
-                    updateProgressBtn.dataset.levelId = levelId;
-                }
-                
-                // Show modal
-                elements.progressModal.classList.add('active');
-            }
-            
-            // Show rating modal
-            function showRatingModal(levelId) {
-                if (!levelId || !elements.ratingModal) return;
-                
-                // Find the level data
-                const currentData = getCurrentData();
-                const level = currentData.find(d => d.ID === levelId);
-                
-                if (!level) {
-                    showToast('Level not found!', 'error');
-                    return;
-                }
-                
-                // Update modal title
-                const modalTitle = document.getElementById('ratingModalTitle');
-                if (modalTitle) {
-                    modalTitle.textContent = `Rate: ${level.Level || level.Name || 'Unknown Level'}`;
-                }
-                
-                // Get current rating
-                const currentRating = userRatings[levelId] || {
-                    rating: 0,
-                    review: ''
-                };
-                
-                // Populate rating content
-                const ratingContent = document.getElementById('ratingContent');
-                if (ratingContent) {
-                    ratingContent.innerHTML = `
-                        <div class="rating-input-container">
-                            <div class="rating-stars-input" data-rating="${currentRating.rating}">
-                                ${[1, 2, 3, 4, 5].map(star => `
-                                    <i class="fas fa-star ${star <= currentRating.rating ? 'active' : ''}" data-rating="${star}"></i>
-                                `).join('')}
-                            </div>
-                            <div class="rating-value">${currentRating.rating}/5</div>
-                        </div>
-                        <div class="filter-group">
-                            <label for="ratingReview">Your Review</label>
-                            <textarea id="ratingReview" rows="4">${currentRating.review}</textarea>
-                        </div>
-                    `;
-                    
-                    // Add event listeners to stars
-                    const stars = ratingContent.querySelectorAll('.rating-stars-input i');
-                    stars.forEach(star => {
-                        star.addEventListener('click', () => {
-                            const rating = parseInt(star.dataset.rating);
-                            const container = star.parentElement;
-                            container.dataset.rating = rating;
-                            
-                            // Update star display
-                            stars.forEach(s => {
-                                s.classList.toggle('active', parseInt(s.dataset.rating) <= rating);
-                            });
-                            
-                            // Update rating value
-                            const ratingValue = container.parentElement.querySelector('.rating-value');
-                            if (ratingValue) {
-                                ratingValue.textContent = `${rating}/5`;
-                            }
-                        });
-                    });
-                }
-                
-                // Set level ID for submit button
-                const submitRatingBtn = document.getElementById('submitRating');
-                if (submitRatingBtn) {
-                    submitRatingBtn.dataset.levelId = levelId;
-                }
-                
-                // Show modal
-                elements.ratingModal.classList.add('active');
-            }
-            
-            // Show favorites
-            function showFavorites() {
-                if (favorites.length === 0) {
-                    showToast('You have no favorites yet!', 'info');
-                    return;
-                }
-                
-                // Filter data to only favorites
-                const currentData = getCurrentData();
-                filteredData = currentData.filter(d => favorites.includes(d.ID || ''));
-                
-                // Reset to first page
-                currentPage = 1;
-                
-                // Update stats
-                updateStats();
-                
-                // Re-render
-                renderCards();
-                renderPagination();
-                
-                // Close sidebar
-                if (elements.sidebar) {
-                    elements.sidebar.classList.remove('active');
-                }
-                
-                showToast('Showing favorites', 'success');
-            }
-            
-            // Show recently viewed
-            function showRecentlyViewed() {
-                if (recentlyViewed.length === 0) {
-                    showToast('You have no recently viewed levels!', 'info');
-                    return;
-                }
-                
-                // Filter data to only recently viewed
-                const currentData = getCurrentData();
-                filteredData = currentData.filter(d => recentlyViewed.includes(d.ID || ''));
-                
-                // Reset to first page
-                currentPage = 1;
-                
-                // Update stats
-                updateStats();
-                
-                // Re-render
-                renderCards();
-                renderPagination();
-                
-                // Close sidebar
-                if (elements.sidebar) {
-                    elements.sidebar.classList.remove('active');
-                }
-                
-                showToast('Showing recently viewed', 'success');
-            }
-            
-            // Show achievements
-            function showAchievements() {
-                // Implementation for achievements
-                showToast('Achievements coming soon!', 'info');
-            }
-            
-            // Show progress
-            function showProgress() {
-                // Implementation for progress
-                showToast('Progress tracking coming soon!', 'info');
-            }
-            
-            // Update user profile
-            function updateUserProfile() {
-                // Update user stats
-                userProfile.completedCount = completedLevels.length;
-                userProfile.favoriteCount = favorites.length;
-                
-                // Calculate level based on completed levels
-                userProfile.level = Math.floor(userProfile.completedCount / 3) + 1;
-                
-                // Save to localStorage
-                localStorage.setItem('userProfile', JSON.stringify(userProfile));
-                
-                // Update UI
-                const userNameEl = document.getElementById('userName');
-                const userLevelEl = document.getElementById('userLevel');
-                const userCompletedEl = document.getElementById('userCompleted');
-                const userFavoritesEl = document.getElementById('userFavorites');
-                
-                if (userNameEl) userNameEl.textContent = userProfile.username;
-                if (userLevelEl) userLevelEl.textContent = `Level ${userProfile.level}`;
-                if (userCompletedEl) userCompletedEl.textContent = userProfile.completedCount;
-                if (userFavoritesEl) userFavoritesEl.textContent = userProfile.favoriteCount;
-            }
-            
-            // Check achievements
-            function checkAchievements() {
-                Object.values(ACHIEVEMENTS).forEach(achievement => {
-                    if (!userAchievements.includes(achievement.id) && achievement.condition()) {
-                        unlockAchievement(achievement);
-                    }
-                });
-            }
-            
-            // Unlock achievement
-            function unlockAchievement(achievement) {
-                userAchievements.push(achievement.id);
-                localStorage.setItem('achievements', JSON.stringify(userAchievements));
-                
-                showToast(`Achievement Unlocked: ${achievement.title} - ${achievement.description}`, 'success');
-            }
-            
-            // Restore user progress
-            function restoreUserProgress() {
-                // Implementation for restoring user progress
-            }
-            
-            // Open video modal
-            function openModal(videoId) {
-                if (!elements.videoModal || !videoId) return;
-                
-                const iframe = document.getElementById('youtubeFrame');
-                if (iframe) {
-                    iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
-                }
-                
-                elements.videoModal.classList.add('active');
-            }
-            
-            // Close video modal
-            function closeVideoModalFn() {
-                if (!elements.videoModal) return;
-                
-                const iframe = document.getElementById('youtubeFrame');
-                if (iframe) {
-                    iframe.src = '';
-                }
-                
-                elements.videoModal.classList.remove('active');
-            }
-            
-            // Close details modal
-            function closeDetailsModalFn() {
-                if (elements.detailsModal) {
-                    elements.detailsModal.classList.remove('active');
-                }
-            }
-            
-            // Close rating modal
-            function closeRatingModalFn() {
-                if (elements.ratingModal) {
-                    elements.ratingModal.classList.remove('active');
-                }
-            }
-            
-            // Close statistics modal
-            function closeStatisticsModalFn() {
-                if (elements.statisticsModal) {
-                    elements.statisticsModal.classList.remove('active');
-                }
-            }
-            
-            // Close reviews modal
-            function closeReviewsModalFn() {
-                if (elements.reviewsModal) {
-                    elements.reviewsModal.classList.remove('active');
-                }
-            }
-            
-            // Close progress modal
-            function closeProgressModalFn() {
-                if (elements.progressModal) {
-                    elements.progressModal.classList.remove('active');
-                }
-            }
-            
-            // Show toast notification
-            function showToast(message, type = 'info') {
-                if (!elements.toastContainer) return;
-                
-                const toast = document.createElement('div');
-                toast.className = `toast ${type}`;
-                
-                let icon = 'fa-info-circle';
-                if (type === 'success') icon = 'fa-check-circle';
-                if (type === 'error') icon = 'fa-exclamation-circle';
-                if (type === 'warning') icon = 'fa-exclamation-triangle';
-                
-                toast.innerHTML = `
-                    <i class="fas ${icon}"></i>
-                    <span>${message}</span>
-                `;
-                
-                elements.toastContainer.appendChild(toast);
-                
-                // Trigger animation
-                setTimeout(() => toast.classList.add('show'), 10);
-                
-                // Auto remove after 3 seconds
-                setTimeout(() => {
-                    toast.classList.remove('show');
-                    setTimeout(() => {
-                        if (toast.parentElement) {
-                            toast.parentElement.removeChild(toast);
-                        }
-                    }, 300);
-                }, 3000);
-            }
-            
-            // Show error message
-            function showError(message) {
-                if (!elements.cardGrid) return;
-                
-                elements.cardGrid.innerHTML = `
-                    <div class="error-container">
-                        <div class="error-content">
-                            <i class="fas fa-exclamation-triangle"></i>
-                            <h3>Error Loading Data</h3>
-                            <p>${message}</p>
-                            <div class="error-actions">
-                                <button class="btn" onclick="DemonListApp.loadData()">Try Again</button>
-                                <button class="btn btn-secondary" onclick="DemonListApp.showSettingsModal()">Check Settings</button>
-                            </div>
-                        </div>
-                    </div>
-                `;
-                
-                if (elements.loadingMsg) {
-                    elements.loadingMsg.style.display = 'none';
-                }
-            }
-            
-            // Toggle theme
-            function toggleTheme() {
-                const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
-                const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-                
-                document.documentElement.setAttribute('data-theme', newTheme);
-                localStorage.setItem('theme', newTheme);
-                updateThemeIcon(newTheme);
-            }
-            
-            // Update theme icon
-            function updateThemeIcon(theme) {
-                const themeToggle = document.getElementById('themeToggle');
-                if (themeToggle) {
-                    const icon = themeToggle.querySelector('i');
-                    if (icon) {
-                        icon.className = theme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
-                    }
-                }
-            }
-            
-            // Handle infinite scroll
-            function handleInfiniteScroll() {
-                // Implementation for infinite scroll
-            }
-            
-            // Get current data based on page
-            function getCurrentData() {
-                if (window.location.pathname.includes('pemonlist.html')) {
-                    return pemonData;
-                } else if (window.location.pathname.includes('impossiblelist.html')) {
-                    return impossibleData;
-                } else {
-                    return demonData;
-                }
-            }
-            
-            // Reset filters
-            function resetFilters() {
-                // Reset search
-                if (elements.searchInput) {
-                    elements.searchInput.value = '';
-                }
-                
-                // Reset difficulty filter
-                currentFilter = 'all';
-                const difficultyOptions = document.querySelectorAll('#difficultyMenu .filter-option');
-                difficultyOptions.forEach(option => {
-                    option.classList.toggle('active', option.dataset.value === 'all');
-                });
-                
-                const difficultyFilter = document.getElementById('difficultyFilter');
-                if (difficultyFilter) {
-                    difficultyFilter.querySelector('span').textContent = 'All Difficulties';
-                }
-                
-                // Reset sort
-                currentSort = 'rank';
-                const sortOptions = document.querySelectorAll('#sortMenu .filter-option');
-                sortOptions.forEach(option => {
-                    option.classList.toggle('active', option.dataset.value === 'rank');
-                });
-                
-                const sortFilter = document.getElementById('sortFilter');
-                if (sortFilter) {
-                    sortFilter.querySelector('span').textContent = 'Rank';
-                }
-                
-                // Apply filters
-                applyFilters();
-            }
-            
-            // Show settings modal
-            function showSettingsModal() {
-                // Implementation for settings modal
-                showToast('Settings coming soon!', 'info');
-            }
-            
-            // Debounce function for search
-            function debounce(func, wait) {
-                let timeout;
-                return function(...args) {
-                    clearTimeout(timeout);
-                    timeout = setTimeout(() => func.apply(this, args), wait);
-                };
-            }
-            
-            // Throttle function for scroll
-            function throttle(func, limit) {
-                let inThrottle;
-                return function(...args) {
-                    if (!inThrottle) {
-                        func.apply(this, args);
-                        inThrottle = true;
-                        setTimeout(() => inThrottle = false, limit);
-                    }
-                };
-            }
-            
-            // Public API
-            return {
-                init,
-                loadData,
-                resetFilters,
-                showSettingsModal,
-                toggleTheme
-            };
-        })();
-        
-        // Initialize the app when DOM is ready
-        document.addEventListener('DOMContentLoaded', DemonListApp.init);
-        
-        // Handle page visibility change
-        document.addEventListener('visibilitychange', () => {
-            if (!document.hidden) {
-                // Refresh data when page becomes visible again
-                DemonListApp.loadData();
-            }
+      function sync() {
+        var open = sidebar.classList.contains('active') || sidebar.classList.contains('is-open');
+        if (openBtn) openBtn.setAttribute('aria-expanded', String(open));
+        sidebar.setAttribute('aria-hidden', String(!open));
+        if (scrim) scrim.classList.toggle('is-visible', open);
+      }
+
+      if (sidebar) {
+        new MutationObserver(sync).observe(sidebar, { attributes: true, attributeFilter: ['class'] });
+        if (scrim) scrim.addEventListener('click', function () { sidebar.classList.remove('active'); });
+        if (closeBtn) closeBtn.addEventListener('click', function () { sidebar.classList.remove('active'); });
+        sync();
+      }
+
+      document.querySelectorAll('#settingsLink, #footerSettingsLink').forEach(function (link) {
+        link.addEventListener('click', function (event) {
+          event.preventDefault();
+          if (sidebar) sidebar.classList.remove('active');
+          if (window.DemonListApp && DemonListApp.showSettingsModal) DemonListApp.showSettingsModal();
         });
-        
-        // Handle online/offline status
-        window.addEventListener('online', () => {
-            showToast('You are back online!', 'success');
-            DemonListApp.loadData();
-        });
-        
-        window.addEventListener('offline', () => {
-            showToast('You are offline. Some features may not be available.', 'warning');
-        });
-    </script>
+      });
+
+      /* Keep the filter menu buttons' aria-expanded honest. */
+      document.querySelectorAll('.filter-dropdown').forEach(function (wrap) {
+        var button = wrap.querySelector('.filter-btn');
+        var menu = wrap.querySelector('.filter-menu');
+        if (!button || !menu) return;
+        new MutationObserver(function () {
+          button.setAttribute('aria-expanded', String(menu.classList.contains('active') || menu.classList.contains('show')));
+        }).observe(menu, { attributes: true, attributeFilter: ['class'] });
+      });
+
+      /* Elevate the app bar once the list scrolls (M3 scrolled app bar). */
+      var bar = document.getElementById('appBar');
+      if (bar) {
+        var onScroll = function () { bar.classList.toggle('is-scrolled', window.scrollY > 8); };
+        window.addEventListener('scroll', onScroll, { passive: true });
+        onScroll();
+      }
+
+      document.querySelectorAll('.m3-menu').forEach(function (menu) {
+        var trigger = document.querySelector('[data-m3-menu-trigger="#' + menu.id + '"]');
+        if (!trigger) return;
+        new MutationObserver(function () {
+          trigger.setAttribute('aria-expanded', String(menu.classList.contains('is-open')));
+        }).observe(menu, { attributes: true, attributeFilter: ['class'] });
+      });
+    })();
+  </script>
 </body>
 </html>

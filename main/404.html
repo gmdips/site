@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 · Halaman tidak ditemukan | GDIPS</title>
+  <meta name="description" content="Halaman yang kamu cari tidak ditemukan. Kembali ke GDIPS atau daftar akun untuk mulai bermain.">
+  <meta name="theme-color" content="#FFF7F6">
+  <link rel="icon" href="/assets/brand/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/assets/brand/favicon-32.png" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="/assets/brand/apple-touch-icon.png">
+  <link rel="manifest" href="/manifest.json">
+
+  <link rel="stylesheet" href="/assets/vendor/fontawesome/css/all.min.css">
+
+  <!-- Material You 3 design system -->
+  <link rel="stylesheet" href="/assets/m3/palettes.css">
+  <link rel="stylesheet" href="/assets/m3/tokens.css">
+  <link rel="stylesheet" href="/assets/m3/components.css">
+  <link rel="stylesheet" href="/assets/m3/site.css">
+  <link rel="stylesheet" href="/assets/m3/pages.css">
+  <script src="/assets/m3/color.js"></script>
+  <script src="/assets/m3/ui.js" defer></script>
+</head>
+
+<body class="m3-page">
+  <header class="m3-app-bar">
+    <div class="m3-container m3-container--wide m3-app-bar__row">
+      <span class="m3-app-bar__title">
+        <span class="m3-app-bar__brand-mark"><img src="/assets/brand/gdips-mark.svg" alt=""></span>
+        <span>GDIPS</span>
+      </span>
+      <div class="m3-app-bar__actions">
+        <button type="button" class="m3-icon-button m3-theme-toggle m3-tooltip" data-tooltip="Ganti tema" aria-label="Ganti tema">
+          <i class="fas fa-moon m3-theme-toggle__light" aria-hidden="true"></i>
+          <i class="fas fa-sun m3-theme-toggle__dark" aria-hidden="true"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="gd-error" id="main">
+    <div class="gd-error__inner">
+      <span class="m3-badge m3-badge--error"><i class="fas fa-triangle-exclamation" aria-hidden="true"></i> Error 404</span>
+      <p class="gd-error__code">404</p>
+      <h1 class="m3-headline-medium">Halaman yang kamu cari tidak ditemukan</h1>
+      <p class="m3-body-large m3-text-muted" style="max-width:52ch">
+        Mungkin tautannya salah ketik, atau halamannya sudah dipindahkan. Coba salah satu
+        tautan di bawah ini supaya kamu tetap bisa main.
+      </p>
+
+      <div class="gd-error__actions">
+        <a class="m3-button m3-button--lg" href="/pages/id/utama/index.html">
+          <i class="fas fa-house" aria-hidden="true"></i><span>Beranda</span>
+        </a>
+        <a class="m3-button m3-button--tonal m3-button--lg" href="/dashboard/register.php" target="_blank" rel="noopener noreferrer">
+          <i class="fas fa-user-plus" aria-hidden="true"></i><span>Daftar akun</span>
+        </a>
+        <a class="m3-button m3-button--outlined m3-button--lg" href="/tools.html">
+          <i class="fas fa-tools" aria-hidden="true"></i><span>Alat bantu</span>
+        </a>
+      </div>
+
+      <div class="m3-chip-set" style="justify-content:center;margin-block-start:16px">
+        <a class="m3-chip m3-chip--assist" href="/pages/id/download/index.html"><i class="fas fa-download" aria-hidden="true"></i> Unduh</a>
+        <a class="m3-chip m3-chip--assist" href="/pages/id/rating-system/index.html"><i class="fas fa-star" aria-hidden="true"></i> Standar rate</a>
+        <a class="m3-chip m3-chip--assist" href="/demonlist/index.html"><i class="fas fa-fire" aria-hidden="true"></i> Demon list</a>
+        <a class="m3-chip m3-chip--assist" href="/feedback/index.html"><i class="fas fa-comment-dots" aria-hidden="true"></i> Masukan</a>
+      </div>
+    </div>
+  </main>
+
+  <footer class="m3-footer" style="margin-block-start:0">
+    <div class="m3-container">
+      <div class="m3-footer__bottom" style="margin-block-start:0;border-block-start:none">
+        <span>© <span class="gd-year">2025</span> GDIPS by Fless &amp; Amelia</span>
+        <span>Tidak berafiliasi dengan Geometry Dash atau RobTop Games</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    /* Same dynamic-year behaviour as the original footer script */
+    document.querySelectorAll('.gd-year').forEach(function (el) {
+      el.textContent = new Date().getFullYear();
+    });
+  </script>
+</body>
+</html>

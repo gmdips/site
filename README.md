@@ -1,5 +1,5 @@
 <h1 align="center">
-  <img src="https://avatars.githubusercontent.com/u/218802473?s=160&v=4" width="80" alt="GDIPS Logo" onerror="this.src='https://gdi.ps.fhgdps.com/dashboard/icon.png'; this.width='80';"/>
+  <img src="https://avatars.githubusercontent.com/u/218802473?s=160&v=4" width="80" alt="GDIPS Logo" onerror="this.src='https://gdips.wasmer.app/dashboard/icon.png'; this.width='80';"/>
   <br>
   GDIPS Website
   <br>
@@ -43,7 +43,7 @@
 <sup>
   <a href="https://gdips.pages.dev">🏠 Buka Website</a> · 
   <a href="https://gdips.pages.dev/download">📥 Download Game</a> · 
-  <a href="https://gdi.ps.fhgdps.com">🎮 Dashboard Server</a>
+  <a href="https://gdips.wasmer.app">🎮 Dashboard Server</a>
 </sup>
 
 </div>
@@ -302,7 +302,7 @@ site/
 | | Link | Deskripsi |
 |---|------|-----------|
 | 🌐 | [gdips.pages.dev](https://gdips.pages.dev) | Website ini (live) |
-| 🎮 | [Dashboard](https://gdi.ps.fhgdps.com) | Game server dashboard |
+| 🎮 | [Dashboard](https://gdips.wasmer.app) | Game server dashboard |
 | 📥 | [Download](https://gdips.pages.dev/download) | Download game client |
 | 💻 | [gmdips/GDIPS](https://github.com/gmdips/server) | Repo game server |
 | 🏢 | [gmdips org](https://github.com/gmdips) | Organization GitHub |
